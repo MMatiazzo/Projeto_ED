@@ -13,7 +13,7 @@ semaforo criaSemaforo(char *id, float x, float y, char *cor1, char *cor2, char *
   struct semaf *this;
   this = (struct semaf *) malloc(sizeof(struct semaf));
   this->id = (char *) malloc(sizeof(char) * strlen(id) + 1);
-  this->circ = criaCirculo(-4, 10.0, x, y, cor1, cor2, espessura);
+  this->circ = criaCirculo(-4, 8.0, x, y, cor1, cor2, espessura);
   this->text = criaTexto(x-5, y+5, "S");
   strcpy(this->id, id);
   return (semaforo) this;

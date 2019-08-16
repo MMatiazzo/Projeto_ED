@@ -5,6 +5,8 @@
 #include "hidrante.h"
 #include "semaforo.h"
 #include "radio.h"
+#include "predio.h"
+#include "segmento.h"
 #include "texto.h"
 #include "funcoes.h"
 #include "svg.h"
@@ -414,6 +416,25 @@ int executarComando(executor exec, comando cmd){
       break;
 
 
+      //      FASE 3      //      FASE 3      //      FASE 3      //      FASE 3      //      FASE 3      //      FASE 3
+
+      case CRIA_PREDIO:
+      if(this->maximos.total_predios > this->maximos.predios) break;
+      if(!(new_fig2 = percorreLista(this->quadras, PROCURA_QUADRA_ID, parametros[0]))) break;
+      new_fig2 = getQuadraRect(new_fig2);
+      new_fig = criaPredio(parametros[0], parametros[1], atof(parametros[2]), atof(parametros[3]), atof(parametros[4]), atof(parametros[5]) , new_fig2);
+      this->predios = insere_lista(this->predios, new_fig);
+      this->maximos.total_predios++;
+      break;
+
+
+      case CRIA_MURO:
+      if(this->maximos.total_muros > this->maximos.muros) break;
+      new_fig = criaSegmento(atof(parametros[0]), atof(parametros[1]), atof(parametros[2]), atof(parametros[3]));
+      this->muros = insere_lista(this->muros, new_fig);
+      this->maximos.total_muros++;
+      break;
+
       default: break;         //FIM DOS COMANDOS
 
 
@@ -625,6 +646,8 @@ void escreveTudoSVG(executor exec){
   percorreLista(this->hidrantes ,DESENHA_HIDRANTE, this->arq_svg);
   percorreLista(this->semaforos ,DESENHA_SEMAFORO, this->arq_svg);
   percorreLista(this->radios    ,DESENHA_RADIO   , this->arq_svg);
+  percorreLista(this->predios   ,DESENHA_PREDIO  , this->arq_svg);
+  percorreLista(this->muros     ,DESENHA_MURO    , this->arq_svg);
 
   fechaSVG(this->arq_svg);
 
@@ -722,6 +745,8 @@ void apagaExecutor(executor executor){
     apagaListaGeral(this->hidrantes, HIDRANTE);
     apagaListaGeral(this->semaforos, SEMAFORO);
     apagaListaGeral(this->radios, RADIO);
+    apagaListaGeral(this->muros, MURO);
+    apagaListaGeral(this->predios, PREDIO);
     if(this->arq_txt)
       fechaArquivo(this->arq_txt);
     free(this);

@@ -32,6 +32,8 @@ const struct{
   COR_BORDA_QUADRA,     "cbq",
   DQ_REMOVE_QUADRA,     "dq",
   TRANSLOCA,            "trns",
+  CRIA_PREDIO,          "prd",
+  CRIA_MURO,            "mur",
   FINALIZA,             "#"
 };
 
@@ -63,7 +65,7 @@ comando criaComando(char * entrada){     //TEM QUE DAR FREE NOS PARAMETROS
   if (strlen(aux) > 1)
     aux = strtok(aux, " ");
 
-  for(i = 0; i < 23; i++){
+  for(i = 0; i < 25; i++){
 
       if(!strcmp(aux, comando_exemplo[i].cmd)){
         this->tipo = comando_exemplo[i].tipo;

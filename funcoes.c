@@ -3,6 +3,7 @@
 #include "comando.h"
 #include "figura.h"
 #include "texto.h"
+#include "predio.h"
 #include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -95,6 +96,10 @@ char *removeExtensao(char * nome){
 int pesquisaNx(arquivo arq, int *nx){
   char *linha_atual;
   int total_linhas = 0;
+
+  for(int i = 0; i < 7; i++){
+    nx[i] = 1000;
+  }
 
   while(linha_atual = lerLinha(arq)){
     if(linha_atual[0] == 'n'){
@@ -731,6 +736,14 @@ void *percorreLista(lista list, enum tipo_operacao tipo, void * auxiliar){
             if(!strcmp(getRadioId(item_atual), auxiliar)){
               return item_atual;
             }
+            break;
+
+          case DESENHA_PREDIO:
+            desenhaPredio(auxiliar, item_atual);
+          break;
+
+          case DESENHA_MURO:
+            desenhaLineSVG(auxiliar, item_atual);
             break;
       }
     }

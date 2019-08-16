@@ -12,7 +12,7 @@ hidrante criaHidrante(char *id, float x, float y, char *cor1, char *cor2, char *
   struct hidra *this;
   this = (struct hidra *) malloc(sizeof(struct hidra));
   this->id = (char *) malloc(sizeof(char) * strlen(id) + 1);
-  this->circ = criaCirculo(-5, 10.0, x, y, cor1, cor2, espessura);
+  this->circ = criaCirculo(-5, 8.0, x, y, cor1, cor2, espessura);
   this->text = criaTexto(x-5, y+5, "H");
   strcpy(this->id, id);
   return (hidrante) this;

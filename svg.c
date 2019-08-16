@@ -106,6 +106,25 @@ void desenhaRadio(svg arq_svg, radio r){
   escreveTexto(arq_svg, text);
 }
 
+void desenhaLineSVG(svg arq_svg, segmento s){
+  struct svg* this;
+  this = (struct svg *) arq_svg;
+  float x1, y1, x2, y2;
+  x1 = segGetX1(s);
+  x2 = segGetX2(s);
+  y1 = segGetY1(s);
+  y2 = segGetY2(s);
+
+  escreveLinha(this->saida, "<line x1=\"%f\" y1=\"%f\" x2=\"%f\" y2=\"%f\" style=\"stroke:rgb(255,0,0);stroke-width:2\" />", x1, y1, x2, y2);
+}
+
+
+void desenhaPredio(svg arq_svg, predio p){
+  figura rect;
+  rect = getPredioRect(p);
+  desenhaFigura(arq_svg, rect);
+}
+
 
 void fechaSVG(svg arq_svg){
   struct svg *this;

@@ -6,6 +6,8 @@
 #include "hidrante.h"
 #include "semaforo.h"
 #include "radio.h"
+#include "segmento.h"
+#include "predio.h"
 
 
 typedef void * svg;
@@ -28,5 +30,9 @@ void desenhaHidrante(svg arq_svg, hidrante h);
 void desenhaSemaforo(svg arq_svg, semaforo s);
 
 void desenhaRadio(svg arq_svg, radio r);
+
+void desenhaLineSVG(svg arq_svg, segmento s);
+
+void desenhaPredio(svg arq_svg, predio p);
 
 #endif

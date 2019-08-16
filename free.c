@@ -5,6 +5,7 @@
 #include "hidrante.h"
 #include "semaforo.h"
 #include "radio.h"
+#include "predio.h"
 #include <stdlib.h>
 
 void apagaListaGeral(lista list, enum tipo_free tipo){
@@ -28,6 +29,10 @@ void apagaListaGeral(lista list, enum tipo_free tipo){
         case SEMAFORO : apagaSemaforo(item_atual); break;
 
         case RADIO : apagaRadio(item_atual); break;
+
+        case PREDIO: apagaPredio(item_atual); break;
+
+        case MURO: free(item_atual); break;
 
         default : free(item_atual);
       }

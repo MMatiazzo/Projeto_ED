@@ -13,7 +13,7 @@ radio criaRadio(char *id, float x, float y, char *cor1, char *cor2, char *espess
   struct radio *this;
   this = (struct radio *) malloc(sizeof(struct radio));
   this->id = (char *)malloc(sizeof(char) * strlen(id) + 1);
-  this->circ = criaCirculo(-3, 10.0, x, y, cor1, cor2, espessura);
+  this->circ = criaCirculo(-3, 8.0, x, y, cor1, cor2, espessura);
   this->text = criaTexto(x-5, y+5, "R");
   strcpy(this->id, id);
   return (radio) this;

@@ -25,6 +25,8 @@ enum tipo_comando {
   COR_BORDA_QUADRA,
   DQ_REMOVE_QUADRA,
   TRANSLOCA,
+  CRIA_PREDIO,
+  CRIA_MURO,
   FINALIZA,
 };
 
