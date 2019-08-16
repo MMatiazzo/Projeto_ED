@@ -16,7 +16,7 @@ int temQRY(executor exec);
 
 executor setParametros(executor param, int argc, char* argv[]);
 
-executor setNx(executor exec, int nf, int nq, int nh, int ns, int nr);
+executor setNx(executor exec, int nf, int nq, int nh, int ns, int nr, int np, int nm);
 
 char* getParametros(executor param, enum tipo_parametro tipo);
 

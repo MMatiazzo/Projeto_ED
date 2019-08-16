@@ -25,6 +25,8 @@ struct executor{
   lista hidrantes;
   lista semaforos;
   lista radios;
+  lista predios;
+  lista muros;
 
   svg     arq_svg;
   arquivo arq_txt;
@@ -35,6 +37,8 @@ struct executor{
     int hidrantes,  total_hidrantes;
     int semaforos,  total_semaforos;
     int radios,     total_radios;
+    int predios,    total_predios;
+    int muros,      total_muros;
   }maximos;
 
   struct{
@@ -94,11 +98,15 @@ executor criaExecutor(){
   this->maximos.total_hidrantes = 0;
   this->maximos.total_semaforos = 0;
   this->maximos.total_radios    = 0;
+  this->maximos.total_predios   = 0;
+  this->maximos.total_muros     = 0;
   this->maximos.figuras   = 0;
   this->maximos.quadras   = 0;
   this->maximos.hidrantes = 0;
   this->maximos.semaforos = 0;
   this->maximos.radios    = 0;
+  this->maximos.muros     = 0;
+  this->maximos.predios   = 0;
   this->espessuras.circulo    = (char *) malloc(sizeof(char) * 2 ); strcpy(this->espessuras.circulo,      "1");
   this->espessuras.retangulo  = (char *) malloc(sizeof(char) * 2 ); strcpy(this->espessuras.retangulo,    "1");
   this->cor.quadra.borda      = (char *) malloc(sizeof(char) * 5 ); strcpy(this->cor.quadra.borda,        "blue");
@@ -187,19 +195,23 @@ char* getParametros(executor executor, enum tipo_parametro tipo){
 }
 
 
-executor setNx(executor exec, int nf, int nq, int nh, int ns, int nr){
+executor setNx(executor exec, int nf, int nq, int nh, int ns, int nr, int np, int nm){
   struct executor *this;
   this = (struct executor *) exec;
-  this->maximos.figuras = nf;
-  this->maximos.quadras = nq;
-  this->maximos.hidrantes = nh;
-  this->maximos.semaforos = ns;
-  this->maximos.radios = nr;
+  this->maximos.figuras     = nf;
+  this->maximos.quadras     = nq;
+  this->maximos.hidrantes   = nh;
+  this->maximos.semaforos   = ns;
+  this->maximos.radios      = nr;
+  this->maximos.predios     = np;
+  this->maximos.muros       = nm;
   this->figuras     = criaLista(nf);
   this->quadras     = criaLista(nq);
   this->hidrantes   = criaLista(nh);
   this->semaforos   = criaLista(ns);
   this->radios      = criaLista(nr);
+  this->predios     = criaLista(np);
+  this->muros       = criaLista(nm);
   return (executor) this;
 }
 

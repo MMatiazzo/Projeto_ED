@@ -12,7 +12,7 @@ int main(int argc, char* argv[]){
   arquivo arquivo_geo, arquivo_qry;
   char *caminho;
   lista linhas;
-  int nx[5], total_linhas;
+  int nx[7], total_linhas;
 
   exec = criaExecutor();
   setParametros(exec, argc, argv);
@@ -24,7 +24,7 @@ int main(int argc, char* argv[]){
   }else{                                  //resto do programa
 
     total_linhas = pesquisaNx(arquivo_geo, nx);
-    setNx(exec, nx[0], nx[1], nx[2], nx[3], nx[4]);
+    setNx(exec, nx[0], nx[1], nx[2], nx[3], nx[4], nx[5], nx[6]);
     linhas = recebeLinhas(arquivo_geo, total_linhas);
     percorreLista(linhas, EXECUTA_COMANDO, exec);
     apagaListaGeral(linhas, STRING);

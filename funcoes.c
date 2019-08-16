@@ -98,7 +98,7 @@ int pesquisaNx(arquivo arq, int *nx){
 
   while(linha_atual = lerLinha(arq)){
     if(linha_atual[0] == 'n'){
-      sscanf(linha_atual, "nx %d %d %d %d %d", &nx[0], &nx[1], &nx[2], &nx[3], &nx[4]);
+      sscanf(linha_atual, "nx %d %d %d %d %d %d %d", &nx[0], &nx[1], &nx[2], &nx[3], &nx[4], &nx[5], &nx[6]);
     }
     free(linha_atual);
     total_linhas++;
