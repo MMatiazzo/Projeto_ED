@@ -303,7 +303,7 @@ int executarComando(executor exec, comando cmd){
   char **parametros;
   char *aux, *aux2;
   float x1, x2, y1, y2, dist;
-  figura new_fig, new_fig2;
+  figura new_fig = NULL, new_fig2 = NULL;
   lista bbox;
   svg svg_bbox;
   node lista_node;
@@ -324,7 +324,7 @@ int executarComando(executor exec, comando cmd){
 
 
       case CRIA_CIRCULO:
-        if(this->maximos.total_figuras > this->maximos.figuras) break;
+        if(this->maximos.total_figuras >= this->maximos.figuras) break;
         new_fig = criaCirculo(atoi(parametros[0]), atof(parametros[1]), atof(parametros[2]), atof(parametros[3]), parametros[4], parametros[5], this->espessuras.circulo);
         this->figuras = insere_lista(this->figuras, new_fig);
         this->maximos.total_figuras++;
@@ -332,7 +332,7 @@ int executarComando(executor exec, comando cmd){
 
 
       case CRIA_RETANGULO:
-        if(this->maximos.total_figuras > this->maximos.figuras) break;
+        if(this->maximos.total_figuras >= this->maximos.figuras) break;
         new_fig = criaRetangulo(atoi(parametros[0]), atof(parametros[1]), atof(parametros[2]), atof(parametros[3]), atof(parametros[4]), parametros[5], parametros[6], this->espessuras.retangulo);
         this->figuras = insere_lista(this->figuras, new_fig);
         this->maximos.total_figuras++;
@@ -385,7 +385,7 @@ int executarComando(executor exec, comando cmd){
 
 
       case INSERE_QUADRA:
-        if(this->maximos.total_quadras > this->maximos.quadras) break;
+        if(this->maximos.total_quadras >= this->maximos.quadras) break;
         new_fig = criaQuadra(parametros[0], atof(parametros[1]), atof(parametros[2]), atof(parametros[3]), atof(parametros[4]), this->cor.quadra.borda, this->cor.quadra.fill, this->cor.quadra.espessura);
         this->quadras = insere_lista(this->quadras, new_fig);
         this->maximos.total_quadras++;
@@ -393,7 +393,7 @@ int executarComando(executor exec, comando cmd){
 
 
       case INSERE_HIDRANTE:
-        if(this->maximos.total_hidrantes > this->maximos.hidrantes) break;
+        if(this->maximos.total_hidrantes >= this->maximos.hidrantes) break;
         new_fig = criaHidrante(parametros[0], atof(parametros[1]), atof(parametros[2]), this->cor.hidrante.borda, this->cor.hidrante.fill, this->cor.hidrante.espessura);
         this->hidrantes = insere_lista(this->hidrantes, new_fig);
         this->maximos.total_hidrantes++;
@@ -401,7 +401,7 @@ int executarComando(executor exec, comando cmd){
 
 
       case INSERE_SEMAFORO:
-        if(this->maximos.total_semaforos > this->maximos.semaforos) break;
+        if(this->maximos.total_semaforos >= this->maximos.semaforos) break;
         new_fig = criaSemaforo(parametros[0], atof(parametros[1]), atof(parametros[2]), this->cor.semaforo.borda, this->cor.semaforo.fill, this->cor.semaforo.espessura);
         this->semaforos = insere_lista(this->semaforos, new_fig);
         this->maximos.total_semaforos++;
@@ -409,7 +409,7 @@ int executarComando(executor exec, comando cmd){
 
 
       case INSERE_RADIO:
-      if(this->maximos.total_radios > this->maximos.radios) break;
+      if(this->maximos.total_radios >= this->maximos.radios) break;
       new_fig = criaRadio(parametros[0], atof(parametros[1]), atof(parametros[2]), this->cor.radio.borda, this->cor.radio.fill, this->cor.radio.espessura);
       this->radios = insere_lista(this->radios, new_fig);
       this->maximos.total_radios++;
@@ -419,7 +419,10 @@ int executarComando(executor exec, comando cmd){
       //      FASE 3      //      FASE 3      //      FASE 3      //      FASE 3      //      FASE 3      //      FASE 3
 
       case CRIA_PREDIO:
-      if(this->maximos.total_predios > this->maximos.predios) break;
+      if(this->maximos.total_predios >= this->maximos.predios){
+        printf("impossivel inserir predio\n" );
+        break;
+      }
       if(!(new_fig2 = percorreLista(this->quadras, PROCURA_QUADRA_ID, parametros[0]))) break;
       new_fig2 = getQuadraRect(new_fig2);
       new_fig = criaPredio(parametros[0], parametros[1], atof(parametros[2]), atof(parametros[3]), atof(parametros[4]), atof(parametros[5]) , new_fig2);
@@ -429,7 +432,7 @@ int executarComando(executor exec, comando cmd){
 
 
       case CRIA_MURO:
-      if(this->maximos.total_muros > this->maximos.muros) break;
+      if(this->maximos.total_muros >= this->maximos.muros) break;
       new_fig = criaSegmento(atof(parametros[0]), atof(parametros[1]), atof(parametros[2]), atof(parametros[3]));
       this->muros = insere_lista(this->muros, new_fig);
       this->maximos.total_muros++;

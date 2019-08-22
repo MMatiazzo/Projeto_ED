@@ -26,22 +26,22 @@ predio criaPredio(char *cep, char *face, float num, float f, float p, float mrg,
   wQuadra = getW(rectQuadra);
   hQuadra = getH(rectQuadra);
 
-  if(!strcmp(face, "n")){
+  if(!strcmp(face, "S")){
     xPredio = xQuadra + num - (f/2);
     yPredio = yQuadra + mrg;
     wPredio = f;
     hPredio = p;
-  }else if(!strcmp(face, "s")){
+  }else if(!strcmp(face, "N")){
     xPredio = xQuadra + num - (f/2);
     yPredio = yQuadra + hQuadra - mrg - p;
     wPredio = f;
     hPredio = p;
-  }else if(!strcmp(face, "l")){
+  }else if(!strcmp(face, "L")){
     xPredio = xQuadra + wQuadra - mrg - p;
     yPredio = yQuadra + num -(f/2);
     wPredio = p;
     hPredio = f;
-  }else if(!strcmp(face, "o")){
+  }else if(!strcmp(face, "O")){
     xPredio = xQuadra + mrg;
     yPredio = yQuadra + num - (f/2);
     wPredio = p;
