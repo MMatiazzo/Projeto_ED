@@ -60,6 +60,18 @@ figura getPredioRect(predio p){
   return this->rect;
 }
 
+char * getPredioFace(predio p){
+  predio_t *this;
+  this = (predio_t *)p;
+  return this->face;
+}
+
+char *getPredioCep(predio p){
+  predio_t *this;
+  this = (predio_t *)p;
+  return this->cep;
+}
+
 
 void apagaPredio(predio p){
   predio_t *this = (predio_t *) p;

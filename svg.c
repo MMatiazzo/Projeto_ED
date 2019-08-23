@@ -15,7 +15,7 @@ svg criaSVG(char * caminho){
     free(this);
     return NULL;
   }
-  escreveLinha(this->saida, "<svg xmlns=\"http://www.w3.org/2000/svg\" fill-opacity='0.7'>");
+  escreveLinha(this->saida, "<svg xmlns=\"http://www.w3.org/2000/svg\" fill-opacity='0.8'>");
   return (void *)this;
 }
 
@@ -71,9 +71,12 @@ void desenhaFigura(svg arq_svg, figura fig){
 
 
 void desenhaQuadra(svg arq_svg, quadra q){
+  struct svg* this;
+  this = (struct svg *) arq_svg;
   figura rect;
   rect = getQuadraRect(q);
   desenhaFigura(arq_svg, rect);
+  escreveLinha(this->saida, "<text x=\"%.1f\" y=\"%.1f\" text-anchor=\"middle\" font-size=\"10px\">%s</text>", getXfig(rect) + getW(rect)/4, getYfig(rect) + getH(rect)/4, getCep(q));
 }
 
 
@@ -115,14 +118,37 @@ void desenhaLineSVG(svg arq_svg, segmento s){
   y1 = segGetY1(s);
   y2 = segGetY2(s);
 
-  escreveLinha(this->saida, "<line x1=\"%f\" y1=\"%f\" x2=\"%f\" y2=\"%f\" style=\"stroke:rgb(255,0,0);stroke-width:2\" />", x1, y1, x2, y2);
+  escreveLinha(this->saida, "<line x1=\"%f\" y1=\"%f\" x2=\"%f\" y2=\"%f\" style=\"stroke:rgb(0,0,0);stroke-width:2\" />", x1, y1, x2, y2);
 }
 
 
 void desenhaPredio(svg arq_svg, predio p){
+  struct svg* this;
+  this = (struct svg *) arq_svg;
   figura rect;
   rect = getPredioRect(p);
   desenhaFigura(arq_svg, rect);
+  float x,y,xr,yr,w,h;
+
+  xr = getXfig(rect);
+  yr = getYfig(rect);
+  w = getW(rect);
+  h = getH(rect);
+
+  if(!strcmp(getPredioFace(p), "N")){
+    x = xr + w/2;
+    y = yr + h - 1;
+  }else if(!strcmp(getPredioFace(p), "S")){
+    x = xr + w/2;
+    y = yr + 3;
+  }else if(!strcmp(getPredioFace(p), "L")){
+    x = xr;
+    y = yr + h/2;
+  }else if(!strcmp(getPredioFace(p), "O")){
+    x = xr + w;
+    y = yr + h/2;
+  }
+  escreveLinha(this->saida, "<text x=\"%.1f\" y=\"%.1f\" text-anchor=\"middle\" font-size=\"3px\">%s</text>", x ,y, getPredioCep(p));
 }
 
 

@@ -419,10 +419,7 @@ int executarComando(executor exec, comando cmd){
       //      FASE 3      //      FASE 3      //      FASE 3      //      FASE 3      //      FASE 3      //      FASE 3
 
       case CRIA_PREDIO:
-      if(this->maximos.total_predios >= this->maximos.predios){
-        printf("impossivel inserir predio\n" );
-        break;
-      }
+      if(this->maximos.total_predios >= this->maximos.predios) break;
       if(!(new_fig2 = percorreLista(this->quadras, PROCURA_QUADRA_ID, parametros[0]))) break;
       new_fig2 = getQuadraRect(new_fig2);
       new_fig = criaPredio(parametros[0], parametros[1], atof(parametros[2]), atof(parametros[3]), atof(parametros[4]), atof(parametros[5]) , new_fig2);

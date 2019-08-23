@@ -12,5 +12,9 @@ figura getPredioRect(predio p);
 
 void apagaPredio(predio p);
 
+char * getPredioFace(predio p);
+
+char *getPredioCep(predio p);
+
 
 #endif
