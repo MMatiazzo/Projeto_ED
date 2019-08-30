@@ -17,4 +17,6 @@ char *getHidranteId(hidrante h);
 
 void apagaHidrante(hidrante h);
 
+int hidranteComparator(hidrante s1, hidrante s2, float x, float y);
+
 #endif

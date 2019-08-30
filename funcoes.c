@@ -1,9 +1,11 @@
 #include "funcoes.h"
 #include "executor.h"
 #include "comando.h"
+#include "svg.h"
 #include "figura.h"
 #include "texto.h"
 #include "predio.h"
+#include "heapsort.h"
 #include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -136,7 +138,7 @@ int floatlen(float x){
 char *criaLinha(float x1, float y1, float x2, float y2){
   char *linha;
   linha = (char *) malloc(sizeof(char) * (floatlen(x1) + floatlen(y1) + floatlen(x2) + floatlen(y2) +73));
-  sprintf(linha,"<line x1=\"%f\" y1=\"%f\" x2=\"%f\" y2=\"%f\" style=\"stroke:fuchsia;stroke-width:1.5\"/>", x1, y1, x2, y2);
+  sprintf(linha,"<line x1=\"%f\" y1=\"%f\" x2=\"%f\" y2=\"%f\" style=\"stroke:red;stroke-width:4\"/>", x1, y1, x2, y2);
   return linha;
 }
 
@@ -210,6 +212,7 @@ void centroMassa(figura fig, float *x, float *y){
 
 
 float distancia(float x1, float y1, float x2, float y2){
+  // printf("x1:%f - y1:%f - x2:%f - y2:%f\n", x1, y1, x2, y2);
   return sqrt(pow(x2 - x1, 2) + pow(y2 - y1, 2));
 }
 
@@ -883,6 +886,212 @@ void trocaString(char **str1, char *str2){
   free(*str1);
   *str1 = (char *) malloc(sizeof(char) * strlen(str2) + 1);
   strcpy(*str1, str2);
+}
+
+
+void concatenaString(char **str1, char *str2){
+  if(!*str1){
+    *str1 = malloc(sizeof(char) * strlen(str2) + 2);
+    sprintf(*str1,"%s\n", str2);
+  }else{
+    char *aux = *str1;
+    *str1 = malloc(sizeof(char) * strlen(aux) + strlen (str2) + 2);
+    // printf("AUX:%s\n", aux);
+    sprintf(*str1, "%s%s\n", aux, str2);
+    free(aux);
+  }
+}
+
+char *fIFunction(svg arq_svg, void **vet_s, void **vet_h, int s_n, int h_n, float x, float y, int ns, float r){
+  char *id, *aux = NULL, *aux2 = NULL, *tmp=NULL, *linha = NULL;
+  figura fig_atual, fig_aux;
+  float d;
+
+
+  aux = malloc(sizeof(char) * 12);
+  strcpy(aux, "SEMAFOROS:\n");
+
+  for(int i=0; i < ns && i < s_n; i++){
+    fig_atual = getSemaforoCirc(vet_s[i]);
+    tmp = getSemaforoId(vet_s[i]);
+    // printf("X:%f\nY:%f\n", getXfig(vet_s[i]), getYfig(vet_s[i]));
+    fig_aux = criaCirculo(-8, getR(fig_atual) + 3, getXfig(fig_atual), getYfig(fig_atual), "green", "transparent", "4");
+    linha = criaLinha(getXfig(fig_atual), getYfig(fig_atual), x, y);
+    escreveLinhaSVG(arq_svg, linha);
+    desenhaFigura(arq_svg, fig_aux);
+    free(linha);
+    apagaFigura(fig_aux);
+    if(tmp)
+    concatenaString(&aux,tmp);
+  }
+
+
+  for(int i=0; i < h_n;i++){
+    fig_atual = getHidranteCirc(vet_h[i]);
+    d = distancia(getXfig(fig_atual),getYfig(fig_atual), x, y);
+
+    if(d < r){
+      tmp = getHidranteId(vet_h[i]);
+      fig_aux = criaCirculo(-8, getR(fig_atual) + 3, getXfig(fig_atual), getYfig(fig_atual), "red", "transparent", "4");
+      linha = criaLinha(getXfig(fig_atual), getYfig(fig_atual), x, y);
+      escreveLinhaSVG(arq_svg, linha);
+      desenhaFigura(arq_svg, fig_aux);
+      free(linha);
+      apagaFigura(fig_aux);
+      if(tmp)
+      concatenaString(&aux2,tmp);
+      // printf("AEEE:%s\n", aux2);
+      // free?
+      // }else break;
+    }
+  }
+
+
+    if(aux2){
+      tmp = malloc(sizeof(char) * strlen(aux2) + strlen("HIDRANTES:\n") + 1);
+      sprintf(tmp, "%s%s", "HIDRANTES:\n", aux2);
+      free(aux2);
+      aux2 = tmp;
+    }
+    if(aux2){
+      concatenaString(&aux, aux2);
+      free(aux2);
+    }
+    // printf("%s\n", aux);
+    if(aux){
+      tmp = malloc(sizeof(char)* strlen(aux) + strlen("fi") + floatlen(x) + floatlen(y) + 5 + floatlen(r) + 6);
+      sprintf(tmp,"fi %f %f %d %f\n%s", x, y, ns, r, aux);
+      free(aux);
+      aux = tmp;
+    }else{
+      aux = malloc(sizeof(char)*  strlen("fi") + floatlen(x) + floatlen(y) + 5 + floatlen(r) + 6);
+      sprintf(aux,"fi %f %f %d %f\n", x, y, ns, r);
+    }
+
+  return aux;
+
+}
+
+
+
+char *fSFunction(svg arq_svg, void **vet_s, lista quadras, int s_n, int k, char *cep, char *face, float num){
+  char *aux, *tmp = NULL, *linha = NULL;
+  float x,y;
+  figura fig_atual = NULL, fig_aux;
+
+  if(!(fig_atual = percorreLista(quadras, PROCURA_QUADRA_ID, cep))){
+    aux = malloc(sizeof(char) * strlen("fs") + strlen(cep) + strlen(face)  + floatlen(num) + strlen("     cep não encontrado\n") + 10);
+    strcpy(aux,"     cep não encontrado\n");
+    return aux;
+  }
+
+  fig_atual = getQuadraRect(fig_atual);
+  x = getXfig(fig_atual);
+  y = getYfig(fig_atual);
+
+  if(face[0] == 'S'){
+    x += num;
+  }else if(face[0] == 'N'){
+    x += num;
+    y += getH(fig_atual);
+  }else if(face[0] == 'L'){
+    y += getH(fig_atual);
+  }else if(face[0] == 'O'){
+    x += getW(fig_atual);
+    y += num;
+  }
+
+  heapsort(vet_s, s_n, semaforoComparator, x, y);
+  aux = malloc(sizeof(char) * 12);
+  strcpy(aux, "SEMAFOROS:\n");
+
+  for(int i=0; i < k && i < s_n; i++){
+    fig_atual = getSemaforoCirc(vet_s[i]);
+    tmp = getSemaforoId(vet_s[i]);
+    // printf("X:%f\nY:%f\n", getXfig(vet_s[i]), getYfig(vet_s[i]));
+    fig_aux = criaCirculo(-8, getR(fig_atual) + 3, getXfig(fig_atual), getYfig(fig_atual), "purple", "transparent", "4");
+    linha = criaLinha(getXfig(fig_atual), getYfig(fig_atual), x, y);
+    escreveLinhaSVG(arq_svg, linha);
+    desenhaFigura(arq_svg, fig_aux);
+    free(linha);
+    apagaFigura(fig_aux);
+    if(tmp)
+    concatenaString(&aux,tmp);
+  }
+
+  if(aux){
+    tmp = malloc(sizeof(char) * strlen("fs") + strlen(cep) + strlen(face)  + floatlen(num) + strlen(aux) + 30);
+    sprintf(tmp,"fs %d %s %s %f\n%s", k, cep, face, num, aux);
+    free(aux);
+    aux = tmp;
+  }
+  return aux;
+
+}
+
+
+
+char *fHFunction(svg arq_svg, void **vet_h, lista quadras, int h_n, int k, char *cep, char *face, float num){
+  char *aux, *tmp = NULL, *linha = NULL;
+  float x,y;
+  figura fig_atual = NULL, fig_aux;
+
+  if(!(fig_atual = percorreLista(quadras, PROCURA_QUADRA_ID, cep))){
+    aux = malloc(sizeof(char) * strlen("fh") + strlen(cep) + strlen(face)  + floatlen(num) + strlen("     cep não encontrado\n") + 10);
+    strcpy(aux,"     cep não encontrado\n");
+    return aux;
+  }
+
+  fig_atual = getQuadraRect(fig_atual);
+  x = getXfig(fig_atual);
+  y = getYfig(fig_atual);
+
+  if(face[0] == 'S'){
+    x += num;
+  }else if(face[0] == 'N'){
+    x += num;
+    y += getH(fig_atual);
+  }else if(face[0] == 'L'){
+    y += getH(fig_atual);
+  }else if(face[0] == 'O'){
+    x += getW(fig_atual);
+    y += num;
+  }
+
+  heapsort(vet_h, h_n, semaforoComparator, x, y);
+  aux = malloc(sizeof(char) * 12);
+  strcpy(aux, "HIDRANTES:\n");
+
+  int i = 0;
+  if(k < 0){
+    k = abs(k);
+  }else{
+    i = h_n - k;
+    k = h_n;
+  }
+  printf("TESTE:%d | %d\n", i, k);
+  for(; i < k && i < h_n; i++){
+    fig_atual = getSemaforoCirc(vet_h[i]);
+    tmp = getSemaforoId(vet_h[i]);
+    // printf("X:%f\nY:%f\n", getXfig(vet_s[i]), getYfig(vet_s[i]));
+    fig_aux = criaCirculo(-8, getR(fig_atual) + 3, getXfig(fig_atual), getYfig(fig_atual), "yellow", "transparent", "4");
+    linha = criaLinha(getXfig(fig_atual), getYfig(fig_atual), x, y);
+    escreveLinhaSVG(arq_svg, linha);
+    desenhaFigura(arq_svg, fig_aux);
+    free(linha);
+    apagaFigura(fig_aux);
+    if(tmp)
+    concatenaString(&aux,tmp);
+  }
+
+  if(aux){
+    tmp = malloc(sizeof(char) * strlen("fs") + strlen(cep) + strlen(face)  + floatlen(num) + strlen(aux) + 30);
+    sprintf(tmp,"fh %d %s %s %f\n%s", k, cep, face, num, aux);
+    free(aux);
+    aux = tmp;
+  }
+  return aux;
+
 }
 
 

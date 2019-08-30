@@ -12,6 +12,7 @@
 #include "svg.h"
 #include "arquivo.h"
 #include "free.h"
+#include "heapsort.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -456,6 +457,8 @@ int executarComandoQry(executor exec, comando cmd){
   lista bbox;
   svg svg_bbox;
   node lista_node;
+  void **vet_s, **vet_h, **vet_q;
+
 
   parametros = getComandoParametros(cmd);
   total_parametros = getNumeroParametros(cmd);
@@ -626,12 +629,57 @@ int executarComandoQry(executor exec, comando cmd){
       }
     break;
 
+
     case TRANSLOCA:
       aux = translocafunc(this->arq_svg, this->quadras, this->hidrantes, this->semaforos, this->radios, atof(parametros[0]), atof(parametros[1]),atof(parametros[2]),atof(parametros[3]),atof(parametros[4]),atof(parametros[5]));
       if(aux){
         escreveLinha(this->arq_txt, aux);
         free(aux);
       }
+    break;
+
+
+    case FOCO_INCENDIO:
+      // heapsort(this->semaforos, getTamanho(this->semaforos),comparaSemaforoPonto, atof(parametros[0]), atof(parametros[1]));
+      vet_s = toVect(this->semaforos);
+      vet_h = toVect(this->hidrantes);
+      // for(int i = 0; i < getTamanho(this->semaforos); i++){
+      //   printf("TESTE SEMA:%s\n", getSemaforoId(vet_s[i]));
+      // }
+      heapsort(vet_s,getTamanho(this->semaforos),semaforoComparator, atof(parametros[0]), atof(parametros[1]));
+      heapsort(vet_h,getTamanho(this->hidrantes),hidranteComparator, atof(parametros[0]), atof(parametros[1]));
+      aux = fIFunction(this->arq_svg, vet_s, vet_h, getTamanho(this->semaforos), getTamanho(this->hidrantes),atof(parametros[0]),atof(parametros[1]),atoi(parametros[2]),atof(parametros[3]));
+      if(aux){
+        escreveLinha(this->arq_txt, aux);
+        free(aux);
+      }
+
+      free(vet_s);
+      free(vet_h);
+    break;
+
+    case FOCO_SEMAFORO:
+      vet_s = toVect(this->semaforos);
+      aux = fSFunction(this->arq_svg, vet_s, this->quadras, getTamanho(this->semaforos), atoi(parametros[0]), parametros[1], parametros[2], atof(parametros[3]));
+      if(aux){
+        escreveLinha(this->arq_txt, aux);
+        free(aux);
+      }
+
+      free(vet_s);
+
+    break;
+
+
+    case FOCO_HIDRANTE:
+      vet_h = toVect(this->hidrantes);
+      aux = fHFunction(this->arq_svg, vet_h, this->quadras, getTamanho(this->hidrantes), atoi(parametros[0]), parametros[1], parametros[2], atof(parametros[3]));
+      if(aux){
+        escreveLinha(this->arq_txt, aux);
+        free(aux);
+      }
+      free(vet_h);
+    break;
 
   }
 }
@@ -691,6 +739,8 @@ void finalizaQRY(executor exec){
   percorreLista(this->hidrantes  , DESENHA_HIDRANTE  , this->arq_svg);
   percorreLista(this->semaforos  , DESENHA_SEMAFORO  , this->arq_svg);
   percorreLista(this->radios     , DESENHA_RADIO     , this->arq_svg);
+  percorreLista(this->predios    , DESENHA_PREDIO    , this->arq_svg);
+  percorreLista(this->muros      , DESENHA_MURO      , this->arq_svg);
   fechaSVG(this->arq_svg);
 
 

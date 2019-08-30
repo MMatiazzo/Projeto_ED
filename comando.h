@@ -27,6 +27,9 @@ enum tipo_comando {
   TRANSLOCA,
   CRIA_PREDIO,
   CRIA_MURO,
+  FOCO_INCENDIO,
+  FOCO_HIDRANTE,
+  FOCO_SEMAFORO,
   FINALIZA,
 };
 

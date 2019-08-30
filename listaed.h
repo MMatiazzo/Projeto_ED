@@ -25,10 +25,12 @@ int getPosic(node no);
 
 item remove_lista(lista list, int i);
 
-void apagaLista(lista list);
-
 void printaLista(lista l);
 
 void apagaLista(lista l);
+
+void **toVector(lista l);
+
+void **toVect(lista l);
 
 #endif

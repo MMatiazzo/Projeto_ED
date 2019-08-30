@@ -15,6 +15,7 @@ typedef struct lista{
   int prim;
   int ulti;
   int tamanho;
+  int total;
   data_t *node;
 }lista_t;
 
@@ -31,6 +32,7 @@ lista criaLista(int tamanho){
   this->prim = -1;
   this->livre = 0;
   this->ulti = -1;
+  this->total = 0;
   this->tamanho = tamanho;
 
   for(i = 0; i < tamanho; i++){
@@ -54,6 +56,8 @@ lista insere_lista(lista list, item item){
     #endif
     return NULL;
   }
+
+  this->total++;
 
   if(this->prim == -1){
     this->node[0].item = item;
@@ -98,7 +102,7 @@ int listaVazia(lista list){
 
 int getTamanho(lista l){
   lista_t *this = (lista_t *) l;
-  return this->tamanho;
+  return this->total;
 }
 
 
@@ -133,11 +137,13 @@ item remove_lista(lista list, int i){
     if(i == this->ulti){
       this->ulti = this->node[i].ante;
       this->node[this->ulti].prox = -1;
+      this->total--;
     }
 
     if(i == this->prim){
       this->prim = this->node[i].prox;
       this->node[this->prim].ante = -1;
+      this->total--;
     }
 
   }else{
@@ -148,6 +154,7 @@ item remove_lista(lista list, int i){
     this->node[i].ante = -1;
     this->node[i].prox = -1;
     anterior = this->node[anterior].prox;
+    this->total--;
   }
 }
 
@@ -166,6 +173,7 @@ void printaLista(lista l){
 int temProximo(node no){
   return !!no;
 }
+
 
 int getPosic(node no){
   data_t *this_no = (data_t *) no;
@@ -187,4 +195,18 @@ void apagaLista(lista l){
   lista_t *this = (lista_t *)l;
   free(this->node);
   free(this);
+}
+
+void **toVect(lista l){
+  lista_t *this;
+  this = (lista_t *) l;
+  void **vet;
+  vet = malloc(sizeof(void *) * this->total);
+  int atual = this->prim;
+
+  for(int i=0; i < this->total; i++){
+    vet[i] = this->node[atual].item;
+    atual = this->node[atual].prox;
+  }
+  return vet;
 }

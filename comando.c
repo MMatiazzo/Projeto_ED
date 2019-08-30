@@ -34,6 +34,9 @@ const struct{
   TRANSLOCA,            "trns",
   CRIA_PREDIO,          "prd",
   CRIA_MURO,            "mur",
+  FOCO_INCENDIO,        "fi",
+  FOCO_HIDRANTE,        "fh",
+  FOCO_SEMAFORO,        "fs",
   FINALIZA,             "#"
 };
 
@@ -65,7 +68,7 @@ comando criaComando(char * entrada){     //TEM QUE DAR FREE NOS PARAMETROS
   if (strlen(aux) > 1)
     aux = strtok(aux, " ");
 
-  for(i = 0; i < 25; i++){
+  for(i = 0; i < 28; i++){
 
       if(!strcmp(aux, comando_exemplo[i].cmd)){
         this->tipo = comando_exemplo[i].tipo;

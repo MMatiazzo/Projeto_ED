@@ -17,4 +17,5 @@ texto getSemaforoText(semaforo h);
 
 char *getSemaforoId(semaforo h);
 
+int semaforoComparator(semaforo s1, semaforo s2, float x, float y);
 #endif

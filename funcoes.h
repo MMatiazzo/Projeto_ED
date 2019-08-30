@@ -101,7 +101,9 @@ int retornaDistanciaL1(float r1, float x1, float y1, float x2, float y2, float w
 
 char *translocafunc(svg arq_svg, lista quadras, lista hidrantes, lista semaforos, lista radios, float x, float y, float w, float h, float dx, float dy);
 
+char *fIFunction(svg arq_svg, void **vet_s, void **vet_h, int s_n, int h_n,float x, float y, int ns, float r);
 
+char *fSFunction(svg arq_svg, void **vet_s, lista quadras, int s_n, int k, char *cep, char *face, float num);
 
-
+char *fHFunction(svg arq_svg, void **vet_h, lista quadras, int h_n, int k, char *cep, char *face, float num);
 #endif

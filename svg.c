@@ -15,7 +15,7 @@ svg criaSVG(char * caminho){
     free(this);
     return NULL;
   }
-  escreveLinha(this->saida, "<svg xmlns=\"http://www.w3.org/2000/svg\" fill-opacity='0.8'>");
+  escreveLinha(this->saida, "<svg xmlns=\"http://www.w3.org/2000/svg\" fill-opacity='0.6'>");
   return (void *)this;
 }
 
