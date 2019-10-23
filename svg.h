@@ -3,9 +3,7 @@
 #include "figura.h"
 #include "texto.h"
 #include "quadra.h"
-#include "hidrante.h"
-#include "semaforo.h"
-#include "radio.h"
+#include "equipamento.h"
 #include "segmento.h"
 #include "predio.h"
 
@@ -25,11 +23,11 @@ void escreveLinhaSVG(svg arq_svg, char* texto);
 
 void desenhaQuadra(svg arq_svg, quadra q);
 
-void desenhaHidrante(svg arq_svg, hidrante h);
+void desenhaHidrante(svg arq_svg, equipamento h);
 
-void desenhaSemaforo(svg arq_svg, semaforo s);
+void desenhaSemaforo(svg arq_svg, equipamento s);
 
-void desenhaRadio(svg arq_svg, radio r);
+void desenhaRadio(svg arq_svg, equipamento r);
 
 void desenhaLineSVG(svg arq_svg, segmento s);
 

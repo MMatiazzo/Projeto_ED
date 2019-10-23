@@ -2,9 +2,7 @@
 #include "figura.h"
 #include "texto.h"
 #include "quadra.h"
-#include "hidrante.h"
-#include "semaforo.h"
-#include "radio.h"
+#include "equipamento.h"
 #include "predio.h"
 #include <stdlib.h>
 
@@ -24,11 +22,11 @@ void apagaListaGeral(lista list, enum tipo_free tipo){
 
         case QUADRA : apagaQuadra(item_atual); break;
 
-        case HIDRANTE : apagaHidrante(item_atual); break;
+        case HIDRANTE_F : apagaEquipamento(item_atual); break;
 
-        case SEMAFORO : apagaSemaforo(item_atual); break;
+        case SEMAFORO_F : apagaEquipamento(item_atual); break;
 
-        case RADIO : apagaRadio(item_atual); break;
+        case RADIO_F : apagaEquipamento(item_atual); break;
 
         case PREDIO: apagaPredio(item_atual); break;
 

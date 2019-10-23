@@ -6,6 +6,7 @@
 #include "texto.h"
 #include "predio.h"
 #include "heapsort.h"
+#include "equipamento.h"
 #include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -160,7 +161,7 @@ int sobrepoem(figura figura1, figura figura2){
 
   if((tipo1 == RETANGULO) && (tipo2 == RETANGULO)){
     x1 = getXfig(figura2);
-    y1 = getXfig(figura2);
+    y1 = getYfig(figura2);
     x2 = x1 + getW(figura2);
     y2 = y1 + getH(figura2);
     if(pontoInterno(figura1, x1, y1) || pontoInterno(figura1, x2, y1) || pontoInterno(figura1, x1, y2) || pontoInterno(figura1, x2, y2))
@@ -424,17 +425,17 @@ char *dqFunc(svg arq_svg, lista quadras, lista hidrantes, lista semaforos, lista
 
 
     if((item_atual = percorreLista(hidrantes, PROCURA_HIDRANTE_ID, id))){
-      item_atual = getHidranteCirc(item_atual);
+      item_atual = getEquipamentoCirculo(item_atual);
       x_eq = getXfig(item_atual);
       y_eq = getYfig(item_atual);
     }else
       if((item_atual = percorreLista(semaforos, PROCURA_SEMAFORO_ID, id))){
-        item_atual = getSemaforoCirc(item_atual);
+        item_atual = getEquipamentoCirculo(item_atual);
         x_eq = getXfig(item_atual);
         y_eq = getYfig(item_atual);
     }else
       if((item_atual = percorreLista(radios, PROCURA_RADIO_ID, id))){
-        item_atual = getRadioCirc(item_atual);
+        item_atual = getEquipamentoCirculo(item_atual);
         x_eq = getXfig(item_atual);
         y_eq = getYfig(item_atual);
     }
@@ -498,7 +499,7 @@ char *translocafunc(svg arq_svg, lista quadras, lista hidrantes, lista semaforos
   while(temProximo(lista_node))
   {
     semaforo_atual = getItemProx(semaforos,&lista_node);
-    circ = getSemaforoCirc(semaforo_atual);
+    circ = getEquipamentoCirculo(semaforo_atual);
     if(x < getXfig(circ)+getR(circ))
     {
         if(x+w> getXfig(circ)+getR(circ))
@@ -509,7 +510,7 @@ char *translocafunc(svg arq_svg, lista quadras, lista hidrantes, lista semaforos
               {
                 setX(circ, getXfig(circ)+dx);
                 setY(circ,getYfig(circ)+dy);
-                texto = getSemaforoText(semaforo_atual);
+                texto = getEquipamentoTexto(semaforo_atual);
                 setXtexto(texto,getXtexto(texto) + dx);
                 setYtexto(texto,getYtexto(texto) + dy);
               }
@@ -524,7 +525,7 @@ char *translocafunc(svg arq_svg, lista quadras, lista hidrantes, lista semaforos
   while(temProximo(lista_node))
   {
     hidrante_atual = getItemProx(hidrantes ,&lista_node);
-    circ = getHidranteCirc(hidrante_atual);
+    circ = getEquipamentoCirculo(hidrante_atual);
     if(x < getXfig(circ)+getR(circ))
     {
         if(x+w> getXfig(circ)+getR(circ))
@@ -535,7 +536,7 @@ char *translocafunc(svg arq_svg, lista quadras, lista hidrantes, lista semaforos
               {
                 setX(circ, getXfig(circ)+dx);
                 setY(circ,getYfig(circ)+dy);
-                texto = getHidranteText(hidrante_atual);
+                texto = getEquipamentoTexto(hidrante_atual);
                 setXtexto(texto,getXtexto(texto) + dx);
                 setYtexto(texto,getYtexto(texto) + dy);
               }
@@ -550,7 +551,7 @@ char *translocafunc(svg arq_svg, lista quadras, lista hidrantes, lista semaforos
   while(temProximo(lista_node))
   {
     radio_atual = getItemProx(radios ,&lista_node);
-    circ = getRadioCirc(radio_atual);
+    circ = getEquipamentoCirculo(radio_atual);
     if(x < getXfig(circ)+getR(circ))
     {
         if(x+w> getXfig(circ)+getR(circ))
@@ -561,7 +562,7 @@ char *translocafunc(svg arq_svg, lista quadras, lista hidrantes, lista semaforos
               {
                 setX(circ, getXfig(circ)+dx);
                 setY(circ,getYfig(circ)+dy);
-                texto = getRadioText(radio_atual);
+                texto = getEquipamentoCirculo(radio_atual);
                 setXtexto(texto,getXtexto(texto) + dx);
                 setYtexto(texto,getYtexto(texto) + dy);
               }
@@ -699,20 +700,20 @@ void *percorreLista(lista list, enum tipo_operacao tipo, void * auxiliar){
           break;
 
         case DELETA_HIDRANTE_ID:
-          if(!strcmp(getHidranteId(item_atual), auxiliar)){
+          if(!strcmp(getEquipamentoId(item_atual), auxiliar)){
             remove_lista(list, posicao_atual);
             return item_atual;
           }
 
         case DELETA_SEMAFORO_ID:
-          if(!strcmp(getSemaforoId(item_atual), auxiliar)){
+          if(!strcmp(getEquipamentoId(item_atual), auxiliar)){
             remove_lista(list, posicao_atual);
             return item_atual;
           }
           break;
 
         case DELETA_RADIO_ID:
-          if(!strcmp(getRadioId(item_atual), auxiliar)){
+          if(!strcmp(getEquipamentoId(item_atual), auxiliar)){
             remove_lista(list, posicao_atual);
             return item_atual;
           }
@@ -725,18 +726,18 @@ void *percorreLista(lista list, enum tipo_operacao tipo, void * auxiliar){
             break;
 
           case PROCURA_HIDRANTE_ID:
-            if(!strcmp(getHidranteId(item_atual), auxiliar)){
+            if(!strcmp(getEquipamentoId(item_atual), auxiliar)){
               return item_atual;
             }
 
           case PROCURA_SEMAFORO_ID:
-            if(!strcmp(getSemaforoId(item_atual), auxiliar)){
+            if(!strcmp(getEquipamentoId(item_atual), auxiliar)){
               return item_atual;
             }
             break;
 
           case PROCURA_RADIO_ID:
-            if(!strcmp(getRadioId(item_atual), auxiliar)){
+            if(!strcmp(getEquipamentoId(item_atual), auxiliar)){
               return item_atual;
             }
             break;
@@ -786,15 +787,15 @@ char *deleteObj(lista quadrs, lista hidrs, lista sems, lista rads, char *id){
   }
   if((aux = percorreLista(hidrs , DELETA_HIDRANTE_ID, id))){
     retorno = dadosHidranteTxt(aux);
-    apagaHidrante(aux);
+    apagaEquipamento(aux);
   }
   if((aux = percorreLista(sems  , DELETA_SEMAFORO_ID, id))){
     retorno = dadosSemaforoTxt(aux);
-    apagaSemaforo(aux);
+    apagaEquipamento(aux);
   }
   if((aux = percorreLista(rads  , DELETA_RADIO_ID   , id))){
     retorno = dadosRadioTxt(aux);
-    apagaRadio(aux);
+    apagaEquipamento(aux);
   }
 
   return retorno;
@@ -817,12 +818,12 @@ char *dadosQuadraTxt(quadra q){
 }
 
 
-char *dadosHidranteTxt(hidrante h){
+char *dadosHidranteTxt(equipamento h){
   char *id;
   float x,y;
   figura aux;
-  aux = getHidranteCirc(h);
-  id = getHidranteId(h);
+  aux = getEquipamentoCirculo(h);
+  id = getEquipamentoId(h);
   x = getXfig(aux);
   y = getYfig(aux);
   aux = (char *) malloc(sizeof(char) * strlen(id) + floatlen(x) + floatlen(y) + 31);
@@ -831,12 +832,12 @@ char *dadosHidranteTxt(hidrante h){
 }
 
 
-char *dadosSemaforoTxt(semaforo s){
+char *dadosSemaforoTxt(equipamento s){
   char *id;
   float x,y;
   figura aux;
-  aux = getSemaforoCirc(s);
-  id = getSemaforoId(s);
+  aux = getEquipamentoCirculo(s);
+  id = getEquipamentoId(s);
   x = getXfig(aux);
   y = getYfig(aux);
   aux = (char *) malloc(sizeof(char) * strlen(id) + floatlen(x) + floatlen(y) + 31);
@@ -845,12 +846,12 @@ char *dadosSemaforoTxt(semaforo s){
 }
 
 
-char *dadosRadioTxt(radio r){
+char *dadosRadioTxt(equipamento r){
   char *id;
   float x,y;
   figura aux;
-  aux = getRadioCirc(r);
-  id = getRadioId(r);
+  aux = getEquipamentoCirculo(r);
+  id = getEquipamentoId(r);
   x = getXfig(aux);
   y = getYfig(aux);
   aux = (char *) malloc(sizeof(char) * strlen(id) + floatlen(x) + floatlen(y) + 31);
@@ -912,8 +913,8 @@ char *fIFunction(svg arq_svg, void **vet_s, void **vet_h, int s_n, int h_n, floa
   strcpy(aux, "SEMAFOROS:\n");
 
   for(int i=0; i < ns && i < s_n; i++){
-    fig_atual = getSemaforoCirc(vet_s[i]);
-    tmp = getSemaforoId(vet_s[i]);
+    fig_atual = getEquipamentoCirculo(vet_s[i]);
+    tmp = getEquipamentoId(vet_s[i]);
     // printf("X:%f\nY:%f\n", getXfig(vet_s[i]), getYfig(vet_s[i]));
     fig_aux = criaCirculo(-8, getR(fig_atual) + 3, getXfig(fig_atual), getYfig(fig_atual), "green", "transparent", "4");
     linha = criaLinha(getXfig(fig_atual), getYfig(fig_atual), x, y);
@@ -927,11 +928,11 @@ char *fIFunction(svg arq_svg, void **vet_s, void **vet_h, int s_n, int h_n, floa
 
 
   for(int i=0; i < h_n;i++){
-    fig_atual = getHidranteCirc(vet_h[i]);
+    fig_atual = getEquipamentoCirculo(vet_h[i]);
     d = distancia(getXfig(fig_atual),getYfig(fig_atual), x, y);
 
     if(d < r){
-      tmp = getHidranteId(vet_h[i]);
+      tmp = getEquipamentoId(vet_h[i]);
       fig_aux = criaCirculo(-8, getR(fig_atual) + 3, getXfig(fig_atual), getYfig(fig_atual), "red", "transparent", "4");
       linha = criaLinha(getXfig(fig_atual), getYfig(fig_atual), x, y);
       escreveLinhaSVG(arq_svg, linha);
@@ -1001,13 +1002,13 @@ char *fSFunction(svg arq_svg, void **vet_s, lista quadras, int s_n, int k, char 
     y += num;
   }
 
-  heapsort(vet_s, s_n, semaforoComparator, x, y);
+  heapsort(vet_s, s_n, equipamentoComparator, x, y);
   aux = malloc(sizeof(char) * 12);
   strcpy(aux, "SEMAFOROS:\n");
 
   for(int i=0; i < k && i < s_n; i++){
-    fig_atual = getSemaforoCirc(vet_s[i]);
-    tmp = getSemaforoId(vet_s[i]);
+    fig_atual = getEquipamentoCirculo(vet_s[i]);
+    tmp = getEquipamentoId(vet_s[i]);
     // printf("X:%f\nY:%f\n", getXfig(vet_s[i]), getYfig(vet_s[i]));
     fig_aux = criaCirculo(-8, getR(fig_atual) + 3, getXfig(fig_atual), getYfig(fig_atual), "purple", "transparent", "4");
     linha = criaLinha(getXfig(fig_atual), getYfig(fig_atual), x, y);
@@ -1058,7 +1059,7 @@ char *fHFunction(svg arq_svg, void **vet_h, lista quadras, int h_n, int k, char 
     y += num;
   }
 
-  heapsort(vet_h, h_n, semaforoComparator, x, y);
+  heapsort(vet_h, h_n, equipamentoComparator, x, y);
   aux = malloc(sizeof(char) * 12);
   strcpy(aux, "HIDRANTES:\n");
 
@@ -1071,8 +1072,8 @@ char *fHFunction(svg arq_svg, void **vet_h, lista quadras, int h_n, int k, char 
   }
   printf("TESTE:%d | %d\n", i, k);
   for(; i < k && i < h_n; i++){
-    fig_atual = getSemaforoCirc(vet_h[i]);
-    tmp = getSemaforoId(vet_h[i]);
+    fig_atual = getEquipamentoCirculo(vet_h[i]);
+    tmp = getEquipamentoId(vet_h[i]);
     // printf("X:%f\nY:%f\n", getXfig(vet_s[i]), getYfig(vet_s[i]));
     fig_aux = criaCirculo(-8, getR(fig_atual) + 3, getXfig(fig_atual), getYfig(fig_atual), "yellow", "transparent", "4");
     linha = criaLinha(getXfig(fig_atual), getYfig(fig_atual), x, y);

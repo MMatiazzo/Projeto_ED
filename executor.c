@@ -2,9 +2,7 @@
 #include "listaed.h"
 #include "figura.h"
 #include "quadra.h"
-#include "hidrante.h"
-#include "semaforo.h"
-#include "radio.h"
+#include "equipamento.h"
 #include "predio.h"
 #include "segmento.h"
 #include "texto.h"
@@ -646,8 +644,8 @@ int executarComandoQry(executor exec, comando cmd){
       // for(int i = 0; i < getTamanho(this->semaforos); i++){
       //   printf("TESTE SEMA:%s\n", getSemaforoId(vet_s[i]));
       // }
-      heapsort(vet_s,getTamanho(this->semaforos),semaforoComparator, atof(parametros[0]), atof(parametros[1]));
-      heapsort(vet_h,getTamanho(this->hidrantes),hidranteComparator, atof(parametros[0]), atof(parametros[1]));
+      heapsort(vet_s,getTamanho(this->semaforos),equipamentoComparator, atof(parametros[0]), atof(parametros[1]));
+      heapsort(vet_h,getTamanho(this->hidrantes),equipamentoComparator, atof(parametros[0]), atof(parametros[1]));
       aux = fIFunction(this->arq_svg, vet_s, vet_h, getTamanho(this->semaforos), getTamanho(this->hidrantes),atof(parametros[0]),atof(parametros[1]),atoi(parametros[2]),atof(parametros[3]));
       if(aux){
         escreveLinha(this->arq_txt, aux);
@@ -792,9 +790,9 @@ void apagaExecutor(executor executor){
     // apagaListaGeral(this->figuras_qry, FIGURA);
     // apagaListaGeral(this->linhas_qry, STRING);
     apagaListaGeral(this->quadras, QUADRA);
-    apagaListaGeral(this->hidrantes, HIDRANTE);
-    apagaListaGeral(this->semaforos, SEMAFORO);
-    apagaListaGeral(this->radios, RADIO);
+    apagaListaGeral(this->hidrantes, HIDRANTE_F);
+    apagaListaGeral(this->semaforos, SEMAFORO_F);
+    apagaListaGeral(this->radios, RADIO_F);
     apagaListaGeral(this->muros, MURO);
     apagaListaGeral(this->predios, PREDIO);
     if(this->arq_txt)

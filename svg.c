@@ -80,31 +80,31 @@ void desenhaQuadra(svg arq_svg, quadra q){
 }
 
 
-void desenhaHidrante(svg arq_svg, hidrante h){
+void desenhaHidrante(svg arq_svg, equipamento h){
   figura circ;
   texto text;
-  circ = getHidranteCirc(h);
-  text = getHidranteText(h);
+  circ = getEquipamentoCirculo(h);
+  text = getEquipamentoTexto(h);
   desenhaFigura(arq_svg, circ);
   escreveTexto(arq_svg, text);
 }
 
 
-void desenhaSemaforo(svg arq_svg, semaforo s){
+void desenhaSemaforo(svg arq_svg, equipamento s){
   figura circ;
   texto text;
-  circ = getSemaforoCirc(s);
-  text = getSemaforoText(s);
+  circ = getEquipamentoCirculo(s);
+  text = getEquipamentoTexto(s);
   desenhaFigura(arq_svg, circ);
   escreveTexto(arq_svg, text);
 }
 
 
-void desenhaRadio(svg arq_svg, radio r){
+void desenhaRadio(svg arq_svg, equipamento r){
   figura circ;
   texto text;
-  circ = getRadioCirc(r);
-  text = getRadioText(r);
+  circ = getEquipamentoCirculo(r);
+  text = getEquipamentoTexto(r);
   desenhaFigura(arq_svg, circ);
   escreveTexto(arq_svg, text);
 }

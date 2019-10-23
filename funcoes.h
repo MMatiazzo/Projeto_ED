@@ -2,9 +2,7 @@
 #define _FUNCOES_H_
 
 #include "figura.h"
-#include "radio.h"
-#include "semaforo.h"
-#include "hidrante.h"
+#include "equipamento.h"
 #include "quadra.h"
 #include "listaed.h"
 #include "arquivo.h"
@@ -77,11 +75,11 @@ void trocaString(char **str1, char *str2);
 
 char *dadosQuadraTxt(quadra q);
 
-char *dadosHidranteTxt(hidrante h);
+char *dadosHidranteTxt(equipamento h);
 
-char *dadosSemaforoTxt(semaforo s);
+char *dadosSemaforoTxt(equipamento s);
 
-char *dadosRadioTxt(radio r);
+char *dadosRadioTxt(equipamento r);
 
 char *procuraObj(lista quadrs, lista hidrs, lista sems, lista rads, char *id);
 

@@ -1,5 +1,5 @@
 #include "heapsort.h"
-#include "semaforo.h"
+#include "equipamento.h"
 #include <stdio.h>
 //
 // void peneira(void **vet, int raiz, int fundo,int (*f)(void*,void*,float,float),float x, float y);
