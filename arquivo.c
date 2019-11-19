@@ -45,21 +45,6 @@ char * lerLinha(arquivo arq){
 }
 
 
-lista recebeLinhas(arquivo arq, int total_linhas){
-  char *linha;
-  lista lista_linha;
-  lista_linha = criaLista(total_linhas);
-
-  while(linha = lerLinha(arq)){
-    insere_lista(lista_linha, (item)linha);
-  }
-
-  return lista_linha;
-
-}
-
-
-
 void escreveLinha(arquivo arq, char * entrada, ...){
   struct arquivo *this;
   this = (struct arquivo *) arq;

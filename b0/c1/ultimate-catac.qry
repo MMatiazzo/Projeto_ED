@@ -1,0 +1,24 @@
+dmprbt q c1-dmp-qda-ant-all-catac.svg
+dmprbt m c1-dmp-mur-ant-all-catac.svg
+dmprbt t c1-dmp-tr-ant-all-catac.svg
+dmprbt h c1-dmp-hidr-ant-all-catac.svg
+dmprbt s c1-dmp-sem-ant-all-catac.svg
+dmprbt p c1-dmp-prd-ant-all-catac.svg
+catac c1/rc4-00.pol
+catac c1/rc4-meio.pol
+catac c1/rc4-extr.pol
+catac c1/rc16.pol
+catac c1/sc12.pol
+catac c1/sc128.pol
+catac c1/eg21.pol
+catac c1/eg24.pol
+catac c1/eg62.pol
+catac c1/e1.pol
+catac c1/e2.pol
+catac c1/e3.pol
+dmprbt q c1-dmp-qda-dep-all-catac.svg
+dmprbt m c1-dmp-mur-dep-all-catac.svg
+dmprbt t c1-dmp-tr-dep-all-catac.svg
+dmprbt h c1-dmp-hidr-dep-all-catac.svg
+dmprbt s c1-dmp-sem-dep-all-catac.svg
+dmprbt p c1-dmp-prd-dep-all-catac.svg

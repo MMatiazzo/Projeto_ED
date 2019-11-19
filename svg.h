@@ -23,14 +23,14 @@ void escreveLinhaSVG(svg arq_svg, char* texto);
 
 void desenhaQuadra(svg arq_svg, quadra q);
 
-void desenhaHidrante(svg arq_svg, equipamento h);
-
-void desenhaSemaforo(svg arq_svg, equipamento s);
-
-void desenhaRadio(svg arq_svg, equipamento r);
+void desenhaEquipamento(svg arq_svg, equipamento h);
 
 void desenhaLineSVG(svg arq_svg, segmento s);
 
 void desenhaPredio(svg arq_svg, predio p);
+
+void desenhaEstab(svg arq_svg, void* estabelecimento);
+
+void *getSvgArq(svg arquivo_svg);
 
 #endif

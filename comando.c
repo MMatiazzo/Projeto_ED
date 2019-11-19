@@ -37,11 +37,49 @@ const struct{
   FOCO_INCENDIO,        "fi",
   FOCO_HIDRANTE,        "fh",
   FOCO_SEMAFORO,        "fs",
+  IMPRIME_MORADOR,      "dm?",
+  IMPRIME_ESTAB_MOR,    "de?",
+  MUDAR_ENDERECO,       "mud",
+  LISTAR_MORADORES,     "m?",
+  PRINTA_ARVORE,        "dmprbt", 
+  PONTO_LUZ,            "brl",
+  POLIGONO_BORDA,       "mplg?",
   FINALIZA,             "#"
 };
 
 
 
+const struct{
+  enum tipo_comando tipo;
+  char * cmd;
+}comando_exemplo_ec[]=
+{
+  DEFINE_ESTAB,         "t",
+  INSERE_ESTAB,         "e"
+};
+
+
+const struct{
+  enum tipo_comando tipo;
+  char * cmd;
+}comando_exemplo_pm[]=
+{
+  CADASTRA_PESSOA,      "p",
+  ENDERECO_PESSOA,      "m"
+};
+
+
+
+const struct{
+  enum tipo_comando tipo;
+  char * cmd;
+}comando_exemplo_it[]=
+{
+  PRINTA_ARVORE,        "dmprbt", 
+  NAVEGA_IT,            "nav",
+  QRY_IT,               "q",
+  SAIR_IT,              "sai",
+};
 
 
 struct comando{
@@ -51,24 +89,21 @@ struct comando{
 };
 
 
-
-
-
-
-comando criaComando(char * entrada){     //TEM QUE DAR FREE NOS PARAMETROS
+comando criaComando(char * entrada){ 
   struct comando *this;
   char *codigo, *aux;
   int i;
 
-  this = (struct comando *) malloc(sizeof(struct comando));       //TEM QUE DAR FREE
+  this = (struct comando *) malloc(sizeof(struct comando)); 
   aux = (char *) malloc(sizeof(char) * strlen(entrada) + 1);
-  // printf("LINHA COMANDO:%s\n", entrada );
+
   this->tipo = NONE;
+  this->parametros = NULL;
   strcpy(aux, entrada);
   if (strlen(aux) > 1)
     aux = strtok(aux, " ");
 
-  for(i = 0; i < 28; i++){
+  for(i = 0; i < 34; i++){
 
       if(!strcmp(aux, comando_exemplo[i].cmd)){
         this->tipo = comando_exemplo[i].tipo;
@@ -87,8 +122,108 @@ comando criaComando(char * entrada){     //TEM QUE DAR FREE NOS PARAMETROS
 }
 
 
+
+
+comando criaComandoPm(char * entrada){ 
+  struct comando *this;
+  char *codigo, *aux;
+  int i;
+
+  this = (struct comando *) malloc(sizeof(struct comando));  
+  aux = (char *) malloc(sizeof(char) * strlen(entrada) + 1);
+  this->tipo = NONE;
+  strcpy(aux, entrada);
+  if (strlen(aux) > 1)
+    aux = strtok(aux, " ");
+
+  for(i = 0; i < 2; i++){
+
+      if(!strcmp(aux, comando_exemplo_pm[i].cmd)){
+        this->tipo = comando_exemplo_pm[i].tipo;
+        this->numero_parametros = contaParametros(entrada);
+        this->parametros = retornaParametros(entrada);
+      }
+  }
+
+  free(aux);
+  if(this->tipo == NONE){
+    free(this);
+    return NULL;
+  }else{
+    return (comando) this;
+  }
+}
+
+
+comando criaComandoEc(char * entrada){  
+  struct comando *this;
+  char *codigo, *aux;
+  int i;
+
+  this = (struct comando *) malloc(sizeof(struct comando));   
+  aux = (char *) malloc(sizeof(char) * strlen(entrada) + 1);
+
+  this->tipo = NONE;
+  strcpy(aux, entrada);
+  if (strlen(aux) > 1)
+    aux = strtok(aux, " ");
+
+  for(i = 0; i < 2; i++){
+
+      if(!strcmp(aux, comando_exemplo_ec[i].cmd)){
+        this->tipo = comando_exemplo_ec[i].tipo;
+        this->numero_parametros = contaParametros(entrada);
+        this->parametros = retornaParametros(entrada);
+      }
+  }
+
+  free(aux);
+  if(this->tipo == NONE){
+    free(this);
+    return NULL;
+  }else{
+    return (comando) this;
+  }
+}
+
+
+
+comando criaComandoIt(char * entrada){ 
+  struct comando *this;
+  char *codigo, *aux;
+  int i;
+
+  this = (struct comando *) malloc(sizeof(struct comando));  
+  aux = (char *) malloc(sizeof(char) * strlen(entrada) + 1);
+
+  this->tipo = NONE;
+  strcpy(aux, entrada);
+  if (strlen(aux) > 1)
+    aux = strtok(aux, " ");
+
+  for(i = 0; i < 4; i++){
+
+      if(!strcmp(aux, comando_exemplo_it[i].cmd)){
+        this->tipo = comando_exemplo_it[i].tipo;
+        this->numero_parametros = contaParametros(entrada);
+        this->parametros = retornaParametros(entrada);
+      }
+  }
+
+  free(aux);
+  if(this->tipo == NONE){
+    free(this);
+    return NULL;
+  }else{
+    return (comando) this;
+  }
+}
+
+
 char **getComandoParametros(comando cmd){
   struct comando * this;
+  if(!cmd)
+    return NULL;
   this = (struct comando *) cmd;
   return this->parametros;
 }

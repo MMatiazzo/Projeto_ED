@@ -1,11 +1,14 @@
+#include "arquivo.h"
 #include "Tree.h"
 #include <string.h>
-#include <stdlib.h>
+#include "funcoes.h"
+#include <math.h>
 
 typedef struct RAMO{
     void *data;
     int cor;
     struct RAMO *left, *right, *parent;
+    int aux;
 }ramo;
 
 typedef struct arvi{
@@ -15,7 +18,7 @@ typedef struct arvi{
     int (*compare)(void*, void*);
 }tree_t;
 
-void insert_fix_up(void *T, void *z);
+void insert_fix_up(void *raiz, void *k);
 
 void left_rotate(tree_t *T, ramo *x);
 
@@ -34,6 +37,10 @@ ramo *rb_tree_sucessor(tree_t *T,ramo *x);
 ramo *getNode(tree_t *arvore, ramo *no_atual, char * key, char* (*getId)(void*));
 
 ramo *tree_minimum(tree_t *T,ramo *x);
+
+int maxDepth(ramo* node,tree_t *T);
+void percorreArvoreDm(void *a,void *c,void (*printaSvg)(void*,void*,FILE*,int,int,char,int),FILE *arquivoSVG,int tam,int y,int x);
+
 
 void *criaArvore(int (*compare)(void*, void*)){
     tree_t *this = malloc(sizeof(tree_t));
@@ -127,6 +134,7 @@ void insert_fix_up(void *T, void *z){
                 this->parent->cor = BLACK;
                 y->cor = BLACK;
                 this->parent->parent->cor = RED;
+                this = this->parent->parent;
             }else{
                 if(this == this->parent->right){
                     this = this->parent;
@@ -142,6 +150,7 @@ void insert_fix_up(void *T, void *z){
                 this->parent->cor = BLACK;
                 y->cor = BLACK;
                 this->parent->parent->cor = RED;
+                this = this->parent->parent;
             }else{
                 if(this == this->parent->left){
                     this = this->parent;
@@ -241,6 +250,58 @@ void delete_fix_up(tree_t *Tree, ramo *x){
     x->cor = BLACK;
 }
 
+ramo* RBTreeSuccessor(void *raiz , void* x) {
+    tree_t *this = (tree_t*) raiz;
+    ramo *this_2 = (ramo*) x;
+    if (this_2->right != this->nulo) {
+        return tree_minimum(raiz ,this_2->right);
+    }
+    ramo* y = this_2->parent;
+    while (y != this_2 && x == y->right) {
+        this_2 = y;
+        y = y->parent;
+    }
+    return y;
+}  
+
+void* RBTreeDelete(void* tree, void *z) {
+    tree_t *raiz = (tree_t*) tree;
+    ramo* this = (ramo*) z;
+    ramo *x, *y;  
+ 
+    if (this->left == raiz->nulo || this->right == raiz->nulo) {
+        y = z;
+    } else {
+        y = RBTreeSuccessor(tree, z);
+    }  
+ 
+    if (y->left != raiz->nulo) {
+        x = y->left;
+    } else {
+        x = y->right;
+    }  
+
+    x->parent = y->parent;  
+ 
+    if (y->parent == raiz->nulo) {
+        tree = x;
+    } else if (y == y->parent->left) {
+        y->parent->left = x;
+    } else {
+        y->parent->right = x;
+    }  
+ 
+    if (y != z) {
+        this->data = y->data;
+    }  
+ 
+    if (y->cor == BLACK) {
+        delete_fix_up(tree, x);
+    }
+    return y;
+} 
+ 
+
 void delete_rb_tree(void *T, void *z){
     tree_t *arvore = (tree_t*) T;
     ramo *this = (ramo*) z;
@@ -279,8 +340,10 @@ void deletaArvore(void * T, char* key, char* (*getId)(void*)){
     ramo *node;
     tree_t *this = (tree_t *) T;
     node = getNode(T, this->root, key, getId);
-    if(node)
-        delete_rb_tree(T, node);
+    if(node){
+        T = RBTreeDelete(T, node);
+        this->tamanho--;
+    }
 }
 
 ramo *getNode(tree_t *arvore, ramo *no_atual, char * key, char* (*getId)(void*)){
@@ -301,43 +364,39 @@ ramo *getNode(tree_t *arvore, ramo *no_atual, char * key, char* (*getId)(void*))
     return retorno;
 }
 
-// void delete_rb_tree(void *T, void *z){
-//     tree_t *arvore = (tree_t*) T;
-//     ramo *this = (ramo*) z;
 
-//     ramo *x, *y;
+item getNodeData(node no){
+    return ((ramo *)no)->data; 
+}
 
-//     if(this->left == arvore->nulo || this->right== arvore->nulo){
-//         y = this;
-//     }else{
-//         y = rb_tree_sucessor(T,this);
-//     }
 
-//     if(y->left != arvore->nulo){
-//         x = y->left;
-//     }else{
-//         x = y->right;
-//     }
+node getNodeLeft(node no){
+    return ((ramo *)no)->left;
+}
 
-//     x->parent = y->parent;
+node getNodeRight(node no){
+    return ((ramo *)no)->right;
+}
 
-//     if(y->parent == arvore->nulo){
-//         arvore->root = x;
-//     }else if(y == y->parent->left){
-//         y->parent->left = x;
-//     }else{
-//         y->parent->right = x;
-//     }
+node getNodeParent(node no){
+    return ((ramo *)no)->parent;
+}
 
-//     if(y != this){
-//         this->data = y->data;
-//     }
+node getArvoreRaiz(arvore a){
+    return ((tree_t *) a)->root;
+}
 
-//     if(y->cor == BLACK){
-//         rb_tree_delete_fix_up(arvore, x);
-//     }
 
-// }
+int isNulo(arvore a, node no){
+    tree_t *this = (tree_t *) a;
+    if(no == this->nulo)
+        return 1;
+    return 0;
+    
+}
+
+
+
 
 
 void percorreArvore(arvore a, void (*funcao)(void *, void *), void *auxiliar){
@@ -398,4 +457,61 @@ void arvoreToArrayAux(void **vetor, ramo *no_atual, tree_t *arvore){
         arvoreToArrayAux(vetor, no_atual->right, arvore);
 
     return;
+}
+
+
+int getNodeCor(node no){
+    return ((ramo *)no)->cor;
+}
+
+int maxDepth(ramo* node,tree_t *T)  
+{
+   if (node==T->nulo)  
+       return 0;
+   else{
+       int lDepth = maxDepth(node->left,T);
+       int rDepth = maxDepth(node->right,T);
+
+       if (lDepth > rDepth)  
+           return(lDepth+1);
+       else return(rDepth+1);
+   }
+}  
+void percorreArvoreDm(void *a,void *c,void (*printaSvg)(void*,void*,FILE*,int,int,char,int),FILE *arquivoSVG,int tam,int y,int x){
+    ramo *this = (ramo *)a;
+    tree_t *b = (tree_t* )c;
+    if (this->data == b->nulo){
+        fprintf(arquivoSVG,"<rect x=\"%d\" y=\"%d\" width=\"10\" height=\"10\" stroke=\"black\" fill-opacity='1' fill=\"black\" stroke-width=\"1.0\"/>",x-5,y);
+        return;
+    }
+    fprintf(arquivoSVG,"\t<line x1='%d' y1='%d' x2='%d' y2='%d' stroke-width = '2' fill='black' stroke='black'/>\n",x,y,x-tam/2,y+30);
+    printaSvg(this->data,this->parent->data,arquivoSVG,x,y,this->cor,tam);
+    percorreArvoreDm(this->left,b,printaSvg,arquivoSVG,tam/2,y+30,x-tam/2);
+    fprintf(arquivoSVG,"\t<line x1='%d' y1='%d' x2='%d' y2='%d' stroke-width = '2' fill='black' stroke='black'/>\n",x,y,x+tam/2,y+30);
+    percorreArvoreDm(this->right,b,printaSvg,arquivoSVG,tam/2,y+30,x+tam/2);
+}
+void arqpercorreArvoreDmAux(void *a,void (*printaSvg)(void*,void*,FILE*,int,int,char,int),FILE *arquivoSVG){
+    tree_t *aux = (tree_t *)a;
+    int f = maxDepth(aux->root,aux);
+    int p = pow(2,f);
+    int tam = p*20;
+    int y = 30;
+    int x = tam;
+    fprintf(arquivoSVG,"\t<text x='%d' y='%d' text-anchor='middle' font-size='4px'>%s</text>\n",x,y,"RAIZ");
+    percorreArvoreDm(aux->root,aux,printaSvg,arquivoSVG,tam/2,y,x);
+}
+
+void percorreToPoligon(void *a,void *x,int (*dadosNode)(void*,void**,int,void*,void*,void*),void** vetPontos,int tam,void *arquivoSVG){
+    ramo *this = (ramo *)a;
+    tree_t *b = (tree_t* )x;
+    if (this->data == b->nulo)
+        return;
+    else
+        percorreToPoligon(this->left,b,dadosNode,vetPontos,tam,arquivoSVG);
+        dadosNode(this->data,vetPontos,tam,b,arquivoSVG,this);
+        percorreToPoligon(this->right,b,dadosNode,vetPontos,tam,arquivoSVG);
+}
+void percorreToPoligonAux(void *a,int (*dadosNode)(void*,void**,int,void*,void*,void*),void** vetPontos,int tam,void *arquivoSVG){
+    tree_t *aux = (tree_t *)a;
+    percorreToPoligon(aux->root,aux,dadosNode,vetPontos,tam,arquivoSVG);
 }

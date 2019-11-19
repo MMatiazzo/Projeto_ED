@@ -2,6 +2,7 @@
 #define _EQUIPAMENTO_H_
 #include "figura.h"
 #include "texto.h"
+#include <stdio.h>
 
 typedef void *equipamento;
 
@@ -22,8 +23,12 @@ char* getEquipamentoId(equipamento e);
 
 enum tipo_equipamento getEquipamentoTipo(equipamento e);
 
-int equipamentoComparator(equipamento e1, equipamento e2, float x, float y);
+int equipamentoComparator(equipamento e1, equipamento e2);
+
+char *equipamentoToString(equipamento e);
 
 void apagaEquipamento(equipamento e);
+
+void printaSvgHidDm(void *data,void *data2,FILE *arquivoSVG,int x,int y,char cor,int tam);
 
 #endif

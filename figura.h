@@ -11,11 +11,13 @@ figura criaRetangulo(int id, float w, float h, float x, float y, char* cor1, cha
 
 figura criaBoundBox(figura fig, char *cor);
 
+int comparatorFig(figura f1, figura f2);
+
 void apagaFigura(figura fig);
 
 enum tipo_figura getTipoFigura(figura fig);
 
-int getId(figura fig);
+char *getId(figura fig);
 
 float getXfig(figura fig);
 

@@ -1,5 +1,6 @@
 #include "svg.h"
 #include "arquivo.h"
+#include "estabelecimento.h"
 #include <string.h>
 #include <stdlib.h>
 
@@ -15,7 +16,7 @@ svg criaSVG(char * caminho){
     free(this);
     return NULL;
   }
-  escreveLinha(this->saida, "<svg xmlns=\"http://www.w3.org/2000/svg\" fill-opacity='0.6'>");
+  escreveLinha(this->saida, "<svg xmlns=\"http://www.w3.org/2000/svg\" fill-opacity='0.6'>\n");
   return (void *)this;
 }
 
@@ -38,6 +39,11 @@ void escreveLinhaSVG(svg arq_svg, char* texto){
   escreveLinha(this->saida,"%s", texto);
 }
 
+void *getSvgArq(svg arquivo_svg){
+  struct svg *this;
+  this = (struct svg *) arquivo_svg;
+  return this->saida;
+}
 
 void desenhaFigura(svg arq_svg, figura fig){
   struct svg* this;
@@ -59,6 +65,7 @@ void desenhaFigura(svg arq_svg, figura fig){
 
     case CIRCULO:
       escreveLinha(this->saida, "<circle cx=\"%.1f\" cy=\"%.1f\" r=\"%.1f\" stroke=\"%s\" fill=\"%s\" stroke-width=\"%s\"/>", x, y, r, cor1, cor2, espessura);
+      // printf("ENDERECO: %p  | %p   | %p  | %p\n", this->saida, cor1, cor2, espessura);
       break;
 
     case RETANGULO:
@@ -80,31 +87,11 @@ void desenhaQuadra(svg arq_svg, quadra q){
 }
 
 
-void desenhaHidrante(svg arq_svg, equipamento h){
+void desenhaEquipamento(svg arq_svg, equipamento h){
   figura circ;
   texto text;
   circ = getEquipamentoCirculo(h);
   text = getEquipamentoTexto(h);
-  desenhaFigura(arq_svg, circ);
-  escreveTexto(arq_svg, text);
-}
-
-
-void desenhaSemaforo(svg arq_svg, equipamento s){
-  figura circ;
-  texto text;
-  circ = getEquipamentoCirculo(s);
-  text = getEquipamentoTexto(s);
-  desenhaFigura(arq_svg, circ);
-  escreveTexto(arq_svg, text);
-}
-
-
-void desenhaRadio(svg arq_svg, equipamento r){
-  figura circ;
-  texto text;
-  circ = getEquipamentoCirculo(r);
-  text = getEquipamentoTexto(r);
   desenhaFigura(arq_svg, circ);
   escreveTexto(arq_svg, text);
 }
@@ -149,6 +136,15 @@ void desenhaPredio(svg arq_svg, predio p){
     y = yr + h/2;
   }
   escreveLinha(this->saida, "<text x=\"%.1f\" y=\"%.1f\" text-anchor=\"middle\" font-size=\"3px\">%s</text>", x ,y, getPredioCep(p));
+}
+
+void desenhaEstab(svg arq_svg, void* estabelecimento){
+  struct svg* this;
+  this = (struct svg *) arq_svg;
+  figura rect;
+  rect = criaRetangulo(-1,5,5,getEstabX(estabelecimento),getEstabY(estabelecimento),"green","black","1.0");
+  desenhaFigura(arq_svg, rect);
+  apagaFigura(rect);
 }
 
 

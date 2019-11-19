@@ -5,7 +5,7 @@ typedef void *hash_table;
 
 hash_table criaHashTable(int n, char *(*getId)(void *));
 
-void insereHashTable(hash_table t, void *item);
+int insereHashTable(hash_table t, void *item);
 
 void *getHashTable(hash_table t, char *chave);
 

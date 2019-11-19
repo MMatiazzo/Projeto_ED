@@ -30,12 +30,32 @@ enum tipo_comando {
   FOCO_INCENDIO,
   FOCO_HIDRANTE,
   FOCO_SEMAFORO,
+  CADASTRA_PESSOA,
+  ENDERECO_PESSOA,
+  DEFINE_ESTAB,
+  INSERE_ESTAB,
+  IMPRIME_MORADOR,
+  IMPRIME_ESTAB_MOR,
+  MUDAR_ENDERECO,
+  LISTAR_MORADORES,
+  PRINTA_ARVORE,
+  NAVEGA_IT,
+  QRY_IT,
+  SAIR_IT,
+  PONTO_LUZ,
+  POLIGONO_BORDA,
   FINALIZA,
 };
 
 typedef void* comando;
 
 comando criaComando(char * entrada);
+
+comando criaComandoPm(char * entrada);
+
+comando criaComandoEc(char * entrada);
+
+comando criaComandoIt(char * entrada);
 
 enum tipo_comando getTipoComando(comando cmd);
 

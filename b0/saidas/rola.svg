@@ -1,0 +1,603 @@
+<svg fill-opacity='0.5'><rect width = '100%' height = '100%' fill = 'white' fill-opacity = '1.0'/>
+	<text x='5120' y='30' text-anchor='middle' font-size='4px'>RAIZ</text>
+	<line x1='5120' y1='30' x2='3840' y2='60' stroke-width = '2' fill='black' stroke='black'/>
+	<circle r='10' cx='5120' cy='30' stroke='black' fill='black' stroke-width='1.0' fill-opacity='1'/>
+	<text x='5120' y='45' text-anchor='middle' fill-opacity='1' font-size='4px'>cep = b01.4</text>
+	<text x='5120' y='50' text-anchor='middle' fill-opacity='1' font-size='4px'>x = 500.000000</text>
+	<text x='5120' y='55' text-anchor='middle' fill-opacity='1' font-size='4px'>y = 95.000000</text>
+	<line x1='3840' y1='60' x2='3200' y2='90' stroke-width = '2' fill='black' stroke='black'/>
+	<circle r='10' cx='3840' cy='60' stroke='black' fill='black' stroke-width='1.0' fill-opacity='1'/>
+	<text x='3840' y='75' text-anchor='middle' fill-opacity='1' font-size='4px'>cep = b01.2</text>
+	<text x='3840' y='80' text-anchor='middle' fill-opacity='1' font-size='4px'>x = 230.000000</text>
+	<text x='3840' y='85' text-anchor='middle' fill-opacity='1' font-size='4px'>y = 95.000000</text>
+	<line x1='3200' y1='90' x2='2880' y2='120' stroke-width = '2' fill='black' stroke='black'/>
+	<circle r='10' cx='3200' cy='90' stroke='red' fill='red' stroke-width='1.0' fill-opacity='1'/>
+	<text x='3200' y='105' text-anchor='middle' fill-opacity='1' font-size='4px'>cep = b04.1</text>
+	<text x='3200' y='110' text-anchor='middle' fill-opacity='1' font-size='4px'>x = 95.000000</text>
+	<text x='3200' y='115' text-anchor='middle' fill-opacity='1' font-size='4px'>y = 380.000000</text>
+	<line x1='2880' y1='120' x2='2720' y2='150' stroke-width = '2' fill='black' stroke='black'/>
+	<circle r='10' cx='2880' cy='120' stroke='black' fill='black' stroke-width='1.0' fill-opacity='1'/>
+	<text x='2880' y='135' text-anchor='middle' fill-opacity='1' font-size='4px'>cep = b02.1</text>
+	<text x='2880' y='140' text-anchor='middle' fill-opacity='1' font-size='4px'>x = 95.000000</text>
+	<text x='2880' y='145' text-anchor='middle' fill-opacity='1' font-size='4px'>y = 190.000000</text>
+	<line x1='2720' y1='150' x2='2640' y2='180' stroke-width = '2' fill='black' stroke='black'/>
+	<circle r='10' cx='2720' cy='150' stroke='black' fill='black' stroke-width='1.0' fill-opacity='1'/>
+	<text x='2720' y='165' text-anchor='middle' fill-opacity='1' font-size='4px'>cep = b01.1</text>
+	<text x='2720' y='170' text-anchor='middle' fill-opacity='1' font-size='4px'>x = 95.000000</text>
+	<text x='2720' y='175' text-anchor='middle' fill-opacity='1' font-size='4px'>y = 95.000000</text>
+<rect x="2635" y="180" width="10" height="10" stroke="black" fill-opacity='1' fill="black" stroke-width="1.0"/>	<line x1='2720' y1='150' x2='2800' y2='180' stroke-width = '2' fill='black' stroke='black'/>
+<rect x="2795" y="180" width="10" height="10" stroke="black" fill-opacity='1' fill="black" stroke-width="1.0"/>	<line x1='2880' y1='120' x2='3040' y2='150' stroke-width = '2' fill='black' stroke='black'/>
+	<line x1='3040' y1='150' x2='2960' y2='180' stroke-width = '2' fill='black' stroke='black'/>
+	<circle r='10' cx='3040' cy='150' stroke='black' fill='black' stroke-width='1.0' fill-opacity='1'/>
+	<text x='3040' y='165' text-anchor='middle' fill-opacity='1' font-size='4px'>cep = b03.1</text>
+	<text x='3040' y='170' text-anchor='middle' fill-opacity='1' font-size='4px'>x = 95.000000</text>
+	<text x='3040' y='175' text-anchor='middle' fill-opacity='1' font-size='4px'>y = 285.000000</text>
+<rect x="2955" y="180" width="10" height="10" stroke="black" fill-opacity='1' fill="black" stroke-width="1.0"/>	<line x1='3040' y1='150' x2='3120' y2='180' stroke-width = '2' fill='black' stroke='black'/>
+<rect x="3115" y="180" width="10" height="10" stroke="black" fill-opacity='1' fill="black" stroke-width="1.0"/>	<line x1='3200' y1='90' x2='3520' y2='120' stroke-width = '2' fill='black' stroke='black'/>
+	<line x1='3520' y1='120' x2='3360' y2='150' stroke-width = '2' fill='black' stroke='black'/>
+	<circle r='10' cx='3520' cy='120' stroke='black' fill='black' stroke-width='1.0' fill-opacity='1'/>
+	<text x='3520' y='135' text-anchor='middle' fill-opacity='1' font-size='4px'>cep = b06.1</text>
+	<text x='3520' y='140' text-anchor='middle' fill-opacity='1' font-size='4px'>x = 95.000000</text>
+	<text x='3520' y='145' text-anchor='middle' fill-opacity='1' font-size='4px'>y = 570.000000</text>
+	<line x1='3360' y1='150' x2='3280' y2='180' stroke-width = '2' fill='black' stroke='black'/>
+	<circle r='10' cx='3360' cy='150' stroke='black' fill='black' stroke-width='1.0' fill-opacity='1'/>
+	<text x='3360' y='165' text-anchor='middle' fill-opacity='1' font-size='4px'>cep = b05.1</text>
+	<text x='3360' y='170' text-anchor='middle' fill-opacity='1' font-size='4px'>x = 95.000000</text>
+	<text x='3360' y='175' text-anchor='middle' fill-opacity='1' font-size='4px'>y = 475.000000</text>
+<rect x="3275" y="180" width="10" height="10" stroke="black" fill-opacity='1' fill="black" stroke-width="1.0"/>	<line x1='3360' y1='150' x2='3440' y2='180' stroke-width = '2' fill='black' stroke='black'/>
+<rect x="3435" y="180" width="10" height="10" stroke="black" fill-opacity='1' fill="black" stroke-width="1.0"/>	<line x1='3520' y1='120' x2='3680' y2='150' stroke-width = '2' fill='black' stroke='black'/>
+	<line x1='3680' y1='150' x2='3600' y2='180' stroke-width = '2' fill='black' stroke='black'/>
+	<circle r='10' cx='3680' cy='150' stroke='red' fill='red' stroke-width='1.0' fill-opacity='1'/>
+	<text x='3680' y='165' text-anchor='middle' fill-opacity='1' font-size='4px'>cep = b08.1</text>
+	<text x='3680' y='170' text-anchor='middle' fill-opacity='1' font-size='4px'>x = 95.000000</text>
+	<text x='3680' y='175' text-anchor='middle' fill-opacity='1' font-size='4px'>y = 760.000000</text>
+	<line x1='3600' y1='180' x2='3560' y2='210' stroke-width = '2' fill='black' stroke='black'/>
+	<circle r='10' cx='3600' cy='180' stroke='black' fill='black' stroke-width='1.0' fill-opacity='1'/>
+	<text x='3600' y='195' text-anchor='middle' fill-opacity='1' font-size='4px'>cep = b07.1</text>
+	<text x='3600' y='200' text-anchor='middle' fill-opacity='1' font-size='4px'>x = 95.000000</text>
+	<text x='3600' y='205' text-anchor='middle' fill-opacity='1' font-size='4px'>y = 665.000000</text>
+<rect x="3555" y="210" width="10" height="10" stroke="black" fill-opacity='1' fill="black" stroke-width="1.0"/>	<line x1='3600' y1='180' x2='3640' y2='210' stroke-width = '2' fill='black' stroke='black'/>
+<rect x="3635" y="210" width="10" height="10" stroke="black" fill-opacity='1' fill="black" stroke-width="1.0"/>	<line x1='3680' y1='150' x2='3760' y2='180' stroke-width = '2' fill='black' stroke='black'/>
+	<line x1='3760' y1='180' x2='3720' y2='210' stroke-width = '2' fill='black' stroke='black'/>
+	<circle r='10' cx='3760' cy='180' stroke='black' fill='black' stroke-width='1.0' fill-opacity='1'/>
+	<text x='3760' y='195' text-anchor='middle' fill-opacity='1' font-size='4px'>cep = b09.1</text>
+	<text x='3760' y='200' text-anchor='middle' fill-opacity='1' font-size='4px'>x = 95.000000</text>
+	<text x='3760' y='205' text-anchor='middle' fill-opacity='1' font-size='4px'>y = 855.000000</text>
+<rect x="3715" y="210" width="10" height="10" stroke="black" fill-opacity='1' fill="black" stroke-width="1.0"/>	<line x1='3760' y1='180' x2='3800' y2='210' stroke-width = '2' fill='black' stroke='black'/>
+	<line x1='3800' y1='210' x2='3780' y2='240' stroke-width = '2' fill='black' stroke='black'/>
+	<circle r='10' cx='3800' cy='210' stroke='red' fill='red' stroke-width='1.0' fill-opacity='1'/>
+	<text x='3800' y='225' text-anchor='middle' fill-opacity='1' font-size='4px'>cep = b010.1</text>
+	<text x='3800' y='230' text-anchor='middle' fill-opacity='1' font-size='4px'>x = 95.000000</text>
+	<text x='3800' y='235' text-anchor='middle' fill-opacity='1' font-size='4px'>y = 950.000000</text>
+<rect x="3775" y="240" width="10" height="10" stroke="black" fill-opacity='1' fill="black" stroke-width="1.0"/>	<line x1='3800' y1='210' x2='3820' y2='240' stroke-width = '2' fill='black' stroke='black'/>
+<rect x="3815" y="240" width="10" height="10" stroke="black" fill-opacity='1' fill="black" stroke-width="1.0"/>	<line x1='3840' y1='60' x2='4480' y2='90' stroke-width = '2' fill='black' stroke='black'/>
+	<line x1='4480' y1='90' x2='4160' y2='120' stroke-width = '2' fill='black' stroke='black'/>
+	<circle r='10' cx='4480' cy='90' stroke='red' fill='red' stroke-width='1.0' fill-opacity='1'/>
+	<text x='4480' y='105' text-anchor='middle' fill-opacity='1' font-size='4px'>cep = b01.3</text>
+	<text x='4480' y='110' text-anchor='middle' fill-opacity='1' font-size='4px'>x = 365.000000</text>
+	<text x='4480' y='115' text-anchor='middle' fill-opacity='1' font-size='4px'>y = 95.000000</text>
+	<line x1='4160' y1='120' x2='4000' y2='150' stroke-width = '2' fill='black' stroke='black'/>
+	<circle r='10' cx='4160' cy='120' stroke='black' fill='black' stroke-width='1.0' fill-opacity='1'/>
+	<text x='4160' y='135' text-anchor='middle' fill-opacity='1' font-size='4px'>cep = b05.2</text>
+	<text x='4160' y='140' text-anchor='middle' fill-opacity='1' font-size='4px'>x = 230.000000</text>
+	<text x='4160' y='145' text-anchor='middle' fill-opacity='1' font-size='4px'>y = 475.000000</text>
+	<line x1='4000' y1='150' x2='3920' y2='180' stroke-width = '2' fill='black' stroke='black'/>
+	<circle r='10' cx='4000' cy='150' stroke='red' fill='red' stroke-width='1.0' fill-opacity='1'/>
+	<text x='4000' y='165' text-anchor='middle' fill-opacity='1' font-size='4px'>cep = b03.2</text>
+	<text x='4000' y='170' text-anchor='middle' fill-opacity='1' font-size='4px'>x = 230.000000</text>
+	<text x='4000' y='175' text-anchor='middle' fill-opacity='1' font-size='4px'>y = 285.000000</text>
+	<line x1='3920' y1='180' x2='3880' y2='210' stroke-width = '2' fill='black' stroke='black'/>
+	<circle r='10' cx='3920' cy='180' stroke='black' fill='black' stroke-width='1.0' fill-opacity='1'/>
+	<text x='3920' y='195' text-anchor='middle' fill-opacity='1' font-size='4px'>cep = b02.2</text>
+	<text x='3920' y='200' text-anchor='middle' fill-opacity='1' font-size='4px'>x = 230.000000</text>
+	<text x='3920' y='205' text-anchor='middle' fill-opacity='1' font-size='4px'>y = 190.000000</text>
+<rect x="3875" y="210" width="10" height="10" stroke="black" fill-opacity='1' fill="black" stroke-width="1.0"/>	<line x1='3920' y1='180' x2='3960' y2='210' stroke-width = '2' fill='black' stroke='black'/>
+<rect x="3955" y="210" width="10" height="10" stroke="black" fill-opacity='1' fill="black" stroke-width="1.0"/>	<line x1='4000' y1='150' x2='4080' y2='180' stroke-width = '2' fill='black' stroke='black'/>
+	<line x1='4080' y1='180' x2='4040' y2='210' stroke-width = '2' fill='black' stroke='black'/>
+	<circle r='10' cx='4080' cy='180' stroke='black' fill='black' stroke-width='1.0' fill-opacity='1'/>
+	<text x='4080' y='195' text-anchor='middle' fill-opacity='1' font-size='4px'>cep = b04.2</text>
+	<text x='4080' y='200' text-anchor='middle' fill-opacity='1' font-size='4px'>x = 230.000000</text>
+	<text x='4080' y='205' text-anchor='middle' fill-opacity='1' font-size='4px'>y = 380.000000</text>
+<rect x="4035" y="210" width="10" height="10" stroke="black" fill-opacity='1' fill="black" stroke-width="1.0"/>	<line x1='4080' y1='180' x2='4120' y2='210' stroke-width = '2' fill='black' stroke='black'/>
+<rect x="4115" y="210" width="10" height="10" stroke="black" fill-opacity='1' fill="black" stroke-width="1.0"/>	<line x1='4160' y1='120' x2='4320' y2='150' stroke-width = '2' fill='black' stroke='black'/>
+	<line x1='4320' y1='150' x2='4240' y2='180' stroke-width = '2' fill='black' stroke='black'/>
+	<circle r='10' cx='4320' cy='150' stroke='red' fill='red' stroke-width='1.0' fill-opacity='1'/>
+	<text x='4320' y='165' text-anchor='middle' fill-opacity='1' font-size='4px'>cep = b07.2</text>
+	<text x='4320' y='170' text-anchor='middle' fill-opacity='1' font-size='4px'>x = 230.000000</text>
+	<text x='4320' y='175' text-anchor='middle' fill-opacity='1' font-size='4px'>y = 665.000000</text>
+	<line x1='4240' y1='180' x2='4200' y2='210' stroke-width = '2' fill='black' stroke='black'/>
+	<circle r='10' cx='4240' cy='180' stroke='black' fill='black' stroke-width='1.0' fill-opacity='1'/>
+	<text x='4240' y='195' text-anchor='middle' fill-opacity='1' font-size='4px'>cep = b06.2</text>
+	<text x='4240' y='200' text-anchor='middle' fill-opacity='1' font-size='4px'>x = 230.000000</text>
+	<text x='4240' y='205' text-anchor='middle' fill-opacity='1' font-size='4px'>y = 570.000000</text>
+<rect x="4195" y="210" width="10" height="10" stroke="black" fill-opacity='1' fill="black" stroke-width="1.0"/>	<line x1='4240' y1='180' x2='4280' y2='210' stroke-width = '2' fill='black' stroke='black'/>
+<rect x="4275" y="210" width="10" height="10" stroke="black" fill-opacity='1' fill="black" stroke-width="1.0"/>	<line x1='4320' y1='150' x2='4400' y2='180' stroke-width = '2' fill='black' stroke='black'/>
+	<line x1='4400' y1='180' x2='4360' y2='210' stroke-width = '2' fill='black' stroke='black'/>
+	<circle r='10' cx='4400' cy='180' stroke='black' fill='black' stroke-width='1.0' fill-opacity='1'/>
+	<text x='4400' y='195' text-anchor='middle' fill-opacity='1' font-size='4px'>cep = b09.2</text>
+	<text x='4400' y='200' text-anchor='middle' fill-opacity='1' font-size='4px'>x = 230.000000</text>
+	<text x='4400' y='205' text-anchor='middle' fill-opacity='1' font-size='4px'>y = 855.000000</text>
+	<line x1='4360' y1='210' x2='4340' y2='240' stroke-width = '2' fill='black' stroke='black'/>
+	<circle r='10' cx='4360' cy='210' stroke='red' fill='red' stroke-width='1.0' fill-opacity='1'/>
+	<text x='4360' y='225' text-anchor='middle' fill-opacity='1' font-size='4px'>cep = b08.2</text>
+	<text x='4360' y='230' text-anchor='middle' fill-opacity='1' font-size='4px'>x = 230.000000</text>
+	<text x='4360' y='235' text-anchor='middle' fill-opacity='1' font-size='4px'>y = 760.000000</text>
+<rect x="4335" y="240" width="10" height="10" stroke="black" fill-opacity='1' fill="black" stroke-width="1.0"/>	<line x1='4360' y1='210' x2='4380' y2='240' stroke-width = '2' fill='black' stroke='black'/>
+<rect x="4375" y="240" width="10" height="10" stroke="black" fill-opacity='1' fill="black" stroke-width="1.0"/>	<line x1='4400' y1='180' x2='4440' y2='210' stroke-width = '2' fill='black' stroke='black'/>
+	<line x1='4440' y1='210' x2='4420' y2='240' stroke-width = '2' fill='black' stroke='black'/>
+	<circle r='10' cx='4440' cy='210' stroke='red' fill='red' stroke-width='1.0' fill-opacity='1'/>
+	<text x='4440' y='225' text-anchor='middle' fill-opacity='1' font-size='4px'>cep = b010.2</text>
+	<text x='4440' y='230' text-anchor='middle' fill-opacity='1' font-size='4px'>x = 230.000000</text>
+	<text x='4440' y='235' text-anchor='middle' fill-opacity='1' font-size='4px'>y = 950.000000</text>
+<rect x="4415" y="240" width="10" height="10" stroke="black" fill-opacity='1' fill="black" stroke-width="1.0"/>	<line x1='4440' y1='210' x2='4460' y2='240' stroke-width = '2' fill='black' stroke='black'/>
+<rect x="4455" y="240" width="10" height="10" stroke="black" fill-opacity='1' fill="black" stroke-width="1.0"/>	<line x1='4480' y1='90' x2='4800' y2='120' stroke-width = '2' fill='black' stroke='black'/>
+	<line x1='4800' y1='120' x2='4640' y2='150' stroke-width = '2' fill='black' stroke='black'/>
+	<circle r='10' cx='4800' cy='120' stroke='black' fill='black' stroke-width='1.0' fill-opacity='1'/>
+	<text x='4800' y='135' text-anchor='middle' fill-opacity='1' font-size='4px'>cep = b05.3</text>
+	<text x='4800' y='140' text-anchor='middle' fill-opacity='1' font-size='4px'>x = 365.000000</text>
+	<text x='4800' y='145' text-anchor='middle' fill-opacity='1' font-size='4px'>y = 475.000000</text>
+	<line x1='4640' y1='150' x2='4560' y2='180' stroke-width = '2' fill='black' stroke='black'/>
+	<circle r='10' cx='4640' cy='150' stroke='red' fill='red' stroke-width='1.0' fill-opacity='1'/>
+	<text x='4640' y='165' text-anchor='middle' fill-opacity='1' font-size='4px'>cep = b03.3</text>
+	<text x='4640' y='170' text-anchor='middle' fill-opacity='1' font-size='4px'>x = 365.000000</text>
+	<text x='4640' y='175' text-anchor='middle' fill-opacity='1' font-size='4px'>y = 285.000000</text>
+	<line x1='4560' y1='180' x2='4520' y2='210' stroke-width = '2' fill='black' stroke='black'/>
+	<circle r='10' cx='4560' cy='180' stroke='black' fill='black' stroke-width='1.0' fill-opacity='1'/>
+	<text x='4560' y='195' text-anchor='middle' fill-opacity='1' font-size='4px'>cep = b02.3</text>
+	<text x='4560' y='200' text-anchor='middle' fill-opacity='1' font-size='4px'>x = 365.000000</text>
+	<text x='4560' y='205' text-anchor='middle' fill-opacity='1' font-size='4px'>y = 190.000000</text>
+<rect x="4515" y="210" width="10" height="10" stroke="black" fill-opacity='1' fill="black" stroke-width="1.0"/>	<line x1='4560' y1='180' x2='4600' y2='210' stroke-width = '2' fill='black' stroke='black'/>
+<rect x="4595" y="210" width="10" height="10" stroke="black" fill-opacity='1' fill="black" stroke-width="1.0"/>	<line x1='4640' y1='150' x2='4720' y2='180' stroke-width = '2' fill='black' stroke='black'/>
+	<line x1='4720' y1='180' x2='4680' y2='210' stroke-width = '2' fill='black' stroke='black'/>
+	<circle r='10' cx='4720' cy='180' stroke='black' fill='black' stroke-width='1.0' fill-opacity='1'/>
+	<text x='4720' y='195' text-anchor='middle' fill-opacity='1' font-size='4px'>cep = b04.3</text>
+	<text x='4720' y='200' text-anchor='middle' fill-opacity='1' font-size='4px'>x = 365.000000</text>
+	<text x='4720' y='205' text-anchor='middle' fill-opacity='1' font-size='4px'>y = 380.000000</text>
+<rect x="4675" y="210" width="10" height="10" stroke="black" fill-opacity='1' fill="black" stroke-width="1.0"/>	<line x1='4720' y1='180' x2='4760' y2='210' stroke-width = '2' fill='black' stroke='black'/>
+<rect x="4755" y="210" width="10" height="10" stroke="black" fill-opacity='1' fill="black" stroke-width="1.0"/>	<line x1='4800' y1='120' x2='4960' y2='150' stroke-width = '2' fill='black' stroke='black'/>
+	<line x1='4960' y1='150' x2='4880' y2='180' stroke-width = '2' fill='black' stroke='black'/>
+	<circle r='10' cx='4960' cy='150' stroke='red' fill='red' stroke-width='1.0' fill-opacity='1'/>
+	<text x='4960' y='165' text-anchor='middle' fill-opacity='1' font-size='4px'>cep = b07.3</text>
+	<text x='4960' y='170' text-anchor='middle' fill-opacity='1' font-size='4px'>x = 365.000000</text>
+	<text x='4960' y='175' text-anchor='middle' fill-opacity='1' font-size='4px'>y = 665.000000</text>
+	<line x1='4880' y1='180' x2='4840' y2='210' stroke-width = '2' fill='black' stroke='black'/>
+	<circle r='10' cx='4880' cy='180' stroke='black' fill='black' stroke-width='1.0' fill-opacity='1'/>
+	<text x='4880' y='195' text-anchor='middle' fill-opacity='1' font-size='4px'>cep = b06.3</text>
+	<text x='4880' y='200' text-anchor='middle' fill-opacity='1' font-size='4px'>x = 365.000000</text>
+	<text x='4880' y='205' text-anchor='middle' fill-opacity='1' font-size='4px'>y = 570.000000</text>
+<rect x="4835" y="210" width="10" height="10" stroke="black" fill-opacity='1' fill="black" stroke-width="1.0"/>	<line x1='4880' y1='180' x2='4920' y2='210' stroke-width = '2' fill='black' stroke='black'/>
+<rect x="4915" y="210" width="10" height="10" stroke="black" fill-opacity='1' fill="black" stroke-width="1.0"/>	<line x1='4960' y1='150' x2='5040' y2='180' stroke-width = '2' fill='black' stroke='black'/>
+	<line x1='5040' y1='180' x2='5000' y2='210' stroke-width = '2' fill='black' stroke='black'/>
+	<circle r='10' cx='5040' cy='180' stroke='black' fill='black' stroke-width='1.0' fill-opacity='1'/>
+	<text x='5040' y='195' text-anchor='middle' fill-opacity='1' font-size='4px'>cep = b09.3</text>
+	<text x='5040' y='200' text-anchor='middle' fill-opacity='1' font-size='4px'>x = 365.000000</text>
+	<text x='5040' y='205' text-anchor='middle' fill-opacity='1' font-size='4px'>y = 855.000000</text>
+	<line x1='5000' y1='210' x2='4980' y2='240' stroke-width = '2' fill='black' stroke='black'/>
+	<circle r='10' cx='5000' cy='210' stroke='red' fill='red' stroke-width='1.0' fill-opacity='1'/>
+	<text x='5000' y='225' text-anchor='middle' fill-opacity='1' font-size='4px'>cep = b08.3</text>
+	<text x='5000' y='230' text-anchor='middle' fill-opacity='1' font-size='4px'>x = 365.000000</text>
+	<text x='5000' y='235' text-anchor='middle' fill-opacity='1' font-size='4px'>y = 760.000000</text>
+<rect x="4975" y="240" width="10" height="10" stroke="black" fill-opacity='1' fill="black" stroke-width="1.0"/>	<line x1='5000' y1='210' x2='5020' y2='240' stroke-width = '2' fill='black' stroke='black'/>
+<rect x="5015" y="240" width="10" height="10" stroke="black" fill-opacity='1' fill="black" stroke-width="1.0"/>	<line x1='5040' y1='180' x2='5080' y2='210' stroke-width = '2' fill='black' stroke='black'/>
+	<line x1='5080' y1='210' x2='5060' y2='240' stroke-width = '2' fill='black' stroke='black'/>
+	<circle r='10' cx='5080' cy='210' stroke='red' fill='red' stroke-width='1.0' fill-opacity='1'/>
+	<text x='5080' y='225' text-anchor='middle' fill-opacity='1' font-size='4px'>cep = b010.3</text>
+	<text x='5080' y='230' text-anchor='middle' fill-opacity='1' font-size='4px'>x = 365.000000</text>
+	<text x='5080' y='235' text-anchor='middle' fill-opacity='1' font-size='4px'>y = 950.000000</text>
+<rect x="5055" y="240" width="10" height="10" stroke="black" fill-opacity='1' fill="black" stroke-width="1.0"/>	<line x1='5080' y1='210' x2='5100' y2='240' stroke-width = '2' fill='black' stroke='black'/>
+<rect x="5095" y="240" width="10" height="10" stroke="black" fill-opacity='1' fill="black" stroke-width="1.0"/>	<line x1='5120' y1='30' x2='6400' y2='60' stroke-width = '2' fill='black' stroke='black'/>
+	<line x1='6400' y1='60' x2='5760' y2='90' stroke-width = '2' fill='black' stroke='black'/>
+	<circle r='10' cx='6400' cy='60' stroke='red' fill='red' stroke-width='1.0' fill-opacity='1'/>
+	<text x='6400' y='75' text-anchor='middle' fill-opacity='1' font-size='4px'>cep = b01.8</text>
+	<text x='6400' y='80' text-anchor='middle' fill-opacity='1' font-size='4px'>x = 1040.000000</text>
+	<text x='6400' y='85' text-anchor='middle' fill-opacity='1' font-size='4px'>y = 95.000000</text>
+	<line x1='5760' y1='90' x2='5440' y2='120' stroke-width = '2' fill='black' stroke='black'/>
+	<circle r='10' cx='5760' cy='90' stroke='black' fill='black' stroke-width='1.0' fill-opacity='1'/>
+	<text x='5760' y='105' text-anchor='middle' fill-opacity='1' font-size='4px'>cep = b01.6</text>
+	<text x='5760' y='110' text-anchor='middle' fill-opacity='1' font-size='4px'>x = 770.000000</text>
+	<text x='5760' y='115' text-anchor='middle' fill-opacity='1' font-size='4px'>y = 95.000000</text>
+	<line x1='5440' y1='120' x2='5280' y2='150' stroke-width = '2' fill='black' stroke='black'/>
+	<circle r='10' cx='5440' cy='120' stroke='red' fill='red' stroke-width='1.0' fill-opacity='1'/>
+	<text x='5440' y='135' text-anchor='middle' fill-opacity='1' font-size='4px'>cep = b01.5</text>
+	<text x='5440' y='140' text-anchor='middle' fill-opacity='1' font-size='4px'>x = 635.000000</text>
+	<text x='5440' y='145' text-anchor='middle' fill-opacity='1' font-size='4px'>y = 95.000000</text>
+	<line x1='5280' y1='150' x2='5200' y2='180' stroke-width = '2' fill='black' stroke='black'/>
+	<circle r='10' cx='5280' cy='150' stroke='black' fill='black' stroke-width='1.0' fill-opacity='1'/>
+	<text x='5280' y='165' text-anchor='middle' fill-opacity='1' font-size='4px'>cep = b05.4</text>
+	<text x='5280' y='170' text-anchor='middle' fill-opacity='1' font-size='4px'>x = 500.000000</text>
+	<text x='5280' y='175' text-anchor='middle' fill-opacity='1' font-size='4px'>y = 475.000000</text>
+	<line x1='5200' y1='180' x2='5160' y2='210' stroke-width = '2' fill='black' stroke='black'/>
+	<circle r='10' cx='5200' cy='180' stroke='red' fill='red' stroke-width='1.0' fill-opacity='1'/>
+	<text x='5200' y='195' text-anchor='middle' fill-opacity='1' font-size='4px'>cep = b03.4</text>
+	<text x='5200' y='200' text-anchor='middle' fill-opacity='1' font-size='4px'>x = 500.000000</text>
+	<text x='5200' y='205' text-anchor='middle' fill-opacity='1' font-size='4px'>y = 285.000000</text>
+	<line x1='5160' y1='210' x2='5140' y2='240' stroke-width = '2' fill='black' stroke='black'/>
+	<circle r='10' cx='5160' cy='210' stroke='black' fill='black' stroke-width='1.0' fill-opacity='1'/>
+	<text x='5160' y='225' text-anchor='middle' fill-opacity='1' font-size='4px'>cep = b02.4</text>
+	<text x='5160' y='230' text-anchor='middle' fill-opacity='1' font-size='4px'>x = 500.000000</text>
+	<text x='5160' y='235' text-anchor='middle' fill-opacity='1' font-size='4px'>y = 190.000000</text>
+<rect x="5135" y="240" width="10" height="10" stroke="black" fill-opacity='1' fill="black" stroke-width="1.0"/>	<line x1='5160' y1='210' x2='5180' y2='240' stroke-width = '2' fill='black' stroke='black'/>
+<rect x="5175" y="240" width="10" height="10" stroke="black" fill-opacity='1' fill="black" stroke-width="1.0"/>	<line x1='5200' y1='180' x2='5240' y2='210' stroke-width = '2' fill='black' stroke='black'/>
+	<line x1='5240' y1='210' x2='5220' y2='240' stroke-width = '2' fill='black' stroke='black'/>
+	<circle r='10' cx='5240' cy='210' stroke='black' fill='black' stroke-width='1.0' fill-opacity='1'/>
+	<text x='5240' y='225' text-anchor='middle' fill-opacity='1' font-size='4px'>cep = b04.4</text>
+	<text x='5240' y='230' text-anchor='middle' fill-opacity='1' font-size='4px'>x = 500.000000</text>
+	<text x='5240' y='235' text-anchor='middle' fill-opacity='1' font-size='4px'>y = 380.000000</text>
+<rect x="5215" y="240" width="10" height="10" stroke="black" fill-opacity='1' fill="black" stroke-width="1.0"/>	<line x1='5240' y1='210' x2='5260' y2='240' stroke-width = '2' fill='black' stroke='black'/>
+<rect x="5255" y="240" width="10" height="10" stroke="black" fill-opacity='1' fill="black" stroke-width="1.0"/>	<line x1='5280' y1='150' x2='5360' y2='180' stroke-width = '2' fill='black' stroke='black'/>
+	<line x1='5360' y1='180' x2='5320' y2='210' stroke-width = '2' fill='black' stroke='black'/>
+	<circle r='10' cx='5360' cy='180' stroke='red' fill='red' stroke-width='1.0' fill-opacity='1'/>
+	<text x='5360' y='195' text-anchor='middle' fill-opacity='1' font-size='4px'>cep = b07.4</text>
+	<text x='5360' y='200' text-anchor='middle' fill-opacity='1' font-size='4px'>x = 500.000000</text>
+	<text x='5360' y='205' text-anchor='middle' fill-opacity='1' font-size='4px'>y = 665.000000</text>
+	<line x1='5320' y1='210' x2='5300' y2='240' stroke-width = '2' fill='black' stroke='black'/>
+	<circle r='10' cx='5320' cy='210' stroke='black' fill='black' stroke-width='1.0' fill-opacity='1'/>
+	<text x='5320' y='225' text-anchor='middle' fill-opacity='1' font-size='4px'>cep = b06.4</text>
+	<text x='5320' y='230' text-anchor='middle' fill-opacity='1' font-size='4px'>x = 500.000000</text>
+	<text x='5320' y='235' text-anchor='middle' fill-opacity='1' font-size='4px'>y = 570.000000</text>
+<rect x="5295" y="240" width="10" height="10" stroke="black" fill-opacity='1' fill="black" stroke-width="1.0"/>	<line x1='5320' y1='210' x2='5340' y2='240' stroke-width = '2' fill='black' stroke='black'/>
+<rect x="5335" y="240" width="10" height="10" stroke="black" fill-opacity='1' fill="black" stroke-width="1.0"/>	<line x1='5360' y1='180' x2='5400' y2='210' stroke-width = '2' fill='black' stroke='black'/>
+	<line x1='5400' y1='210' x2='5380' y2='240' stroke-width = '2' fill='black' stroke='black'/>
+	<circle r='10' cx='5400' cy='210' stroke='black' fill='black' stroke-width='1.0' fill-opacity='1'/>
+	<text x='5400' y='225' text-anchor='middle' fill-opacity='1' font-size='4px'>cep = b09.4</text>
+	<text x='5400' y='230' text-anchor='middle' fill-opacity='1' font-size='4px'>x = 500.000000</text>
+	<text x='5400' y='235' text-anchor='middle' fill-opacity='1' font-size='4px'>y = 855.000000</text>
+	<line x1='5380' y1='240' x2='5370' y2='270' stroke-width = '2' fill='black' stroke='black'/>
+	<circle r='10' cx='5380' cy='240' stroke='red' fill='red' stroke-width='1.0' fill-opacity='1'/>
+	<text x='5380' y='255' text-anchor='middle' fill-opacity='1' font-size='4px'>cep = b08.4</text>
+	<text x='5380' y='260' text-anchor='middle' fill-opacity='1' font-size='4px'>x = 500.000000</text>
+	<text x='5380' y='265' text-anchor='middle' fill-opacity='1' font-size='4px'>y = 760.000000</text>
+<rect x="5365" y="270" width="10" height="10" stroke="black" fill-opacity='1' fill="black" stroke-width="1.0"/>	<line x1='5380' y1='240' x2='5390' y2='270' stroke-width = '2' fill='black' stroke='black'/>
+<rect x="5385" y="270" width="10" height="10" stroke="black" fill-opacity='1' fill="black" stroke-width="1.0"/>	<line x1='5400' y1='210' x2='5420' y2='240' stroke-width = '2' fill='black' stroke='black'/>
+	<line x1='5420' y1='240' x2='5410' y2='270' stroke-width = '2' fill='black' stroke='black'/>
+	<circle r='10' cx='5420' cy='240' stroke='red' fill='red' stroke-width='1.0' fill-opacity='1'/>
+	<text x='5420' y='255' text-anchor='middle' fill-opacity='1' font-size='4px'>cep = b010.4</text>
+	<text x='5420' y='260' text-anchor='middle' fill-opacity='1' font-size='4px'>x = 500.000000</text>
+	<text x='5420' y='265' text-anchor='middle' fill-opacity='1' font-size='4px'>y = 950.000000</text>
+<rect x="5405" y="270" width="10" height="10" stroke="black" fill-opacity='1' fill="black" stroke-width="1.0"/>	<line x1='5420' y1='240' x2='5430' y2='270' stroke-width = '2' fill='black' stroke='black'/>
+<rect x="5425" y="270" width="10" height="10" stroke="black" fill-opacity='1' fill="black" stroke-width="1.0"/>	<line x1='5440' y1='120' x2='5600' y2='150' stroke-width = '2' fill='black' stroke='black'/>
+	<line x1='5600' y1='150' x2='5520' y2='180' stroke-width = '2' fill='black' stroke='black'/>
+	<circle r='10' cx='5600' cy='150' stroke='black' fill='black' stroke-width='1.0' fill-opacity='1'/>
+	<text x='5600' y='165' text-anchor='middle' fill-opacity='1' font-size='4px'>cep = b05.5</text>
+	<text x='5600' y='170' text-anchor='middle' fill-opacity='1' font-size='4px'>x = 635.000000</text>
+	<text x='5600' y='175' text-anchor='middle' fill-opacity='1' font-size='4px'>y = 475.000000</text>
+	<line x1='5520' y1='180' x2='5480' y2='210' stroke-width = '2' fill='black' stroke='black'/>
+	<circle r='10' cx='5520' cy='180' stroke='red' fill='red' stroke-width='1.0' fill-opacity='1'/>
+	<text x='5520' y='195' text-anchor='middle' fill-opacity='1' font-size='4px'>cep = b03.5</text>
+	<text x='5520' y='200' text-anchor='middle' fill-opacity='1' font-size='4px'>x = 635.000000</text>
+	<text x='5520' y='205' text-anchor='middle' fill-opacity='1' font-size='4px'>y = 285.000000</text>
+	<line x1='5480' y1='210' x2='5460' y2='240' stroke-width = '2' fill='black' stroke='black'/>
+	<circle r='10' cx='5480' cy='210' stroke='black' fill='black' stroke-width='1.0' fill-opacity='1'/>
+	<text x='5480' y='225' text-anchor='middle' fill-opacity='1' font-size='4px'>cep = b02.5</text>
+	<text x='5480' y='230' text-anchor='middle' fill-opacity='1' font-size='4px'>x = 635.000000</text>
+	<text x='5480' y='235' text-anchor='middle' fill-opacity='1' font-size='4px'>y = 190.000000</text>
+<rect x="5455" y="240" width="10" height="10" stroke="black" fill-opacity='1' fill="black" stroke-width="1.0"/>	<line x1='5480' y1='210' x2='5500' y2='240' stroke-width = '2' fill='black' stroke='black'/>
+<rect x="5495" y="240" width="10" height="10" stroke="black" fill-opacity='1' fill="black" stroke-width="1.0"/>	<line x1='5520' y1='180' x2='5560' y2='210' stroke-width = '2' fill='black' stroke='black'/>
+	<line x1='5560' y1='210' x2='5540' y2='240' stroke-width = '2' fill='black' stroke='black'/>
+	<circle r='10' cx='5560' cy='210' stroke='black' fill='black' stroke-width='1.0' fill-opacity='1'/>
+	<text x='5560' y='225' text-anchor='middle' fill-opacity='1' font-size='4px'>cep = b04.5</text>
+	<text x='5560' y='230' text-anchor='middle' fill-opacity='1' font-size='4px'>x = 635.000000</text>
+	<text x='5560' y='235' text-anchor='middle' fill-opacity='1' font-size='4px'>y = 380.000000</text>
+<rect x="5535" y="240" width="10" height="10" stroke="black" fill-opacity='1' fill="black" stroke-width="1.0"/>	<line x1='5560' y1='210' x2='5580' y2='240' stroke-width = '2' fill='black' stroke='black'/>
+<rect x="5575" y="240" width="10" height="10" stroke="black" fill-opacity='1' fill="black" stroke-width="1.0"/>	<line x1='5600' y1='150' x2='5680' y2='180' stroke-width = '2' fill='black' stroke='black'/>
+	<line x1='5680' y1='180' x2='5640' y2='210' stroke-width = '2' fill='black' stroke='black'/>
+	<circle r='10' cx='5680' cy='180' stroke='red' fill='red' stroke-width='1.0' fill-opacity='1'/>
+	<text x='5680' y='195' text-anchor='middle' fill-opacity='1' font-size='4px'>cep = b07.5</text>
+	<text x='5680' y='200' text-anchor='middle' fill-opacity='1' font-size='4px'>x = 635.000000</text>
+	<text x='5680' y='205' text-anchor='middle' fill-opacity='1' font-size='4px'>y = 665.000000</text>
+	<line x1='5640' y1='210' x2='5620' y2='240' stroke-width = '2' fill='black' stroke='black'/>
+	<circle r='10' cx='5640' cy='210' stroke='black' fill='black' stroke-width='1.0' fill-opacity='1'/>
+	<text x='5640' y='225' text-anchor='middle' fill-opacity='1' font-size='4px'>cep = b06.5</text>
+	<text x='5640' y='230' text-anchor='middle' fill-opacity='1' font-size='4px'>x = 635.000000</text>
+	<text x='5640' y='235' text-anchor='middle' fill-opacity='1' font-size='4px'>y = 570.000000</text>
+<rect x="5615" y="240" width="10" height="10" stroke="black" fill-opacity='1' fill="black" stroke-width="1.0"/>	<line x1='5640' y1='210' x2='5660' y2='240' stroke-width = '2' fill='black' stroke='black'/>
+<rect x="5655" y="240" width="10" height="10" stroke="black" fill-opacity='1' fill="black" stroke-width="1.0"/>	<line x1='5680' y1='180' x2='5720' y2='210' stroke-width = '2' fill='black' stroke='black'/>
+	<line x1='5720' y1='210' x2='5700' y2='240' stroke-width = '2' fill='black' stroke='black'/>
+	<circle r='10' cx='5720' cy='210' stroke='black' fill='black' stroke-width='1.0' fill-opacity='1'/>
+	<text x='5720' y='225' text-anchor='middle' fill-opacity='1' font-size='4px'>cep = b09.5</text>
+	<text x='5720' y='230' text-anchor='middle' fill-opacity='1' font-size='4px'>x = 635.000000</text>
+	<text x='5720' y='235' text-anchor='middle' fill-opacity='1' font-size='4px'>y = 855.000000</text>
+	<line x1='5700' y1='240' x2='5690' y2='270' stroke-width = '2' fill='black' stroke='black'/>
+	<circle r='10' cx='5700' cy='240' stroke='red' fill='red' stroke-width='1.0' fill-opacity='1'/>
+	<text x='5700' y='255' text-anchor='middle' fill-opacity='1' font-size='4px'>cep = b08.5</text>
+	<text x='5700' y='260' text-anchor='middle' fill-opacity='1' font-size='4px'>x = 635.000000</text>
+	<text x='5700' y='265' text-anchor='middle' fill-opacity='1' font-size='4px'>y = 760.000000</text>
+<rect x="5685" y="270" width="10" height="10" stroke="black" fill-opacity='1' fill="black" stroke-width="1.0"/>	<line x1='5700' y1='240' x2='5710' y2='270' stroke-width = '2' fill='black' stroke='black'/>
+<rect x="5705" y="270" width="10" height="10" stroke="black" fill-opacity='1' fill="black" stroke-width="1.0"/>	<line x1='5720' y1='210' x2='5740' y2='240' stroke-width = '2' fill='black' stroke='black'/>
+	<line x1='5740' y1='240' x2='5730' y2='270' stroke-width = '2' fill='black' stroke='black'/>
+	<circle r='10' cx='5740' cy='240' stroke='red' fill='red' stroke-width='1.0' fill-opacity='1'/>
+	<text x='5740' y='255' text-anchor='middle' fill-opacity='1' font-size='4px'>cep = b010.5</text>
+	<text x='5740' y='260' text-anchor='middle' fill-opacity='1' font-size='4px'>x = 635.000000</text>
+	<text x='5740' y='265' text-anchor='middle' fill-opacity='1' font-size='4px'>y = 950.000000</text>
+<rect x="5725" y="270" width="10" height="10" stroke="black" fill-opacity='1' fill="black" stroke-width="1.0"/>	<line x1='5740' y1='240' x2='5750' y2='270' stroke-width = '2' fill='black' stroke='black'/>
+<rect x="5745" y="270" width="10" height="10" stroke="black" fill-opacity='1' fill="black" stroke-width="1.0"/>	<line x1='5760' y1='90' x2='6080' y2='120' stroke-width = '2' fill='black' stroke='black'/>
+	<line x1='6080' y1='120' x2='5920' y2='150' stroke-width = '2' fill='black' stroke='black'/>
+	<circle r='10' cx='6080' cy='120' stroke='red' fill='red' stroke-width='1.0' fill-opacity='1'/>
+	<text x='6080' y='135' text-anchor='middle' fill-opacity='1' font-size='4px'>cep = b01.7</text>
+	<text x='6080' y='140' text-anchor='middle' fill-opacity='1' font-size='4px'>x = 905.000000</text>
+	<text x='6080' y='145' text-anchor='middle' fill-opacity='1' font-size='4px'>y = 95.000000</text>
+	<line x1='5920' y1='150' x2='5840' y2='180' stroke-width = '2' fill='black' stroke='black'/>
+	<circle r='10' cx='5920' cy='150' stroke='black' fill='black' stroke-width='1.0' fill-opacity='1'/>
+	<text x='5920' y='165' text-anchor='middle' fill-opacity='1' font-size='4px'>cep = b05.6</text>
+	<text x='5920' y='170' text-anchor='middle' fill-opacity='1' font-size='4px'>x = 770.000000</text>
+	<text x='5920' y='175' text-anchor='middle' fill-opacity='1' font-size='4px'>y = 475.000000</text>
+	<line x1='5840' y1='180' x2='5800' y2='210' stroke-width = '2' fill='black' stroke='black'/>
+	<circle r='10' cx='5840' cy='180' stroke='red' fill='red' stroke-width='1.0' fill-opacity='1'/>
+	<text x='5840' y='195' text-anchor='middle' fill-opacity='1' font-size='4px'>cep = b03.6</text>
+	<text x='5840' y='200' text-anchor='middle' fill-opacity='1' font-size='4px'>x = 770.000000</text>
+	<text x='5840' y='205' text-anchor='middle' fill-opacity='1' font-size='4px'>y = 285.000000</text>
+	<line x1='5800' y1='210' x2='5780' y2='240' stroke-width = '2' fill='black' stroke='black'/>
+	<circle r='10' cx='5800' cy='210' stroke='black' fill='black' stroke-width='1.0' fill-opacity='1'/>
+	<text x='5800' y='225' text-anchor='middle' fill-opacity='1' font-size='4px'>cep = b02.6</text>
+	<text x='5800' y='230' text-anchor='middle' fill-opacity='1' font-size='4px'>x = 770.000000</text>
+	<text x='5800' y='235' text-anchor='middle' fill-opacity='1' font-size='4px'>y = 190.000000</text>
+<rect x="5775" y="240" width="10" height="10" stroke="black" fill-opacity='1' fill="black" stroke-width="1.0"/>	<line x1='5800' y1='210' x2='5820' y2='240' stroke-width = '2' fill='black' stroke='black'/>
+<rect x="5815" y="240" width="10" height="10" stroke="black" fill-opacity='1' fill="black" stroke-width="1.0"/>	<line x1='5840' y1='180' x2='5880' y2='210' stroke-width = '2' fill='black' stroke='black'/>
+	<line x1='5880' y1='210' x2='5860' y2='240' stroke-width = '2' fill='black' stroke='black'/>
+	<circle r='10' cx='5880' cy='210' stroke='black' fill='black' stroke-width='1.0' fill-opacity='1'/>
+	<text x='5880' y='225' text-anchor='middle' fill-opacity='1' font-size='4px'>cep = b04.6</text>
+	<text x='5880' y='230' text-anchor='middle' fill-opacity='1' font-size='4px'>x = 770.000000</text>
+	<text x='5880' y='235' text-anchor='middle' fill-opacity='1' font-size='4px'>y = 380.000000</text>
+<rect x="5855" y="240" width="10" height="10" stroke="black" fill-opacity='1' fill="black" stroke-width="1.0"/>	<line x1='5880' y1='210' x2='5900' y2='240' stroke-width = '2' fill='black' stroke='black'/>
+<rect x="5895" y="240" width="10" height="10" stroke="black" fill-opacity='1' fill="black" stroke-width="1.0"/>	<line x1='5920' y1='150' x2='6000' y2='180' stroke-width = '2' fill='black' stroke='black'/>
+	<line x1='6000' y1='180' x2='5960' y2='210' stroke-width = '2' fill='black' stroke='black'/>
+	<circle r='10' cx='6000' cy='180' stroke='red' fill='red' stroke-width='1.0' fill-opacity='1'/>
+	<text x='6000' y='195' text-anchor='middle' fill-opacity='1' font-size='4px'>cep = b07.6</text>
+	<text x='6000' y='200' text-anchor='middle' fill-opacity='1' font-size='4px'>x = 770.000000</text>
+	<text x='6000' y='205' text-anchor='middle' fill-opacity='1' font-size='4px'>y = 665.000000</text>
+	<line x1='5960' y1='210' x2='5940' y2='240' stroke-width = '2' fill='black' stroke='black'/>
+	<circle r='10' cx='5960' cy='210' stroke='black' fill='black' stroke-width='1.0' fill-opacity='1'/>
+	<text x='5960' y='225' text-anchor='middle' fill-opacity='1' font-size='4px'>cep = b06.6</text>
+	<text x='5960' y='230' text-anchor='middle' fill-opacity='1' font-size='4px'>x = 770.000000</text>
+	<text x='5960' y='235' text-anchor='middle' fill-opacity='1' font-size='4px'>y = 570.000000</text>
+<rect x="5935" y="240" width="10" height="10" stroke="black" fill-opacity='1' fill="black" stroke-width="1.0"/>	<line x1='5960' y1='210' x2='5980' y2='240' stroke-width = '2' fill='black' stroke='black'/>
+<rect x="5975" y="240" width="10" height="10" stroke="black" fill-opacity='1' fill="black" stroke-width="1.0"/>	<line x1='6000' y1='180' x2='6040' y2='210' stroke-width = '2' fill='black' stroke='black'/>
+	<line x1='6040' y1='210' x2='6020' y2='240' stroke-width = '2' fill='black' stroke='black'/>
+	<circle r='10' cx='6040' cy='210' stroke='black' fill='black' stroke-width='1.0' fill-opacity='1'/>
+	<text x='6040' y='225' text-anchor='middle' fill-opacity='1' font-size='4px'>cep = b09.6</text>
+	<text x='6040' y='230' text-anchor='middle' fill-opacity='1' font-size='4px'>x = 770.000000</text>
+	<text x='6040' y='235' text-anchor='middle' fill-opacity='1' font-size='4px'>y = 855.000000</text>
+	<line x1='6020' y1='240' x2='6010' y2='270' stroke-width = '2' fill='black' stroke='black'/>
+	<circle r='10' cx='6020' cy='240' stroke='red' fill='red' stroke-width='1.0' fill-opacity='1'/>
+	<text x='6020' y='255' text-anchor='middle' fill-opacity='1' font-size='4px'>cep = b08.6</text>
+	<text x='6020' y='260' text-anchor='middle' fill-opacity='1' font-size='4px'>x = 770.000000</text>
+	<text x='6020' y='265' text-anchor='middle' fill-opacity='1' font-size='4px'>y = 760.000000</text>
+<rect x="6005" y="270" width="10" height="10" stroke="black" fill-opacity='1' fill="black" stroke-width="1.0"/>	<line x1='6020' y1='240' x2='6030' y2='270' stroke-width = '2' fill='black' stroke='black'/>
+<rect x="6025" y="270" width="10" height="10" stroke="black" fill-opacity='1' fill="black" stroke-width="1.0"/>	<line x1='6040' y1='210' x2='6060' y2='240' stroke-width = '2' fill='black' stroke='black'/>
+	<line x1='6060' y1='240' x2='6050' y2='270' stroke-width = '2' fill='black' stroke='black'/>
+	<circle r='10' cx='6060' cy='240' stroke='red' fill='red' stroke-width='1.0' fill-opacity='1'/>
+	<text x='6060' y='255' text-anchor='middle' fill-opacity='1' font-size='4px'>cep = b010.6</text>
+	<text x='6060' y='260' text-anchor='middle' fill-opacity='1' font-size='4px'>x = 770.000000</text>
+	<text x='6060' y='265' text-anchor='middle' fill-opacity='1' font-size='4px'>y = 950.000000</text>
+<rect x="6045" y="270" width="10" height="10" stroke="black" fill-opacity='1' fill="black" stroke-width="1.0"/>	<line x1='6060' y1='240' x2='6070' y2='270' stroke-width = '2' fill='black' stroke='black'/>
+<rect x="6065" y="270" width="10" height="10" stroke="black" fill-opacity='1' fill="black" stroke-width="1.0"/>	<line x1='6080' y1='120' x2='6240' y2='150' stroke-width = '2' fill='black' stroke='black'/>
+	<line x1='6240' y1='150' x2='6160' y2='180' stroke-width = '2' fill='black' stroke='black'/>
+	<circle r='10' cx='6240' cy='150' stroke='black' fill='black' stroke-width='1.0' fill-opacity='1'/>
+	<text x='6240' y='165' text-anchor='middle' fill-opacity='1' font-size='4px'>cep = b05.7</text>
+	<text x='6240' y='170' text-anchor='middle' fill-opacity='1' font-size='4px'>x = 905.000000</text>
+	<text x='6240' y='175' text-anchor='middle' fill-opacity='1' font-size='4px'>y = 475.000000</text>
+	<line x1='6160' y1='180' x2='6120' y2='210' stroke-width = '2' fill='black' stroke='black'/>
+	<circle r='10' cx='6160' cy='180' stroke='red' fill='red' stroke-width='1.0' fill-opacity='1'/>
+	<text x='6160' y='195' text-anchor='middle' fill-opacity='1' font-size='4px'>cep = b03.7</text>
+	<text x='6160' y='200' text-anchor='middle' fill-opacity='1' font-size='4px'>x = 905.000000</text>
+	<text x='6160' y='205' text-anchor='middle' fill-opacity='1' font-size='4px'>y = 285.000000</text>
+	<line x1='6120' y1='210' x2='6100' y2='240' stroke-width = '2' fill='black' stroke='black'/>
+	<circle r='10' cx='6120' cy='210' stroke='black' fill='black' stroke-width='1.0' fill-opacity='1'/>
+	<text x='6120' y='225' text-anchor='middle' fill-opacity='1' font-size='4px'>cep = b02.7</text>
+	<text x='6120' y='230' text-anchor='middle' fill-opacity='1' font-size='4px'>x = 905.000000</text>
+	<text x='6120' y='235' text-anchor='middle' fill-opacity='1' font-size='4px'>y = 190.000000</text>
+<rect x="6095" y="240" width="10" height="10" stroke="black" fill-opacity='1' fill="black" stroke-width="1.0"/>	<line x1='6120' y1='210' x2='6140' y2='240' stroke-width = '2' fill='black' stroke='black'/>
+<rect x="6135" y="240" width="10" height="10" stroke="black" fill-opacity='1' fill="black" stroke-width="1.0"/>	<line x1='6160' y1='180' x2='6200' y2='210' stroke-width = '2' fill='black' stroke='black'/>
+	<line x1='6200' y1='210' x2='6180' y2='240' stroke-width = '2' fill='black' stroke='black'/>
+	<circle r='10' cx='6200' cy='210' stroke='black' fill='black' stroke-width='1.0' fill-opacity='1'/>
+	<text x='6200' y='225' text-anchor='middle' fill-opacity='1' font-size='4px'>cep = b04.7</text>
+	<text x='6200' y='230' text-anchor='middle' fill-opacity='1' font-size='4px'>x = 905.000000</text>
+	<text x='6200' y='235' text-anchor='middle' fill-opacity='1' font-size='4px'>y = 380.000000</text>
+<rect x="6175" y="240" width="10" height="10" stroke="black" fill-opacity='1' fill="black" stroke-width="1.0"/>	<line x1='6200' y1='210' x2='6220' y2='240' stroke-width = '2' fill='black' stroke='black'/>
+<rect x="6215" y="240" width="10" height="10" stroke="black" fill-opacity='1' fill="black" stroke-width="1.0"/>	<line x1='6240' y1='150' x2='6320' y2='180' stroke-width = '2' fill='black' stroke='black'/>
+	<line x1='6320' y1='180' x2='6280' y2='210' stroke-width = '2' fill='black' stroke='black'/>
+	<circle r='10' cx='6320' cy='180' stroke='red' fill='red' stroke-width='1.0' fill-opacity='1'/>
+	<text x='6320' y='195' text-anchor='middle' fill-opacity='1' font-size='4px'>cep = b07.7</text>
+	<text x='6320' y='200' text-anchor='middle' fill-opacity='1' font-size='4px'>x = 905.000000</text>
+	<text x='6320' y='205' text-anchor='middle' fill-opacity='1' font-size='4px'>y = 665.000000</text>
+	<line x1='6280' y1='210' x2='6260' y2='240' stroke-width = '2' fill='black' stroke='black'/>
+	<circle r='10' cx='6280' cy='210' stroke='black' fill='black' stroke-width='1.0' fill-opacity='1'/>
+	<text x='6280' y='225' text-anchor='middle' fill-opacity='1' font-size='4px'>cep = b06.7</text>
+	<text x='6280' y='230' text-anchor='middle' fill-opacity='1' font-size='4px'>x = 905.000000</text>
+	<text x='6280' y='235' text-anchor='middle' fill-opacity='1' font-size='4px'>y = 570.000000</text>
+<rect x="6255" y="240" width="10" height="10" stroke="black" fill-opacity='1' fill="black" stroke-width="1.0"/>	<line x1='6280' y1='210' x2='6300' y2='240' stroke-width = '2' fill='black' stroke='black'/>
+<rect x="6295" y="240" width="10" height="10" stroke="black" fill-opacity='1' fill="black" stroke-width="1.0"/>	<line x1='6320' y1='180' x2='6360' y2='210' stroke-width = '2' fill='black' stroke='black'/>
+	<line x1='6360' y1='210' x2='6340' y2='240' stroke-width = '2' fill='black' stroke='black'/>
+	<circle r='10' cx='6360' cy='210' stroke='black' fill='black' stroke-width='1.0' fill-opacity='1'/>
+	<text x='6360' y='225' text-anchor='middle' fill-opacity='1' font-size='4px'>cep = b09.7</text>
+	<text x='6360' y='230' text-anchor='middle' fill-opacity='1' font-size='4px'>x = 905.000000</text>
+	<text x='6360' y='235' text-anchor='middle' fill-opacity='1' font-size='4px'>y = 855.000000</text>
+	<line x1='6340' y1='240' x2='6330' y2='270' stroke-width = '2' fill='black' stroke='black'/>
+	<circle r='10' cx='6340' cy='240' stroke='red' fill='red' stroke-width='1.0' fill-opacity='1'/>
+	<text x='6340' y='255' text-anchor='middle' fill-opacity='1' font-size='4px'>cep = b08.7</text>
+	<text x='6340' y='260' text-anchor='middle' fill-opacity='1' font-size='4px'>x = 905.000000</text>
+	<text x='6340' y='265' text-anchor='middle' fill-opacity='1' font-size='4px'>y = 760.000000</text>
+<rect x="6325" y="270" width="10" height="10" stroke="black" fill-opacity='1' fill="black" stroke-width="1.0"/>	<line x1='6340' y1='240' x2='6350' y2='270' stroke-width = '2' fill='black' stroke='black'/>
+<rect x="6345" y="270" width="10" height="10" stroke="black" fill-opacity='1' fill="black" stroke-width="1.0"/>	<line x1='6360' y1='210' x2='6380' y2='240' stroke-width = '2' fill='black' stroke='black'/>
+	<line x1='6380' y1='240' x2='6370' y2='270' stroke-width = '2' fill='black' stroke='black'/>
+	<circle r='10' cx='6380' cy='240' stroke='red' fill='red' stroke-width='1.0' fill-opacity='1'/>
+	<text x='6380' y='255' text-anchor='middle' fill-opacity='1' font-size='4px'>cep = b010.7</text>
+	<text x='6380' y='260' text-anchor='middle' fill-opacity='1' font-size='4px'>x = 905.000000</text>
+	<text x='6380' y='265' text-anchor='middle' fill-opacity='1' font-size='4px'>y = 950.000000</text>
+<rect x="6365" y="270" width="10" height="10" stroke="black" fill-opacity='1' fill="black" stroke-width="1.0"/>	<line x1='6380' y1='240' x2='6390' y2='270' stroke-width = '2' fill='black' stroke='black'/>
+<rect x="6385" y="270" width="10" height="10" stroke="black" fill-opacity='1' fill="black" stroke-width="1.0"/>	<line x1='6400' y1='60' x2='7040' y2='90' stroke-width = '2' fill='black' stroke='black'/>
+	<line x1='7040' y1='90' x2='6720' y2='120' stroke-width = '2' fill='black' stroke='black'/>
+	<circle r='10' cx='7040' cy='90' stroke='black' fill='black' stroke-width='1.0' fill-opacity='1'/>
+	<text x='7040' y='105' text-anchor='middle' fill-opacity='1' font-size='4px'>cep = b01.9</text>
+	<text x='7040' y='110' text-anchor='middle' fill-opacity='1' font-size='4px'>x = 1175.000000</text>
+	<text x='7040' y='115' text-anchor='middle' fill-opacity='1' font-size='4px'>y = 95.000000</text>
+	<line x1='6720' y1='120' x2='6560' y2='150' stroke-width = '2' fill='black' stroke='black'/>
+	<circle r='10' cx='6720' cy='120' stroke='black' fill='black' stroke-width='1.0' fill-opacity='1'/>
+	<text x='6720' y='135' text-anchor='middle' fill-opacity='1' font-size='4px'>cep = b05.8</text>
+	<text x='6720' y='140' text-anchor='middle' fill-opacity='1' font-size='4px'>x = 1040.000000</text>
+	<text x='6720' y='145' text-anchor='middle' fill-opacity='1' font-size='4px'>y = 475.000000</text>
+	<line x1='6560' y1='150' x2='6480' y2='180' stroke-width = '2' fill='black' stroke='black'/>
+	<circle r='10' cx='6560' cy='150' stroke='red' fill='red' stroke-width='1.0' fill-opacity='1'/>
+	<text x='6560' y='165' text-anchor='middle' fill-opacity='1' font-size='4px'>cep = b03.8</text>
+	<text x='6560' y='170' text-anchor='middle' fill-opacity='1' font-size='4px'>x = 1040.000000</text>
+	<text x='6560' y='175' text-anchor='middle' fill-opacity='1' font-size='4px'>y = 285.000000</text>
+	<line x1='6480' y1='180' x2='6440' y2='210' stroke-width = '2' fill='black' stroke='black'/>
+	<circle r='10' cx='6480' cy='180' stroke='black' fill='black' stroke-width='1.0' fill-opacity='1'/>
+	<text x='6480' y='195' text-anchor='middle' fill-opacity='1' font-size='4px'>cep = b02.8</text>
+	<text x='6480' y='200' text-anchor='middle' fill-opacity='1' font-size='4px'>x = 1040.000000</text>
+	<text x='6480' y='205' text-anchor='middle' fill-opacity='1' font-size='4px'>y = 190.000000</text>
+<rect x="6435" y="210" width="10" height="10" stroke="black" fill-opacity='1' fill="black" stroke-width="1.0"/>	<line x1='6480' y1='180' x2='6520' y2='210' stroke-width = '2' fill='black' stroke='black'/>
+<rect x="6515" y="210" width="10" height="10" stroke="black" fill-opacity='1' fill="black" stroke-width="1.0"/>	<line x1='6560' y1='150' x2='6640' y2='180' stroke-width = '2' fill='black' stroke='black'/>
+	<line x1='6640' y1='180' x2='6600' y2='210' stroke-width = '2' fill='black' stroke='black'/>
+	<circle r='10' cx='6640' cy='180' stroke='black' fill='black' stroke-width='1.0' fill-opacity='1'/>
+	<text x='6640' y='195' text-anchor='middle' fill-opacity='1' font-size='4px'>cep = b04.8</text>
+	<text x='6640' y='200' text-anchor='middle' fill-opacity='1' font-size='4px'>x = 1040.000000</text>
+	<text x='6640' y='205' text-anchor='middle' fill-opacity='1' font-size='4px'>y = 380.000000</text>
+<rect x="6595" y="210" width="10" height="10" stroke="black" fill-opacity='1' fill="black" stroke-width="1.0"/>	<line x1='6640' y1='180' x2='6680' y2='210' stroke-width = '2' fill='black' stroke='black'/>
+<rect x="6675" y="210" width="10" height="10" stroke="black" fill-opacity='1' fill="black" stroke-width="1.0"/>	<line x1='6720' y1='120' x2='6880' y2='150' stroke-width = '2' fill='black' stroke='black'/>
+	<line x1='6880' y1='150' x2='6800' y2='180' stroke-width = '2' fill='black' stroke='black'/>
+	<circle r='10' cx='6880' cy='150' stroke='red' fill='red' stroke-width='1.0' fill-opacity='1'/>
+	<text x='6880' y='165' text-anchor='middle' fill-opacity='1' font-size='4px'>cep = b07.8</text>
+	<text x='6880' y='170' text-anchor='middle' fill-opacity='1' font-size='4px'>x = 1040.000000</text>
+	<text x='6880' y='175' text-anchor='middle' fill-opacity='1' font-size='4px'>y = 665.000000</text>
+	<line x1='6800' y1='180' x2='6760' y2='210' stroke-width = '2' fill='black' stroke='black'/>
+	<circle r='10' cx='6800' cy='180' stroke='black' fill='black' stroke-width='1.0' fill-opacity='1'/>
+	<text x='6800' y='195' text-anchor='middle' fill-opacity='1' font-size='4px'>cep = b06.8</text>
+	<text x='6800' y='200' text-anchor='middle' fill-opacity='1' font-size='4px'>x = 1040.000000</text>
+	<text x='6800' y='205' text-anchor='middle' fill-opacity='1' font-size='4px'>y = 570.000000</text>
+<rect x="6755" y="210" width="10" height="10" stroke="black" fill-opacity='1' fill="black" stroke-width="1.0"/>	<line x1='6800' y1='180' x2='6840' y2='210' stroke-width = '2' fill='black' stroke='black'/>
+<rect x="6835" y="210" width="10" height="10" stroke="black" fill-opacity='1' fill="black" stroke-width="1.0"/>	<line x1='6880' y1='150' x2='6960' y2='180' stroke-width = '2' fill='black' stroke='black'/>
+	<line x1='6960' y1='180' x2='6920' y2='210' stroke-width = '2' fill='black' stroke='black'/>
+	<circle r='10' cx='6960' cy='180' stroke='black' fill='black' stroke-width='1.0' fill-opacity='1'/>
+	<text x='6960' y='195' text-anchor='middle' fill-opacity='1' font-size='4px'>cep = b09.8</text>
+	<text x='6960' y='200' text-anchor='middle' fill-opacity='1' font-size='4px'>x = 1040.000000</text>
+	<text x='6960' y='205' text-anchor='middle' fill-opacity='1' font-size='4px'>y = 855.000000</text>
+	<line x1='6920' y1='210' x2='6900' y2='240' stroke-width = '2' fill='black' stroke='black'/>
+	<circle r='10' cx='6920' cy='210' stroke='red' fill='red' stroke-width='1.0' fill-opacity='1'/>
+	<text x='6920' y='225' text-anchor='middle' fill-opacity='1' font-size='4px'>cep = b08.8</text>
+	<text x='6920' y='230' text-anchor='middle' fill-opacity='1' font-size='4px'>x = 1040.000000</text>
+	<text x='6920' y='235' text-anchor='middle' fill-opacity='1' font-size='4px'>y = 760.000000</text>
+<rect x="6895" y="240" width="10" height="10" stroke="black" fill-opacity='1' fill="black" stroke-width="1.0"/>	<line x1='6920' y1='210' x2='6940' y2='240' stroke-width = '2' fill='black' stroke='black'/>
+<rect x="6935" y="240" width="10" height="10" stroke="black" fill-opacity='1' fill="black" stroke-width="1.0"/>	<line x1='6960' y1='180' x2='7000' y2='210' stroke-width = '2' fill='black' stroke='black'/>
+	<line x1='7000' y1='210' x2='6980' y2='240' stroke-width = '2' fill='black' stroke='black'/>
+	<circle r='10' cx='7000' cy='210' stroke='red' fill='red' stroke-width='1.0' fill-opacity='1'/>
+	<text x='7000' y='225' text-anchor='middle' fill-opacity='1' font-size='4px'>cep = b010.8</text>
+	<text x='7000' y='230' text-anchor='middle' fill-opacity='1' font-size='4px'>x = 1040.000000</text>
+	<text x='7000' y='235' text-anchor='middle' fill-opacity='1' font-size='4px'>y = 950.000000</text>
+<rect x="6975" y="240" width="10" height="10" stroke="black" fill-opacity='1' fill="black" stroke-width="1.0"/>	<line x1='7000' y1='210' x2='7020' y2='240' stroke-width = '2' fill='black' stroke='black'/>
+<rect x="7015" y="240" width="10" height="10" stroke="black" fill-opacity='1' fill="black" stroke-width="1.0"/>	<line x1='7040' y1='90' x2='7360' y2='120' stroke-width = '2' fill='black' stroke='black'/>
+	<line x1='7360' y1='120' x2='7200' y2='150' stroke-width = '2' fill='black' stroke='black'/>
+	<circle r='10' cx='7360' cy='120' stroke='red' fill='red' stroke-width='1.0' fill-opacity='1'/>
+	<text x='7360' y='135' text-anchor='middle' fill-opacity='1' font-size='4px'>cep = b01.10</text>
+	<text x='7360' y='140' text-anchor='middle' fill-opacity='1' font-size='4px'>x = 1310.000000</text>
+	<text x='7360' y='145' text-anchor='middle' fill-opacity='1' font-size='4px'>y = 95.000000</text>
+	<line x1='7200' y1='150' x2='7120' y2='180' stroke-width = '2' fill='black' stroke='black'/>
+	<circle r='10' cx='7200' cy='150' stroke='black' fill='black' stroke-width='1.0' fill-opacity='1'/>
+	<text x='7200' y='165' text-anchor='middle' fill-opacity='1' font-size='4px'>cep = b05.9</text>
+	<text x='7200' y='170' text-anchor='middle' fill-opacity='1' font-size='4px'>x = 1175.000000</text>
+	<text x='7200' y='175' text-anchor='middle' fill-opacity='1' font-size='4px'>y = 475.000000</text>
+	<line x1='7120' y1='180' x2='7080' y2='210' stroke-width = '2' fill='black' stroke='black'/>
+	<circle r='10' cx='7120' cy='180' stroke='red' fill='red' stroke-width='1.0' fill-opacity='1'/>
+	<text x='7120' y='195' text-anchor='middle' fill-opacity='1' font-size='4px'>cep = b03.9</text>
+	<text x='7120' y='200' text-anchor='middle' fill-opacity='1' font-size='4px'>x = 1175.000000</text>
+	<text x='7120' y='205' text-anchor='middle' fill-opacity='1' font-size='4px'>y = 285.000000</text>
+	<line x1='7080' y1='210' x2='7060' y2='240' stroke-width = '2' fill='black' stroke='black'/>
+	<circle r='10' cx='7080' cy='210' stroke='black' fill='black' stroke-width='1.0' fill-opacity='1'/>
+	<text x='7080' y='225' text-anchor='middle' fill-opacity='1' font-size='4px'>cep = b02.9</text>
+	<text x='7080' y='230' text-anchor='middle' fill-opacity='1' font-size='4px'>x = 1175.000000</text>
+	<text x='7080' y='235' text-anchor='middle' fill-opacity='1' font-size='4px'>y = 190.000000</text>
+<rect x="7055" y="240" width="10" height="10" stroke="black" fill-opacity='1' fill="black" stroke-width="1.0"/>	<line x1='7080' y1='210' x2='7100' y2='240' stroke-width = '2' fill='black' stroke='black'/>
+<rect x="7095" y="240" width="10" height="10" stroke="black" fill-opacity='1' fill="black" stroke-width="1.0"/>	<line x1='7120' y1='180' x2='7160' y2='210' stroke-width = '2' fill='black' stroke='black'/>
+	<line x1='7160' y1='210' x2='7140' y2='240' stroke-width = '2' fill='black' stroke='black'/>
+	<circle r='10' cx='7160' cy='210' stroke='black' fill='black' stroke-width='1.0' fill-opacity='1'/>
+	<text x='7160' y='225' text-anchor='middle' fill-opacity='1' font-size='4px'>cep = b04.9</text>
+	<text x='7160' y='230' text-anchor='middle' fill-opacity='1' font-size='4px'>x = 1175.000000</text>
+	<text x='7160' y='235' text-anchor='middle' fill-opacity='1' font-size='4px'>y = 380.000000</text>
+<rect x="7135" y="240" width="10" height="10" stroke="black" fill-opacity='1' fill="black" stroke-width="1.0"/>	<line x1='7160' y1='210' x2='7180' y2='240' stroke-width = '2' fill='black' stroke='black'/>
+<rect x="7175" y="240" width="10" height="10" stroke="black" fill-opacity='1' fill="black" stroke-width="1.0"/>	<line x1='7200' y1='150' x2='7280' y2='180' stroke-width = '2' fill='black' stroke='black'/>
+	<line x1='7280' y1='180' x2='7240' y2='210' stroke-width = '2' fill='black' stroke='black'/>
+	<circle r='10' cx='7280' cy='180' stroke='red' fill='red' stroke-width='1.0' fill-opacity='1'/>
+	<text x='7280' y='195' text-anchor='middle' fill-opacity='1' font-size='4px'>cep = b07.9</text>
+	<text x='7280' y='200' text-anchor='middle' fill-opacity='1' font-size='4px'>x = 1175.000000</text>
+	<text x='7280' y='205' text-anchor='middle' fill-opacity='1' font-size='4px'>y = 665.000000</text>
+	<line x1='7240' y1='210' x2='7220' y2='240' stroke-width = '2' fill='black' stroke='black'/>
+	<circle r='10' cx='7240' cy='210' stroke='black' fill='black' stroke-width='1.0' fill-opacity='1'/>
+	<text x='7240' y='225' text-anchor='middle' fill-opacity='1' font-size='4px'>cep = b06.9</text>
+	<text x='7240' y='230' text-anchor='middle' fill-opacity='1' font-size='4px'>x = 1175.000000</text>
+	<text x='7240' y='235' text-anchor='middle' fill-opacity='1' font-size='4px'>y = 570.000000</text>
+<rect x="7215" y="240" width="10" height="10" stroke="black" fill-opacity='1' fill="black" stroke-width="1.0"/>	<line x1='7240' y1='210' x2='7260' y2='240' stroke-width = '2' fill='black' stroke='black'/>
+<rect x="7255" y="240" width="10" height="10" stroke="black" fill-opacity='1' fill="black" stroke-width="1.0"/>	<line x1='7280' y1='180' x2='7320' y2='210' stroke-width = '2' fill='black' stroke='black'/>
+	<line x1='7320' y1='210' x2='7300' y2='240' stroke-width = '2' fill='black' stroke='black'/>
+	<circle r='10' cx='7320' cy='210' stroke='black' fill='black' stroke-width='1.0' fill-opacity='1'/>
+	<text x='7320' y='225' text-anchor='middle' fill-opacity='1' font-size='4px'>cep = b09.9</text>
+	<text x='7320' y='230' text-anchor='middle' fill-opacity='1' font-size='4px'>x = 1175.000000</text>
+	<text x='7320' y='235' text-anchor='middle' fill-opacity='1' font-size='4px'>y = 855.000000</text>
+	<line x1='7300' y1='240' x2='7290' y2='270' stroke-width = '2' fill='black' stroke='black'/>
+	<circle r='10' cx='7300' cy='240' stroke='red' fill='red' stroke-width='1.0' fill-opacity='1'/>
+	<text x='7300' y='255' text-anchor='middle' fill-opacity='1' font-size='4px'>cep = b08.9</text>
+	<text x='7300' y='260' text-anchor='middle' fill-opacity='1' font-size='4px'>x = 1175.000000</text>
+	<text x='7300' y='265' text-anchor='middle' fill-opacity='1' font-size='4px'>y = 760.000000</text>
+<rect x="7285" y="270" width="10" height="10" stroke="black" fill-opacity='1' fill="black" stroke-width="1.0"/>	<line x1='7300' y1='240' x2='7310' y2='270' stroke-width = '2' fill='black' stroke='black'/>
+<rect x="7305" y="270" width="10" height="10" stroke="black" fill-opacity='1' fill="black" stroke-width="1.0"/>	<line x1='7320' y1='210' x2='7340' y2='240' stroke-width = '2' fill='black' stroke='black'/>
+	<line x1='7340' y1='240' x2='7330' y2='270' stroke-width = '2' fill='black' stroke='black'/>
+	<circle r='10' cx='7340' cy='240' stroke='red' fill='red' stroke-width='1.0' fill-opacity='1'/>
+	<text x='7340' y='255' text-anchor='middle' fill-opacity='1' font-size='4px'>cep = b010.9</text>
+	<text x='7340' y='260' text-anchor='middle' fill-opacity='1' font-size='4px'>x = 1175.000000</text>
+	<text x='7340' y='265' text-anchor='middle' fill-opacity='1' font-size='4px'>y = 950.000000</text>
+<rect x="7325" y="270" width="10" height="10" stroke="black" fill-opacity='1' fill="black" stroke-width="1.0"/>	<line x1='7340' y1='240' x2='7350' y2='270' stroke-width = '2' fill='black' stroke='black'/>
+<rect x="7345" y="270" width="10" height="10" stroke="black" fill-opacity='1' fill="black" stroke-width="1.0"/>	<line x1='7360' y1='120' x2='7520' y2='150' stroke-width = '2' fill='black' stroke='black'/>
+	<line x1='7520' y1='150' x2='7440' y2='180' stroke-width = '2' fill='black' stroke='black'/>
+	<circle r='10' cx='7520' cy='150' stroke='black' fill='black' stroke-width='1.0' fill-opacity='1'/>
+	<text x='7520' y='165' text-anchor='middle' fill-opacity='1' font-size='4px'>cep = b05.10</text>
+	<text x='7520' y='170' text-anchor='middle' fill-opacity='1' font-size='4px'>x = 1310.000000</text>
+	<text x='7520' y='175' text-anchor='middle' fill-opacity='1' font-size='4px'>y = 475.000000</text>
+	<line x1='7440' y1='180' x2='7400' y2='210' stroke-width = '2' fill='black' stroke='black'/>
+	<circle r='10' cx='7440' cy='180' stroke='red' fill='red' stroke-width='1.0' fill-opacity='1'/>
+	<text x='7440' y='195' text-anchor='middle' fill-opacity='1' font-size='4px'>cep = b03.10</text>
+	<text x='7440' y='200' text-anchor='middle' fill-opacity='1' font-size='4px'>x = 1310.000000</text>
+	<text x='7440' y='205' text-anchor='middle' fill-opacity='1' font-size='4px'>y = 285.000000</text>
+	<line x1='7400' y1='210' x2='7380' y2='240' stroke-width = '2' fill='black' stroke='black'/>
+	<circle r='10' cx='7400' cy='210' stroke='black' fill='black' stroke-width='1.0' fill-opacity='1'/>
+	<text x='7400' y='225' text-anchor='middle' fill-opacity='1' font-size='4px'>cep = b02.10</text>
+	<text x='7400' y='230' text-anchor='middle' fill-opacity='1' font-size='4px'>x = 1310.000000</text>
+	<text x='7400' y='235' text-anchor='middle' fill-opacity='1' font-size='4px'>y = 190.000000</text>
+<rect x="7375" y="240" width="10" height="10" stroke="black" fill-opacity='1' fill="black" stroke-width="1.0"/>	<line x1='7400' y1='210' x2='7420' y2='240' stroke-width = '2' fill='black' stroke='black'/>
+<rect x="7415" y="240" width="10" height="10" stroke="black" fill-opacity='1' fill="black" stroke-width="1.0"/>	<line x1='7440' y1='180' x2='7480' y2='210' stroke-width = '2' fill='black' stroke='black'/>
+	<line x1='7480' y1='210' x2='7460' y2='240' stroke-width = '2' fill='black' stroke='black'/>
+	<circle r='10' cx='7480' cy='210' stroke='black' fill='black' stroke-width='1.0' fill-opacity='1'/>
+	<text x='7480' y='225' text-anchor='middle' fill-opacity='1' font-size='4px'>cep = b04.10</text>
+	<text x='7480' y='230' text-anchor='middle' fill-opacity='1' font-size='4px'>x = 1310.000000</text>
+	<text x='7480' y='235' text-anchor='middle' fill-opacity='1' font-size='4px'>y = 380.000000</text>
+<rect x="7455" y="240" width="10" height="10" stroke="black" fill-opacity='1' fill="black" stroke-width="1.0"/>	<line x1='7480' y1='210' x2='7500' y2='240' stroke-width = '2' fill='black' stroke='black'/>
+<rect x="7495" y="240" width="10" height="10" stroke="black" fill-opacity='1' fill="black" stroke-width="1.0"/>	<line x1='7520' y1='150' x2='7600' y2='180' stroke-width = '2' fill='black' stroke='black'/>
+	<line x1='7600' y1='180' x2='7560' y2='210' stroke-width = '2' fill='black' stroke='black'/>
+	<circle r='10' cx='7600' cy='180' stroke='red' fill='red' stroke-width='1.0' fill-opacity='1'/>
+	<text x='7600' y='195' text-anchor='middle' fill-opacity='1' font-size='4px'>cep = b07.10</text>
+	<text x='7600' y='200' text-anchor='middle' fill-opacity='1' font-size='4px'>x = 1310.000000</text>
+	<text x='7600' y='205' text-anchor='middle' fill-opacity='1' font-size='4px'>y = 665.000000</text>
+	<line x1='7560' y1='210' x2='7540' y2='240' stroke-width = '2' fill='black' stroke='black'/>
+	<circle r='10' cx='7560' cy='210' stroke='black' fill='black' stroke-width='1.0' fill-opacity='1'/>
+	<text x='7560' y='225' text-anchor='middle' fill-opacity='1' font-size='4px'>cep = b06.10</text>
+	<text x='7560' y='230' text-anchor='middle' fill-opacity='1' font-size='4px'>x = 1310.000000</text>
+	<text x='7560' y='235' text-anchor='middle' fill-opacity='1' font-size='4px'>y = 570.000000</text>
+<rect x="7535" y="240" width="10" height="10" stroke="black" fill-opacity='1' fill="black" stroke-width="1.0"/>	<line x1='7560' y1='210' x2='7580' y2='240' stroke-width = '2' fill='black' stroke='black'/>
+<rect x="7575" y="240" width="10" height="10" stroke="black" fill-opacity='1' fill="black" stroke-width="1.0"/>	<line x1='7600' y1='180' x2='7640' y2='210' stroke-width = '2' fill='black' stroke='black'/>
+	<line x1='7640' y1='210' x2='7620' y2='240' stroke-width = '2' fill='black' stroke='black'/>
+	<circle r='10' cx='7640' cy='210' stroke='black' fill='black' stroke-width='1.0' fill-opacity='1'/>
+	<text x='7640' y='225' text-anchor='middle' fill-opacity='1' font-size='4px'>cep = b09.10</text>
+	<text x='7640' y='230' text-anchor='middle' fill-opacity='1' font-size='4px'>x = 1310.000000</text>
+	<text x='7640' y='235' text-anchor='middle' fill-opacity='1' font-size='4px'>y = 855.000000</text>
+	<line x1='7620' y1='240' x2='7610' y2='270' stroke-width = '2' fill='black' stroke='black'/>
+	<circle r='10' cx='7620' cy='240' stroke='red' fill='red' stroke-width='1.0' fill-opacity='1'/>
+	<text x='7620' y='255' text-anchor='middle' fill-opacity='1' font-size='4px'>cep = b08.10</text>
+	<text x='7620' y='260' text-anchor='middle' fill-opacity='1' font-size='4px'>x = 1310.000000</text>
+	<text x='7620' y='265' text-anchor='middle' fill-opacity='1' font-size='4px'>y = 760.000000</text>
+<rect x="7605" y="270" width="10" height="10" stroke="black" fill-opacity='1' fill="black" stroke-width="1.0"/>	<line x1='7620' y1='240' x2='7630' y2='270' stroke-width = '2' fill='black' stroke='black'/>
+<rect x="7625" y="270" width="10" height="10" stroke="black" fill-opacity='1' fill="black" stroke-width="1.0"/>	<line x1='7640' y1='210' x2='7660' y2='240' stroke-width = '2' fill='black' stroke='black'/>
+	<line x1='7660' y1='240' x2='7650' y2='270' stroke-width = '2' fill='black' stroke='black'/>
+	<circle r='10' cx='7660' cy='240' stroke='red' fill='red' stroke-width='1.0' fill-opacity='1'/>
+	<text x='7660' y='255' text-anchor='middle' fill-opacity='1' font-size='4px'>cep = b010.10</text>
+	<text x='7660' y='260' text-anchor='middle' fill-opacity='1' font-size='4px'>x = 1310.000000</text>
+	<text x='7660' y='265' text-anchor='middle' fill-opacity='1' font-size='4px'>y = 950.000000</text>
+<rect x="7645" y="270" width="10" height="10" stroke="black" fill-opacity='1' fill="black" stroke-width="1.0"/>	<line x1='7660' y1='240' x2='7670' y2='270' stroke-width = '2' fill='black' stroke='black'/>
+<rect x="7665" y="270" width="10" height="10" stroke="black" fill-opacity='1' fill="black" stroke-width="1.0"/></svg>

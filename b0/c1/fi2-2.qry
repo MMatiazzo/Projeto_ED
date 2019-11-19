@@ -1,0 +1,32 @@
+crd? hneb05.5
+crd? hnb05.5
+crd? sfb05.5
+crd? hnob05.5
+crd? hob05.5
+crd? hnb06.5
+crd? hob06.5
+crd? hneb06.5
+crd? sfb06.5
+crd? hnob06.5
+fi 540.000000 380.000000 10 180.000000
+del hneb05.5
+del hnb05.5
+del sfb05.5
+del hnob05.5
+del hob05.5
+del hnb06.5
+del hob06.5
+del hneb06.5
+del sfb06.5
+del hnob06.5
+fi 540.000000 380.000000 10 180.000000
+crd? hneb05.5
+crd? hnb05.5
+crd? sfb05.5
+crd? hnob05.5
+crd? hob05.5
+crd? hnb06.5
+crd? hob06.5
+crd? hneb06.5
+crd? sfb06.5
+crd? hnob06.5

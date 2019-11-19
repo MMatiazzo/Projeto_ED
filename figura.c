@@ -93,6 +93,23 @@ figura criaBoundBox(figura fig, char *cor){
   return (void *) this;
 }
 
+int comparatorFig(figura f1, figura f2){
+  struct figura *this = (struct figura *) f1;
+  struct figura *this2 = (struct figura *) f2;
+
+  if(this->x < this2->x){
+    return -1;
+  }else if(this->x > this2->x){
+    return 1;
+  }else if(this->y < this2->y){
+    return -1; 
+  }else if(this->y > this2->y){
+    return 1;
+  }
+  return 0;
+
+}
+
 
 enum tipo_figura getTipoFigura(figura fig){
   struct figura * this;
@@ -101,10 +118,14 @@ enum tipo_figura getTipoFigura(figura fig){
 }
 
 
-int getId(figura fig){
+char *getId(figura fig){
   struct figura *this;
+  char aux[50], *str;
   this = (struct figura *) fig;
-  return this->id;
+  sprintf(aux, "%d", this->id);
+  str = malloc(sizeof(char) * (strlen(aux) + 1));
+  strcpy(str, aux);
+  return str;
 }
 
 

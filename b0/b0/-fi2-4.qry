@@ -1,0 +1,26 @@
+crd? hnb01.1
+crd? hnob01.1
+crd? hob01.1
+crd? hneb01.1
+crd? hnob02.1
+crd? hob02.1
+crd? hneb02.1
+crd? hnb02.1
+fi 0.000000 95.000000 10 0.000000
+del hnb01.1
+del hnob01.1
+del hob01.1
+del hneb01.1
+del hnob02.1
+del hob02.1
+del hneb02.1
+del hnb02.1
+fi 0.000000 95.000000 10 0.000000
+crd? hnb01.1
+crd? hnob01.1
+crd? hob01.1
+crd? hneb01.1
+crd? hnob02.1
+crd? hob02.1
+crd? hneb02.1
+crd? hnb02.1

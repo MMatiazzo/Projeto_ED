@@ -2,7 +2,7 @@
 #define _ARQUIVO_H
 
 #include <stdio.h>
-#include "listaed.h"
+//#include "listaed.h"
 
 
 typedef void * arquivo;
@@ -13,7 +13,7 @@ arquivo abreArquivo(char *caminho, enum tipo_arquivo modo);
 
 char * lerLinha(arquivo arq);
 
-lista recebeLinhas(arquivo arq, int total_linhas);
+//lista recebeLinhas(arquivo arq, int total_linhas);
 
 void escreveLinha(arquivo arq, char * entrada, ...);
 

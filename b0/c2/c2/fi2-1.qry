@@ -1,0 +1,32 @@
+crd? hnoB43-3.4
+crd? hneB43-3.4
+crd? hoB43-3.4
+crd? hnB43-3.4
+crd? sfB43-3.5
+crd? sfB43-3.7
+crd? hoB43-3.8
+crd? hnoB43-3.8
+crd? hneB43-3.8
+crd? hnB43-3.8
+fi 1040.000000 210.000000 10 520.000000
+del hnoB43-3.4
+del hneB43-3.4
+del hoB43-3.4
+del hnB43-3.4
+del sfB43-3.5
+del sfB43-3.7
+del hoB43-3.8
+del hnoB43-3.8
+del hneB43-3.8
+del hnB43-3.8
+fi 1040.000000 210.000000 10 520.000000
+crd? hnoB43-3.4
+crd? hneB43-3.4
+crd? hoB43-3.4
+crd? hnB43-3.4
+crd? sfB43-3.5
+crd? sfB43-3.7
+crd? hoB43-3.8
+crd? hnoB43-3.8
+crd? hneB43-3.8
+crd? hnB43-3.8

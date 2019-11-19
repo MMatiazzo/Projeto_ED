@@ -37,14 +37,14 @@ hash_table criaHashTable(int n, char *(*getId)(void *)){
  
  
  
-void insereHashTable(hash_table t, void *item){
+int insereHashTable(hash_table t, void *item){
     hash_t *this = (hash_t *) t;
     char *chave = this->getId(item);
     node *this_node;
     int k;
  
     if(existeChave(t, chave))
-        return;
+        return  0;
  
     k = hashFunction(chave, this->size);
     if(this->data[k] == NULL){
@@ -60,6 +60,7 @@ void insereHashTable(hash_table t, void *item){
     }
     this_node->data = item;
     this_node->prox = NULL;
+    return 1;
 }
  
 void remove_hash(hash_table t, char *chave){

@@ -2,6 +2,7 @@
 #define _HEAPSORT_H_
 
 void heapsort(void **a, int n, int (*f)(void*,void*,float,float),float x, float y);
+//void heapsort(void** vet, int n, int (*f)(void*,void*,float,float), float x, float y);
 
 
 

@@ -1,5 +1,10 @@
+#include "brl.h"
+#include "PontoBrl.h"
+#include "Tree.h"
+#include "hash.h"
 #include "executor.h"
-#include "listaed.h"
+#include "estabelecimento.h"
+#include "pessoa.h"
 #include "figura.h"
 #include "quadra.h"
 #include "equipamento.h"
@@ -9,7 +14,6 @@
 #include "funcoes.h"
 #include "svg.h"
 #include "arquivo.h"
-#include "free.h"
 #include "heapsort.h"
 #include <stdio.h>
 #include <stdlib.h>
@@ -20,14 +24,30 @@ struct executor{
   char* nome_entrada;
   char* nome_consulta;
   char* dir_saida;
+  char* dir_estab;
+  char* dir_pessoas;
+  int interativo;
 
-  lista figuras;
-  lista quadras;
-  lista hidrantes;
-  lista semaforos;
-  lista radios;
-  lista predios;
-  lista muros;
+  arvore figuras;
+  arvore quadras;
+  arvore hidrantes;
+  arvore semaforos;
+  arvore radios;
+  arvore predios;
+  arvore muros;
+  arvore textos;
+  arvore moradia;
+  arvore estabelecimento;
+
+  hash_table quadras_hash;
+  hash_table figuras_hash;
+  hash_table hidrantes_hash;
+  hash_table semaforos_hash;
+  hash_table radios_hash;
+  hash_table pessoa_hash;
+  hash_table definicao_hash;
+  hash_table estabelecimento_hash;
+  hash_table moradia_hash;
 
   svg     arq_svg;
   arquivo arq_txt;
@@ -83,17 +103,34 @@ char *getNomeBase(char* linha);
 executor criaExecutor(){
   struct executor *this;
   this = (struct executor*) malloc(sizeof(struct executor));
+  this->interativo = 0;
   this->arq_txt = NULL;
   this->nome_entrada  = NULL;
   this->nome_consulta = NULL;
   this->dir_saida     = NULL;
   this->dir_base      = (char *) malloc(3 * sizeof(char));
   strcpy(this->dir_base, "./");
-  this->figuras     = NULL;
-  this->quadras     = NULL;
-  this->hidrantes   = NULL;
-  this->semaforos   = NULL;
-  this->radios      = NULL;
+  this->dir_pessoas = NULL;
+  this->dir_estab = NULL;
+  this->figuras        = criaArvore(comparatorFig);
+  this->quadras        = criaArvore(comparatorQuadra);
+  this->hidrantes      = criaArvore(equipamentoComparator);
+  this->semaforos      = criaArvore(equipamentoComparator);
+  this->radios         = criaArvore(equipamentoComparator);
+  this->predios        = criaArvore(comparatorPredio);
+  this->muros          = criaArvore(comparatorMuroAux);
+  this->textos         = criaArvore(comparatorMuro);   //gambiarra
+  this->moradia        = criaArvore(comparatorMuro); //gambiarra 2.0
+  this->estabelecimento= criaArvore(comparator_estabelecimento);
+  this->quadras_hash   = NULL;
+  this->figuras_hash   = NULL;
+  this->hidrantes_hash = NULL;
+  this->semaforos_hash = NULL;
+  this->radios_hash    = NULL;
+  this->pessoa_hash = NULL;
+  this->definicao_hash = NULL;
+  this->estabelecimento_hash = NULL;
+  this->moradia_hash = NULL;
   this->maximos.total_figuras   = 0;
   this->maximos.total_quadras   = 0;
   this->maximos.total_hidrantes = 0;
@@ -155,6 +192,20 @@ executor setParametros(executor executor, int argc, char* argv[]){
       this->dir_saida = (char *) malloc(sizeof(char) * strlen(argv[++i]) + 1);
       strcpy(this->dir_saida, argv[i]);
     }
+
+    if(!strcmp("-ec" , argv[i])){
+      this->dir_estab = (char *) malloc(sizeof(char) * strlen(argv[++i]) + 1);
+      strcpy(this->dir_estab, argv[i]);
+    }
+
+    if(!strcmp("-pm" , argv[i])){
+      this->dir_pessoas = (char *) malloc(sizeof(char) * strlen(argv[++i]) + 1);
+      strcpy(this->dir_pessoas, argv[i]);
+    }
+
+    if(!strcmp("-i" , argv[i])){
+      this->interativo = 1;
+    }
   }
 
 
@@ -169,17 +220,23 @@ executor setParametros(executor executor, int argc, char* argv[]){
   }
 
 
-
   nome_base = getNomeBase(this->nome_entrada);
   dirsaida = colocaBarraFinal(this->dir_saida);
   char * path = (char *) malloc(sizeof(char) * strlen(nome_base) + strlen(dirsaida) + 5);
   sprintf(path, "%s%s.svg", dirsaida, nome_base);
-  // printf("CAMINHO: %s\n", path);
   this->arq_svg = criaSVG(path);
   free(nome_base);
   free(dirsaida);
   free(path);
 
+}
+
+
+void setQry(executor exec, char *nome){
+  struct executor *this = (struct executor *) exec;
+  free(this->nome_consulta);
+  this->nome_consulta = malloc(sizeof(char) * strlen(nome) + 1);
+  strcpy(this->nome_consulta, nome); 
 }
 
 
@@ -206,13 +263,16 @@ executor setNx(executor exec, int nf, int nq, int nh, int ns, int nr, int np, in
   this->maximos.radios      = nr;
   this->maximos.predios     = np;
   this->maximos.muros       = nm;
-  this->figuras     = criaLista(nf);
-  this->quadras     = criaLista(nq);
-  this->hidrantes   = criaLista(nh);
-  this->semaforos   = criaLista(ns);
-  this->radios      = criaLista(nr);
-  this->predios     = criaLista(np);
-  this->muros       = criaLista(nm);
+  this->figuras_hash   = criaHashTable(nf, getId);
+  this->quadras_hash   = criaHashTable(nq, getCep);
+  this->hidrantes_hash = criaHashTable(nh, getEquipamentoId);
+  this->semaforos_hash = criaHashTable(ns, getEquipamentoId);
+  this->radios_hash    = criaHashTable(nr, getEquipamentoId);
+  this->definicao_hash = criaHashTable(50, getDefinicaoTipo);
+  this->estabelecimento_hash = criaHashTable(50, getEstabCnpj);
+  this->pessoa_hash    = criaHashTable(50, getPessoaCpf);
+  this->moradia_hash   = criaHashTable(50, getMoradiaCpf);
+
   return (executor) this;
 }
 
@@ -244,6 +304,66 @@ char* getCaminhoBase(executor executor){
 
 }
 
+char* getCaminhoBasePessoa(executor executor){
+  struct executor *this;
+  char * caminho = NULL;
+  this = (struct executor*) executor;
+  if(!this->dir_pessoas){
+    return NULL;
+  }
+  caminho = (char *) malloc(sizeof(char) * (strlen(this->dir_base) + strlen(this->dir_pessoas) + 2));   //TEM Q DAR FREE
+
+  if(!strcmp(this->dir_base, "./") && this->dir_pessoas[0] == '/'){
+    strcpy(caminho, this->dir_pessoas);
+
+  }else if(strcmp(this->dir_base, "./") && this->dir_base[strlen(this->dir_base) - 1] == '/'){
+
+    if(this->dir_pessoas[0] == '/'){
+      strcpy(caminho, this->dir_base);
+      strcat(caminho, &this->dir_pessoas[1]);
+    }else{
+      strcpy(caminho, this->dir_base);
+      strcat(caminho, this->dir_pessoas);
+    }
+  }else{
+    strcpy(caminho, this->dir_base);
+    strcat(caminho, "/");
+    strcat(caminho, this->dir_pessoas);
+  } 
+  return caminho;
+
+}
+
+
+char* getCaminhoBaseEstab(executor executor){
+  struct executor *this;
+  char * caminho = NULL;
+  this = (struct executor*) executor;
+  if(!this->dir_estab){
+    return NULL;
+  }
+  caminho = (char *) malloc(sizeof(char) * (strlen(this->dir_base) + strlen(this->dir_estab) + 2));   //TEM Q DAR FREE
+
+  if(!strcmp(this->dir_base, "./") && this->dir_estab[0] == '/'){
+    strcpy(caminho, this->dir_estab);
+
+  }else if(strcmp(this->dir_base, "./") && this->dir_base[strlen(this->dir_base) - 1] == '/'){
+
+    if(this->dir_pessoas[0] == '/'){
+      strcpy(caminho, this->dir_base);
+      strcat(caminho, &this->dir_estab[1]);
+    }else{
+      strcpy(caminho, this->dir_base);
+      strcat(caminho, this->dir_estab);
+    }
+  }else{
+    strcpy(caminho, this->dir_base);
+    strcat(caminho, "/");
+    strcat(caminho, this->dir_estab);
+  } 
+  return caminho;
+
+}
 
 char *getNomeBase(char* linha){
   char * caminho, *apenas_nome;
@@ -303,9 +423,7 @@ int executarComando(executor exec, comando cmd){
   char *aux, *aux2;
   float x1, x2, y1, y2, dist;
   figura new_fig = NULL, new_fig2 = NULL;
-  lista bbox;
   svg svg_bbox;
-  node lista_node;
 
   parametros = getComandoParametros(cmd);
   total_parametros = getNumeroParametros(cmd);
@@ -325,7 +443,8 @@ int executarComando(executor exec, comando cmd){
       case CRIA_CIRCULO:
         if(this->maximos.total_figuras >= this->maximos.figuras) break;
         new_fig = criaCirculo(atoi(parametros[0]), atof(parametros[1]), atof(parametros[2]), atof(parametros[3]), parametros[4], parametros[5], this->espessuras.circulo);
-        this->figuras = insere_lista(this->figuras, new_fig);
+        insertArvore(this->figuras, new_fig);
+        insereHashTable(this->figuras_hash, new_fig);
         this->maximos.total_figuras++;
       break;
 
@@ -333,7 +452,8 @@ int executarComando(executor exec, comando cmd){
       case CRIA_RETANGULO:
         if(this->maximos.total_figuras >= this->maximos.figuras) break;
         new_fig = criaRetangulo(atoi(parametros[0]), atof(parametros[1]), atof(parametros[2]), atof(parametros[3]), atof(parametros[4]), parametros[5], parametros[6], this->espessuras.retangulo);
-        this->figuras = insere_lista(this->figuras, new_fig);
+        insertArvore(this->figuras, new_fig);
+        insereHashTable(this->figuras_hash, new_fig);
         this->maximos.total_figuras++;
       break;
 
@@ -341,8 +461,8 @@ int executarComando(executor exec, comando cmd){
 
         aux = todoTextoFunc(total_parametros, parametros);
         new_texto = criaTexto(atof(parametros[0]), atof(parametros[1]), aux);
+        insertArvore(this->textos, new_texto);
         escreveTexto(this->arq_svg, new_texto);
-        apagaTexto(new_texto);
         free(aux);
       break;
 
@@ -386,7 +506,8 @@ int executarComando(executor exec, comando cmd){
       case INSERE_QUADRA:
         if(this->maximos.total_quadras >= this->maximos.quadras) break;
         new_fig = criaQuadra(parametros[0], atof(parametros[1]), atof(parametros[2]), atof(parametros[3]), atof(parametros[4]), this->cor.quadra.borda, this->cor.quadra.fill, this->cor.quadra.espessura);
-        this->quadras = insere_lista(this->quadras, new_fig);
+        insereHashTable(this->quadras_hash,new_fig);
+        insertArvore(this->quadras, new_fig);
         this->maximos.total_quadras++;
       break;
 
@@ -394,7 +515,8 @@ int executarComando(executor exec, comando cmd){
       case INSERE_HIDRANTE:
         if(this->maximos.total_hidrantes >= this->maximos.hidrantes) break;
         new_fig = criaHidrante(parametros[0], atof(parametros[1]), atof(parametros[2]), this->cor.hidrante.borda, this->cor.hidrante.fill, this->cor.hidrante.espessura);
-        this->hidrantes = insere_lista(this->hidrantes, new_fig);
+        insertArvore(this->hidrantes, new_fig);
+        insereHashTable(this->hidrantes_hash, new_fig);
         this->maximos.total_hidrantes++;
       break;
 
@@ -402,7 +524,8 @@ int executarComando(executor exec, comando cmd){
       case INSERE_SEMAFORO:
         if(this->maximos.total_semaforos >= this->maximos.semaforos) break;
         new_fig = criaSemaforo(parametros[0], atof(parametros[1]), atof(parametros[2]), this->cor.semaforo.borda, this->cor.semaforo.fill, this->cor.semaforo.espessura);
-        this->semaforos = insere_lista(this->semaforos, new_fig);
+        insertArvore(this->semaforos, new_fig);
+        insereHashTable(this->semaforos_hash, new_fig);
         this->maximos.total_semaforos++;
       break;
 
@@ -410,7 +533,8 @@ int executarComando(executor exec, comando cmd){
       case INSERE_RADIO:
       if(this->maximos.total_radios >= this->maximos.radios) break;
       new_fig = criaRadio(parametros[0], atof(parametros[1]), atof(parametros[2]), this->cor.radio.borda, this->cor.radio.fill, this->cor.radio.espessura);
-      this->radios = insere_lista(this->radios, new_fig);
+      insertArvore(this->radios, new_fig);
+      insereHashTable(this->radios_hash, new_fig);
       this->maximos.total_radios++;
       break;
 
@@ -419,10 +543,12 @@ int executarComando(executor exec, comando cmd){
 
       case CRIA_PREDIO:
       if(this->maximos.total_predios >= this->maximos.predios) break;
-      if(!(new_fig2 = percorreLista(this->quadras, PROCURA_QUADRA_ID, parametros[0]))) break;
+      if(!(new_fig2 = getHashTable(this->quadras_hash, parametros[0]))){
+        break;
+      }
       new_fig2 = getQuadraRect(new_fig2);
       new_fig = criaPredio(parametros[0], parametros[1], atof(parametros[2]), atof(parametros[3]), atof(parametros[4]), atof(parametros[5]) , new_fig2);
-      this->predios = insere_lista(this->predios, new_fig);
+      insertArvore(this->predios, new_fig);
       this->maximos.total_predios++;
       break;
 
@@ -430,13 +556,78 @@ int executarComando(executor exec, comando cmd){
       case CRIA_MURO:
       if(this->maximos.total_muros >= this->maximos.muros) break;
       new_fig = criaSegmento(atof(parametros[0]), atof(parametros[1]), atof(parametros[2]), atof(parametros[3]));
-      this->muros = insere_lista(this->muros, new_fig);
+      insertArvore(this->muros, new_fig);
       this->maximos.total_muros++;
       break;
 
       default: break;         //FIM DOS COMANDOS
 
 
+  }
+}
+
+void executarComandoPm(executor exec, comando cmd){
+  struct executor * this;
+  this = (struct executor *) exec;
+  enum tipo_comando tipo = getTipoComando(cmd);
+  int total_parametros;
+  char **parametros;
+  void *aux;
+  
+  parametros = getComandoParametros(cmd);
+  total_parametros = getNumeroParametros(cmd);
+
+  switch (tipo)
+  {
+  case CADASTRA_PESSOA:
+    aux = criaPessoa(parametros[0],parametros[1],parametros[2],parametros[3][0],parametros[4]);
+    if(!insereHashTable(this->pessoa_hash,aux)){
+      apagaPessoa(aux);
+    }
+    break;
+  
+  case ENDERECO_PESSOA:
+  if(getHashTable(this->pessoa_hash,parametros[0])){
+    aux = criaMoradia(parametros[0],parametros[1],parametros[2][0],atoi(parametros[3]),parametros[4]);
+    if(!insereHashTable(this->moradia_hash,aux)){
+      apagaMoradia(aux);
+    }else{
+      insertArvore(this->moradia,aux);
+    }
+  }
+  break;
+  }
+}
+
+void executarComandoEc(executor exec, comando cmd){
+  struct executor * this;
+  this = (struct executor *) exec;
+  enum tipo_comando tipo = getTipoComando(cmd);
+  int total_parametros;
+  char **parametros;
+  void *aux;
+  
+  parametros = getComandoParametros(cmd);
+  total_parametros = getNumeroParametros(cmd);
+
+  switch (tipo)
+  {
+  case DEFINE_ESTAB:
+    aux = criaDefinicao(parametros[0], parametros[1]);
+    if(!insereHashTable(this->definicao_hash, aux))
+      apagaDefinicao(aux);
+    break;
+  
+  case INSERE_ESTAB:
+      if(getHashTable(this->definicao_hash,parametros[2])){
+        aux = criaEstabelecimento(parametros[0],parametros[1],parametros[2],parametros[3],parametros[4][0],atoi(parametros[5]),parametros[6], getHashTable(this->quadras_hash,parametros[3]));
+        if(!insereHashTable(this->estabelecimento_hash,aux)){
+          apagaEstab(aux);
+        }else{
+          insertArvore(this->estabelecimento,aux);
+        }
+      }
+  break;
   }
 }
 
@@ -452,10 +643,12 @@ int executarComandoQry(executor exec, comando cmd){
   char *aux, *aux2, *dir_saida;
   float x1, x2, y1, y2, dist;
   figura new_fig, new_fig2;
-  lista bbox;
+  void *auxajuda;
   svg svg_bbox;
-  node lista_node;
-  void **vet_s, **vet_h, **vet_q;
+  FILE *auxsvg;
+
+  void **vet_s, **vet_h, **vet_q, **bbox, **vet_fig;
+  char *aux_dir;
 
 
   parametros = getComandoParametros(cmd);
@@ -463,15 +656,17 @@ int executarComandoQry(executor exec, comando cmd){
 
   switch(tipo){
     case SOBREPOSICAO:
-    new_fig = procuraFigura(this->figuras, atoi(parametros[0]));
-    new_fig2 = procuraFigura(this->figuras, atoi(parametros[1]));
+    new_fig = getHashTable(this->figuras_hash, parametros[0]);
+    new_fig2 = getHashTable(this->figuras_hash, parametros[1]);
 
     if( !new_fig || !new_fig2){
-      // printf("Figura não encontrada\n");
+      printf("Figura não encontrada\n");
       break;
     }
     aux = (char *) malloc(sizeof(char) * (strlen(parametros[0]) + (strlen(parametros[1])) + 21));
     sprintf(aux, "o? %s %s\n", parametros[0], parametros[1]);
+
+
 
     if(sobrepoem(new_fig, new_fig2)){
       strcat(aux, "SIM SOBREPOEM\n");
@@ -481,6 +676,7 @@ int executarComandoQry(executor exec, comando cmd){
     }
 
     aux2 = sobrepoeRetangulo(new_fig, new_fig2);
+    
     escreveLinhaSVG(this->arq_svg, aux2);
     escreveLinha(this->arq_txt, aux);
     free(aux2);
@@ -491,7 +687,7 @@ int executarComandoQry(executor exec, comando cmd){
 
 
     case PONTO_INTERNO:
-      new_fig = procuraFigura(this->figuras, atoi(parametros[0]));
+      new_fig = getHashTable(this->figuras_hash, parametros[0]);
       char *cor;
       aux = (char *) malloc(sizeof(char) * (strlen(parametros[0]) + (strlen(parametros[1])) + strlen(parametros[2]) + 19));
       cor = (char *) malloc(sizeof(char) * 6);
@@ -499,12 +695,10 @@ int executarComandoQry(executor exec, comando cmd){
       strcpy(cor, "red");
 
       if(!new_fig){
-        // printf("Figura não encontrada\n");
         free(aux);
         free(cor);
         break;
       }else{
-
         if(pontoInterno(new_fig, atof(parametros[1]), atof(parametros[2]))){
           strcat(aux, "SIM INTERNO\n");
           strcpy(cor, "green");
@@ -530,13 +724,12 @@ int executarComandoQry(executor exec, comando cmd){
 
 
     case DISTANCIA_CENTRO:
-      new_fig = procuraFigura(this->figuras, atoi(parametros[0]));
-      new_fig2 = procuraFigura(this->figuras, atoi(parametros[1]));
+      new_fig = getHashTable(this->figuras_hash, parametros[0]);
+      new_fig2 = getHashTable(this->figuras_hash, parametros[1]);
       texto text;
       aux = (char *) malloc(sizeof(char) * strlen(parametros[0]) + strlen(parametros[1]) + 6);
       sprintf(aux, "d? %s %s\n", parametros[0], parametros[1]);
       if(!new_fig || !new_fig2){
-        // printf("Figura não encontrada\n");
         free(aux);
         break;
       }
@@ -561,27 +754,20 @@ int executarComandoQry(executor exec, comando cmd){
 
     case CRIA_BOUNDING_BOX:
       bbox = processaBB(this->figuras, parametros[1]);
-      printaLista(bbox );
       aux2 = removeExtensao(this->nome_entrada);
       dir_saida = colocaBarraFinal(this->dir_saida);
       aux = (char *) malloc(sizeof(char) * (strlen(parametros[0]) + strlen(aux2) + strlen(dir_saida) + 6));
       sprintf(aux, "%s%s-%s.svg", dir_saida, aux2, parametros[0]);
       svg_bbox = criaSVG(aux);
 
-      lista_node = getInicioLista(this->figuras);
+      percorreArvore(this->figuras, desenhaFigura, svg_bbox);
 
-      while(temProximo(lista_node)){
-        new_fig = (figura) getItemProx(this->figuras, &lista_node);
-        desenhaFigura(svg_bbox, new_fig);
+      for(i = 0; i < getArvoreTamanho(this->figuras); i++){
+        desenhaFigura(svg_bbox, bbox[i]);
+        apagaFigura(bbox[i]);
       }
-
-      lista_node = getInicioLista(bbox);
-
-      while(temProximo(lista_node)){
-        new_fig = (figura) getItemProx(bbox, &lista_node);
-        desenhaFigura(svg_bbox, new_fig);
-      }
-      apagaListaGeral(bbox, FIGURA);
+ 
+      free(bbox);
       free(aux);
       free(aux2);
       free(dir_saida);
@@ -591,7 +777,7 @@ int executarComandoQry(executor exec, comando cmd){
 
 
     case DELETA_OBJETOS:
-      aux = deleteObj(this->quadras, this->hidrantes, this->semaforos, this->radios, parametros[0]);
+      aux = deleteObj(this->quadras, this->hidrantes, this->semaforos, this->radios,this->quadras_hash,this->hidrantes_hash,this->semaforos_hash,this->radios_hash, parametros[0]);
       if(aux){
         aux2 = (char *)malloc(sizeof(char) * strlen(aux) + 10);
         sprintf(aux2, "Removido %s", aux);
@@ -603,7 +789,7 @@ int executarComandoQry(executor exec, comando cmd){
 
 
     case COORDENADAS_ESPECIE:
-      aux = procuraObj(this->quadras, this->hidrantes, this->semaforos, this->radios, parametros[0]);
+      aux = procuraObj(this->quadras_hash, this->hidrantes_hash, this->semaforos_hash, this->radios_hash, parametros[0]);
       if(aux){
         escreveLinha(this->arq_txt, aux);
         free(aux);
@@ -612,19 +798,11 @@ int executarComandoQry(executor exec, comando cmd){
 
 
     case COR_BORDA_QUADRA:
-      aux = cbqFunc(this->quadras, atof(parametros[0]), atof(parametros[1]), atof(parametros[2]), parametros[3]);
-      if(aux){
-        escreveLinha(this->arq_txt, aux);
-        free(aux);
-      }
+      cbqFunc(this->quadras, atof(parametros[0]), atof(parametros[1]), atof(parametros[2]), parametros[3], this->arq_txt);
     break;
 
     case DQ_REMOVE_QUADRA:
-      aux = dqFunc(this->arq_svg, this->quadras, this->hidrantes, this->semaforos, this->radios, parametros[0], parametros[1], atof(parametros[2]));
-      if(aux){
-        escreveLinha(this->arq_txt, aux);
-        free(aux);
-      }
+      dqFunc(this->arq_svg, this->quadras,this->quadras_hash, this->hidrantes_hash, this->semaforos_hash, this->radios_hash, parametros[0], parametros[1], atof(parametros[2]), this->arq_txt);
     break;
 
 
@@ -638,15 +816,12 @@ int executarComandoQry(executor exec, comando cmd){
 
 
     case FOCO_INCENDIO:
-      // heapsort(this->semaforos, getTamanho(this->semaforos),comparaSemaforoPonto, atof(parametros[0]), atof(parametros[1]));
-      vet_s = toVect(this->semaforos);
-      vet_h = toVect(this->hidrantes);
-      // for(int i = 0; i < getTamanho(this->semaforos); i++){
-      //   printf("TESTE SEMA:%s\n", getSemaforoId(vet_s[i]));
-      // }
-      heapsort(vet_s,getTamanho(this->semaforos),equipamentoComparator, atof(parametros[0]), atof(parametros[1]));
-      heapsort(vet_h,getTamanho(this->hidrantes),equipamentoComparator, atof(parametros[0]), atof(parametros[1]));
-      aux = fIFunction(this->arq_svg, vet_s, vet_h, getTamanho(this->semaforos), getTamanho(this->hidrantes),atof(parametros[0]),atof(parametros[1]),atoi(parametros[2]),atof(parametros[3]));
+      vet_s = arvoreToArray(this->semaforos);
+      vet_h = arvoreToArray(this->hidrantes);
+
+      heapsort(vet_s,getArvoreTamanho(this->semaforos),comparatorFoco, atof(parametros[0]), atof(parametros[1]));
+      heapsort(vet_h,getArvoreTamanho(this->hidrantes),comparatorFoco, atof(parametros[0]), atof(parametros[1]));
+      aux = fIFunction(this->arq_svg, vet_s, vet_h, getArvoreTamanho(this->semaforos), getArvoreTamanho(this->hidrantes),atof(parametros[0]),atof(parametros[1]),atoi(parametros[2]),atof(parametros[3]));
       if(aux){
         escreveLinha(this->arq_txt, aux);
         free(aux);
@@ -657,8 +832,8 @@ int executarComandoQry(executor exec, comando cmd){
     break;
 
     case FOCO_SEMAFORO:
-      vet_s = toVect(this->semaforos);
-      aux = fSFunction(this->arq_svg, vet_s, this->quadras, getTamanho(this->semaforos), atoi(parametros[0]), parametros[1], parametros[2], atof(parametros[3]));
+      vet_s = arvoreToArray(this->semaforos);
+      aux = fSFunction(this->arq_svg, vet_s, this->quadras_hash, getArvoreTamanho(this->semaforos), atoi(parametros[0]), parametros[1], parametros[2], atof(parametros[3]));
       if(aux){
         escreveLinha(this->arq_txt, aux);
         free(aux);
@@ -668,10 +843,9 @@ int executarComandoQry(executor exec, comando cmd){
 
     break;
 
-
     case FOCO_HIDRANTE:
-      vet_h = toVect(this->hidrantes);
-      aux = fHFunction(this->arq_svg, vet_h, this->quadras, getTamanho(this->hidrantes), atoi(parametros[0]), parametros[1], parametros[2], atof(parametros[3]));
+      vet_h = arvoreToArray(this->hidrantes);
+      aux = fHFunction(this->arq_svg, vet_h, this->quadras_hash, getArvoreTamanho(this->hidrantes), atoi(parametros[0]), parametros[1], parametros[2], atof(parametros[3]));
       if(aux){
         escreveLinha(this->arq_txt, aux);
         free(aux);
@@ -679,25 +853,266 @@ int executarComandoQry(executor exec, comando cmd){
       free(vet_h);
     break;
 
+    case IMPRIME_MORADOR:
+      escreveLinha(this->arq_txt,"dm? %s",parametros[0]);
+      auxajuda = getHashTable(this->pessoa_hash,parametros[0]);
+      if(auxajuda != NULL){
+        escreveLinha(this->arq_txt,"cpf = %s | nome = %s | sobrenome = %s | sexo = %c | nascimento = %s",getPessoaCpf(auxajuda),getPessoaNome(auxajuda),getPessoaSobrenome(auxajuda), getPessoaSexo(auxajuda), getPessoaNascimento(auxajuda));
+      }
+    break;
+
+    case IMPRIME_ESTAB_MOR:
+      escreveLinha(this->arq_txt,"de? %s",parametros[0]);
+
+      auxajuda = getHashTable(this->estabelecimento_hash,parametros[0]);
+
+      void *auxajuda2;
+      if(auxajuda != NULL){
+
+        escreveLinha(this->arq_txt,"ESTABELECIMENTO -> cnpj = %s | cpf = %s | codt = %s | cep = %s | face = %c | num = %d | nome = %s\n",getEstabCnpj(auxajuda),getEstabCpf(auxajuda),getEstabCodigo(auxajuda),getEstabCep(auxajuda),getEstabFace(auxajuda),getEstabNum(auxajuda), getEstabNome(auxajuda));
+        auxajuda2 = getHashTable(this->pessoa_hash,getEstabCpf(auxajuda));
+        escreveLinha(this->arq_txt,"PROPRIETARIO -> cpf = %s | nome = %s | sobrenome = %s | sexo = %c | nascimento = %s\n",getPessoaCpf(auxajuda2),getPessoaNome(auxajuda2),getPessoaSobrenome(auxajuda2), getPessoaSexo(auxajuda2),getPessoaNascimento(auxajuda2));
+      }
+    break;
+
+    case MUDAR_ENDERECO:
+    escreveLinha(this->arq_txt,"mud %s %s %s %s %s",parametros[0],parametros[1],parametros[2],parametros[3],parametros[4]);
+    auxajuda = getHashTable(this->moradia_hash, parametros[0]);
+    auxajuda2 = getHashTable(this->pessoa_hash, parametros[0]);
+    
+    
+    if(auxajuda){
+      escreveLinha(this->arq_txt,"PESSOA -> cpf = %s | nome = %s | sobrenome = %s | sexo = %c | nascimento = %s",getPessoaCpf(auxajuda2),getPessoaNome(auxajuda2),getPessoaSobrenome(auxajuda2), getPessoaSexo(auxajuda2),getPessoaNascimento(auxajuda2));
+      escreveLinha(this->arq_txt,"DADOS MORADIA ANTERIOR -> cpf = %s | cep = %s | face = %c | num = %d | compl = %s",getMoradiaCpf(auxajuda),getMoradiaCep(auxajuda),getMoradiaFace(auxajuda),getMoradiaNum(auxajuda),getMoradiaComplemento(auxajuda));
+      alteraMorador(auxajuda,parametros[1],parametros[2][0],atoi(parametros[3]),parametros[4]);
+      escreveLinha(this->arq_txt,"DADOS MORADIA NOVO -> cpf = %s | cep = %s | face = %c | num = %d | compl = %s\n",getMoradiaCpf(auxajuda),getMoradiaCep(auxajuda),getMoradiaFace(auxajuda),getMoradiaNum(auxajuda),getMoradiaComplemento(auxajuda));
+
+    }
+    break;
+
+    case LISTAR_MORADORES:
+    escreveLinha(this->arq_txt,"m? %s",parametros[0]);
+    if(getHashTable(this->quadras_hash,parametros[0])){
+      imprimeMoradores(this->moradia,this->arq_txt,parametros[0],this->pessoa_hash);
+    }else{
+      escreveLinha(this->arq_txt,"QUADRA INEXISTENTE\n");
+    }
+    break;
+
+    case PRINTA_ARVORE:
+
+      aux_dir = malloc(sizeof(char)*strlen(this->dir_saida)+strlen(parametros[1])+6);
+      strcpy(aux_dir,this->dir_saida);
+      strcat(aux_dir,parametros[1]);
+
+      auxsvg = fopen(aux_dir,"w");
+    if(!auxsvg)
+      printf("NAO ABRIU\n");
+    else{
+      if(auxsvg){
+        fputs("<svg fill-opacity='0.5'><rect width = '100%' height = '100%' fill = 'white' fill-opacity = '1.0'/>\n",auxsvg);
+        if(parametros[0][0] == 'q'){
+          arqpercorreArvoreDmAux(this->quadras,printaSvgQuadDm,auxsvg);
+        }else if(parametros[0][0] == 'h'){
+          arqpercorreArvoreDmAux(this->hidrantes,printaSvgHidDm,auxsvg);  
+        }else if(parametros[0][0] == 's'){
+          arqpercorreArvoreDmAux(this->semaforos,printaSvgHidDm,auxsvg);
+        }else if(parametros[0][0] == 't'){
+          arqpercorreArvoreDmAux(this->radios,printaSvgHidDm,auxsvg);
+        }else if(parametros[0][0] == 'p'){
+          arqpercorreArvoreDmAux(this->predios,printaSvgPredioDm,auxsvg);
+        }else if(parametros[0][0] == 'm'){
+          arqpercorreArvoreDmAux(this->muros,printaSvgMuroDm,auxsvg);
+        }
+        fputs("</svg>",auxsvg);
+        fclose(auxsvg);
+      }
+      else{
+        printf("ARQUIVO NÃO ABERTO\n");
+      }
+
+    }
+    break;
+
+    case PONTO_LUZ:    
+    brlProcedure(atof(parametros[0]),atof(parametros[1]),this->arq_svg,this->quadras,this->muros,this->predios,this->quadras_hash);
+  
+    break;
+
+    case POLIGONO_BORDA:
+      aux = malloc(sizeof(char)*(strlen(parametros[0])+strlen(this->dir_base)+1));
+      char arq[100];char dirOO[100];char linhaPol[100];char pol[999999];char x[100],y[100];
+      int i;
+      void **VetPonto;int tamanho = 0;
+            strcpy(aux,this->dir_base);
+            strcat(aux,parametros[0]);
+            printf("%s\n\n",aux);
+            FILE* arqPoligono = fopen(aux,"r");
+            if(!arqPoligono){
+              perror("Erro -> \n");
+            }
+            strcpy(pol,"");
+            while(fgets(linhaPol, 500, arqPoligono) != NULL){
+                tamanho++;
+                sscanf(linhaPol,"%s %s",x,y);
+                strcat(pol,x);strcat(pol,",");strcat(pol,y);strcat(pol," ");
+            }
+            strcat(pol,"\0");
+            escreveLinha(getSvgArq(this->arq_svg),"<polygon points= '%s'/>\n",pol);
+            VetPonto = malloc(sizeof(void*)*tamanho);
+            fseek(arqPoligono,0,SEEK_SET);
+            i = 0;
+            while(fgets(linhaPol, 500, arqPoligono) != NULL){
+                sscanf(linhaPol,"%s %s",x,y);
+                void* ponto = NewPoint(atof(x),atof(y));
+                VetPonto[i] = ponto;
+                i++;
+            }
+            fclose(arqPoligono);
+            percorreToPoligonAux(this->predios,verificaDentroPredio,VetPonto,tamanho,this->arq_svg);
+            percorreToPoligonAux(this->quadras,verificaDentroQuadra,VetPonto,tamanho,this->arq_svg);
+          break;
+
   }
 }
+
+
+
+void executarComandoI(executor exec){
+  struct executor * this = (struct executor *) exec;
+  char entrada[50];
+  comando cmd;
+  arquivo arquivo_qry;
+  char **parametros, *aux, *linha, *caminho, *nome_base, *nome_base_qry, *dir_saida;
+  char *aux_dir;
+  FILE *auxsvg;
+  while(1){
+    system("clear");
+    printf("=-=-=-=-=-=-=-=-=-=-=- MODO INTERATIVO -=-=-=-=-=-=-=-=-=-=-=-=-=-=\n\n");
+    printf("nav -> NAVEGAR ENTRE UMA DAS ARVORES\n");
+    printf("  s -> SEMAFORO\n");
+    printf("  r -> RADIO\n");
+    printf("  q -> QUADRAS\n");
+    printf("  h -> HIDRANTE\n");
+    printf("q -> LE E EXECUTA O ARQUIVO DE CONSULTA QRY\n");
+    printf("dmprbt [arvore] [nome arquivo]\n");
+    printf("sai -> SAI DO MODO INTERATIVO\n");
+    printf("COMANDO-->: ");
+    scanf(" %[^\n]", entrada);
+
+    
+    cmd = criaComandoIt(entrada);
+    if(cmd){
+      parametros = getComandoParametros(cmd);
+      char key;
+      switch (getTipoComando(cmd))
+      {
+      case NAVEGA_IT:
+        if(parametros[0][0] == 'h'){
+          navegaArvore(this->hidrantes, getArvoreRaiz(this->hidrantes), equipamentoToString);
+        }else if(parametros[0][0] == 's'){
+          navegaArvore(this->semaforos, getArvoreRaiz(this->semaforos), equipamentoToString);
+        }else if(parametros[0][0] == 'q'){
+          navegaArvore(this->quadras, getArvoreRaiz(this->quadras), quadraToString);
+        }else if(parametros[0][0] == 'r'){
+          navegaArvore(this->radios, getArvoreRaiz(this->radios), equipamentoToString);
+        }
+        break;
+
+      case QRY_IT:
+        setQry(exec, parametros[0]);
+        caminho = getCaminhoQRY(exec);
+        arquivo_qry = abreArquivo(caminho, LEITURA);
+        free(caminho);
+        if(!arquivo_qry){
+          printf("ARQUIVO NAO ABERTO\n");
+
+        }else{
+          nome_base = getNomeBase(this->nome_entrada);
+          nome_base_qry = getNomeBase(this->nome_consulta);
+          dir_saida = colocaBarraFinal(this->dir_saida);
+          char * path = (char *) malloc(sizeof(char) * strlen(nome_base) + strlen(nome_base_qry) + strlen(dir_saida) + 6);
+          sprintf(path, "%s%s-%s.svg", dir_saida, nome_base, nome_base_qry);
+          this->arq_svg = criaSVG(path);
+          sprintf(path, "%s%s-%s.txt", dir_saida, nome_base, nome_base_qry);
+          this->arq_txt = abreArquivo(path,ESCRITA);
+          while(linha = lerLinha(arquivo_qry)){
+            cmd = criaComando(linha);
+            executarComandoQry(exec, cmd);
+            apagaComandoGeo(cmd);
+            free(linha);
+          }
+        finalizaQRY(exec);
+        fechaArquivo(arquivo_qry);
+        fechaArquivo(this->arq_txt);
+        }
+      break;
+
+      case PRINTA_ARVORE:
+        aux_dir = malloc(sizeof(char)*strlen(this->dir_saida)+strlen(parametros[1])+6);
+        strcpy(aux_dir,this->dir_saida);
+        strcat(aux_dir,parametros[1]);
+        strcat(aux_dir,".svg");
+        auxsvg = fopen(aux_dir,"w");
+      if(!auxsvg)
+        printf("NAO ABRIU\n");
+      else{
+        if(auxsvg){
+          fputs("<svg fill-opacity='0.5'><rect width = '100%' height = '100%' fill = 'white' fill-opacity = '1.0'/>\n",auxsvg);
+          if(parametros[0][0] == 'q'){
+            arqpercorreArvoreDmAux(this->quadras,printaSvgQuadDm,auxsvg);
+          }else if(parametros[0][0] == 'h'){
+            arqpercorreArvoreDmAux(this->hidrantes,printaSvgHidDm,auxsvg);  
+          }else if(parametros[0][0] == 's'){
+            arqpercorreArvoreDmAux(this->semaforos,printaSvgHidDm,auxsvg);
+          }else if(parametros[0][0] == 't'){
+            arqpercorreArvoreDmAux(this->radios,printaSvgHidDm,auxsvg);
+          }else if(parametros[0][0] == 'p'){
+            arqpercorreArvoreDmAux(this->predios,printaSvgPredioDm,auxsvg);
+          }else if(parametros[0][0] == 'm'){
+            arqpercorreArvoreDmAux(this->muros,printaSvgMuroDm,auxsvg);
+          }
+          fputs("</svg>",auxsvg);
+          fclose(auxsvg);
+        }
+        else{
+          printf("ARQUIVO NÃO ABERTO\n");
+        }
+      }
+      break;
+
+      case SAIR_IT:
+        return;
+      break;
+
+      default:
+        return;
+        break;
+      }
+    }
+  }
+
+}
+
+
+
 
 
 void escreveTudoSVG(executor exec){
   struct executor *this;
   this = (struct executor *)exec;
 
-  percorreLista(this->quadras   ,DESENHA_QUADRA  , this->arq_svg);
-  percorreLista(this->figuras   ,DESENHA_FIGURA  , this->arq_svg);
-  percorreLista(this->hidrantes ,DESENHA_HIDRANTE, this->arq_svg);
-  percorreLista(this->semaforos ,DESENHA_SEMAFORO, this->arq_svg);
-  percorreLista(this->radios    ,DESENHA_RADIO   , this->arq_svg);
-  percorreLista(this->predios   ,DESENHA_PREDIO  , this->arq_svg);
-  percorreLista(this->muros     ,DESENHA_MURO    , this->arq_svg);
+  percorreArvore(this->quadras   ,desenhaQuadra     , this->arq_svg);
+  percorreArvore(this->figuras   ,desenhaFigura     , this->arq_svg);
+  percorreArvore(this->hidrantes ,desenhaEquipamento, this->arq_svg);
+  percorreArvore(this->semaforos ,desenhaEquipamento, this->arq_svg);
+  percorreArvore(this->radios    ,desenhaEquipamento, this->arq_svg);
+  percorreArvore(this->predios   ,desenhaPredio     , this->arq_svg);
+  percorreArvore(this->muros     ,desenhaLineSVG    , this->arq_svg);
+  printf("TAMANHO: %d\n\n", getArvoreTamanho(this->estabelecimento));
+  percorreArvore(this->estabelecimento,desenhaEstab , this->arq_svg);
 
   fechaSVG(this->arq_svg);
-
-
 
 }
 
@@ -724,21 +1139,29 @@ int temQRY(executor exec){
 }
 
 
+int temInterativo(executor exec){
+  return ((struct executor *)exec)->interativo;
+}
+
+
 void finalizaQRY(executor exec){
   struct executor *this;
   figura figura_atual;
   texto texto_atual;
-  node lista_node;
+
   arquivo arquivo_txt;
   this = (struct executor *)exec;
 
-  percorreLista(this->figuras    , DESENHA_FIGURA    , this->arq_svg);
-  percorreLista(this->quadras    , DESENHA_QUADRA    , this->arq_svg);
-  percorreLista(this->hidrantes  , DESENHA_HIDRANTE  , this->arq_svg);
-  percorreLista(this->semaforos  , DESENHA_SEMAFORO  , this->arq_svg);
-  percorreLista(this->radios     , DESENHA_RADIO     , this->arq_svg);
-  percorreLista(this->predios    , DESENHA_PREDIO    , this->arq_svg);
-  percorreLista(this->muros      , DESENHA_MURO      , this->arq_svg);
+
+  percorreArvore(this->quadras   ,desenhaQuadra     , this->arq_svg);
+  percorreArvore(this->figuras   ,desenhaFigura     , this->arq_svg);
+  percorreArvore(this->hidrantes ,desenhaEquipamento, this->arq_svg);
+  percorreArvore(this->semaforos ,desenhaEquipamento, this->arq_svg);
+  percorreArvore(this->radios    ,desenhaEquipamento, this->arq_svg);
+  percorreArvore(this->predios   ,desenhaPredio     , this->arq_svg);
+  percorreArvore(this->muros     ,desenhaLineSVG    , this->arq_svg);
+  percorreArvore(this->estabelecimento,desenhaEstab, this->arq_svg);
+
   fechaSVG(this->arq_svg);
 
 
@@ -782,19 +1205,6 @@ void apagaExecutor(executor executor){
     free(this->cor.semaforo.borda);
     free(this->cor.semaforo.fill);
     free(this->cor.semaforo.espessura);
-
-    // apagaListaGeral(this->textos, TEXTO);
-    // apagaListaGeral(this->textos_qry, TEXTO);
-    // apagaListaGeral(this->saida_txt, STRING);
-    apagaListaGeral(this->figuras, FIGURA);
-    // apagaListaGeral(this->figuras_qry, FIGURA);
-    // apagaListaGeral(this->linhas_qry, STRING);
-    apagaListaGeral(this->quadras, QUADRA);
-    apagaListaGeral(this->hidrantes, HIDRANTE_F);
-    apagaListaGeral(this->semaforos, SEMAFORO_F);
-    apagaListaGeral(this->radios, RADIO_F);
-    apagaListaGeral(this->muros, MURO);
-    apagaListaGeral(this->predios, PREDIO);
     if(this->arq_txt)
       fechaArquivo(this->arq_txt);
     free(this);

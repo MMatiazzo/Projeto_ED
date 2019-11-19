@@ -15,7 +15,7 @@ equipamento criaHidrante(char *id, double x, double y, char *cor1, char *cor2, c
   equip_t *this;
   this = (equip_t *) malloc(sizeof(equip_t));
   this->id = (char *) malloc(sizeof(char) * strlen(id) + 1);
-  this->circ = criaCirculo(-5, 8.0, x, y, cor1, cor2, espessura);
+  this->circ = criaCirculo(-5, 5.0, x, y, cor1, cor2, espessura);
   this->text = criaTexto(x-5, y+5, "H");
   this->tipo = HIDRANTE;
   strcpy(this->id, id);
@@ -27,7 +27,7 @@ equipamento criaSemaforo(char *id, double x, double y, char *cor1, char *cor2, c
   equip_t *this;
   this = (equip_t *) malloc(sizeof(equip_t));
   this->id = (char *) malloc(sizeof(char) * strlen(id) + 1);
-  this->circ = criaCirculo(-4, 8.0, x, y, cor1, cor2, espessura);
+  this->circ = criaCirculo(-4, 5.0, x, y, cor1, cor2, espessura);
   this->text = criaTexto(x-5, y+5, "S");
   this->tipo = SEMAFORO;
   strcpy(this->id, id);
@@ -39,7 +39,7 @@ equipamento criaRadio(char *id, double x, double y, char *cor1, char *cor2, char
   equip_t *this;
   this = (equip_t *) malloc(sizeof(equip_t));
   this->id = (char *)malloc(sizeof(char) * strlen(id) + 1);
-  this->circ = criaCirculo(-3, 8.0, x, y, cor1, cor2, espessura);
+  this->circ = criaCirculo(-3, 5.0, x, y, cor1, cor2, espessura);
   this->text = criaTexto(x-5, y+5, "R");
   this->tipo = RADIO;
   strcpy(this->id, id);
@@ -75,23 +75,22 @@ enum tipo_equipamento getEquipamentoTipo(equipamento e){
 }
 
 
-int equipamentoComparator(equipamento e1, equipamento e2, float x, float y){
-  float x1,y1,x2,y2,d1,d2;
-  equip_t *c1;
-  equip_t *c2;
-  c1 = (equip_t *)e1;
-  c2 = (equip_t *)e2;
-  x1 = getXfig(c1->circ);
-  y1 = getYfig(c1->circ);
-  x2 = getXfig(c2->circ);
-  y2 = getYfig(c2->circ);
-  d1 = distancia(x1, y1, x, y);
-  d2 = distancia(x2, y2, x, y);
-  if(d1 > d2) return 1;
-  if(d1 < d2) return -1;
-  else return 0;
-}
 
+int equipamentoComparator(equipamento e1, equipamento e2){
+  equip_t *this, *this2;
+  this = (equip_t *) e1;
+  this2 = (equip_t *) e2;
+  return comparatorFig(this->circ, this2->circ);
+}
+  
+char *equipamentoToString(equipamento e){
+  equip_t* this;
+  this = (equip_t *) e;
+  char *saida;
+  saida = malloc(sizeof(char)*(floatlen(getXfig(this->circ)) + floatlen(getYfig(this->circ)) + strlen(this->id) + 10));
+  sprintf(saida, "ID:%s\nX:%f\nY:%f", getEquipamentoId(this), getXfig(this->circ), getYfig(this->circ));
+  return saida;
+}
 
 
 void apagaEquipamento(equipamento e){
@@ -101,4 +100,24 @@ void apagaEquipamento(equipamento e){
   apagaTexto (this->text);
   free(this->id);
   free(this);
+}
+//cota de cauchy OK!, chebychevi, newto OK!, bissecção OK!, eliminação de gaus
+void printaSvgHidDm(void *data,void *data2,FILE *arquivoSVG,int x,int y,char cor,int tam){   
+    static int lastS = 0;
+    equip_t *w = data;
+    equip_t *h = data2;
+    char color[20];
+    if(cor == 0){
+        strcpy(color,"black");      
+    }else if(cor == 1)
+    {
+        strcpy(color,"red");
+    }
+    fprintf(arquivoSVG,"\t<circle r='%d' cx='%d' cy='%d' stroke='%s' fill='%s' stroke-width='1.0' fill-opacity='1'/>\n",10,x,y,color,color);
+    fprintf(arquivoSVG,"\t<text x='%d' y='%d' text-anchor='middle' fill-opacity='1' font-size='4px'>id = %s</text>\n",x,y+15,w->id);
+    fprintf(arquivoSVG,"\t<text x='%d' y='%d' text-anchor='middle' fill-opacity='1' font-size='4px'>x = %f</text>\n",x,y+20,getXfig(w->circ));
+    fprintf(arquivoSVG,"\t<text x='%d' y='%d' text-anchor='middle' fill-opacity='1' font-size='4px'>y = %f</text>\n",x,y+25,getYfig(w->circ));
+
+    if(getXfig(w->circ) < lastS)
+    lastS = getXfig(w->circ);
 }
